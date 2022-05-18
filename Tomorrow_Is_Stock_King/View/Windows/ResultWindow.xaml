@@ -26,18 +26,18 @@
                         >
                 <Label Content="경과일 :"
                        FontSize="30"
-                       FontFamily="../Fonts\#강원교육모두"
+                       FontFamily="../../Fonts\#강원교육모두"
                        />
                 <Label Content="100일"
                        FontWeight="Bold"
                        FontSize="30"
-                       FontFamily="../Fonts\#강원교육모두"
+                       FontFamily="../../Fonts\#강원교육모두"
                        />
             </StackPanel>
 
             <Label FontSize="24" 
                    Padding="5 5 5 0"
-                   FontFamily="../Fonts\#강원교육모두"
+                   FontFamily="../../Fonts\#강원교육모두"
                    >
                 보유금액
             </Label>
@@ -49,14 +49,14 @@
                        FontWeight="Bold"
                        FontSize="24"
                        Padding="5 0 5 5 "
-                       FontFamily="../Fonts\#강원교육모두"
+                       FontFamily="../../Fonts\#강원교육모두"
                        >
                     100,000,000
                 </Label>
 
                 <Label FontSize="24"
                        Padding="5 0 5 5"
-                       FontFamily="../Fonts\#강원교육모두"
+                       FontFamily="../../Fonts\#강원교육모두"
                        >
                     원
                 </Label>
@@ -64,7 +64,7 @@
 
             <Label FontSize="24"
                    Padding="5 5 5 0"
-                   FontFamily="../Fonts\#강원교육모두"
+                   FontFamily="../../Fonts\#강원교육모두"
                    >
                 보유 주식 환산액
             </Label>
@@ -76,14 +76,14 @@
                        FontWeight="Bold"
                        FontSize="24"
                        Padding="5 0 5 5 "
-                       FontFamily="../Fonts\#강원교육모두"
+                       FontFamily="../../Fonts\#강원교육모두"
                     >
                     100,000,000
                 </Label>
 
                 <Label FontSize="24"
                        Padding="5 0 5 5 "
-                       FontFamily="../Fonts\#강원교육모두"
+                       FontFamily="../../Fonts\#강원교육모두"
                        >
                     원
                 </Label>
@@ -91,7 +91,7 @@
 
             <Label FontSize="24"
                    Padding="5 5 5 0"
-                   FontFamily="../Fonts\#강원교육모두"
+                   FontFamily="../../Fonts\#강원교육모두"
                    >
                 총 자산
             </Label>
@@ -103,14 +103,14 @@
                        FontWeight="Bold"
                        FontSize="24"
                        Padding="5 0 5 5 "
-                       FontFamily="../Fonts\#강원교육모두"
+                       FontFamily="../../Fonts\#강원교육모두"
                     >
                     100,000,000
                 </Label>
 
                 <Label FontSize="24"
                        Padding="5 0 5 5 "
-                       FontFamily="../Fonts\#강원교육모두"
+                       FontFamily="../../Fonts\#강원교육모두"
                        >
                     원
                 </Label>
@@ -119,7 +119,7 @@
                     Width="150"
                     Height="60"
                     FontSize="30"
-                    FontFamily="../Fonts\#강원교육모두"
+                    FontFamily="../../Fonts\#강원교육모두"
                     HorizontalAlignment="Left"
                     Background="{StaticResource btnBgColor}"
                     Foreground="{StaticResource btnTextColor}"
@@ -141,49 +141,49 @@
                     Background="#93C47E"
                     >
             <Label Content="User Name"
-                   FontFamily="../Fonts\#강원교육모두"
+                   FontFamily="../../Fonts\#강원교육모두"
                    FontSize="30"
                    BorderBrush="Black"
                    BorderThickness="1"
                    HorizontalContentAlignment="Center"
                    />
             <Label Content="밀 게이츠"
-                   FontFamily="../Fonts\#강원교육모두"
+                   FontFamily="../../Fonts\#강원교육모두"
                    FontSize="30"
                    BorderBrush="Black"
                    BorderThickness="1"
                    HorizontalContentAlignment="Center"
                    />
             <Label Content="워렌 퍼피"
-                   FontFamily="../Fonts\#강원교육모두"
+                   FontFamily="../../Fonts\#강원교육모두"
                    FontSize="30"
                    BorderBrush="Black"
                    BorderThickness="1"
                    HorizontalContentAlignment="Center"
                    />
             <Label Content="리재용"
-                   FontFamily="../Fonts\#강원교육모두"
+                   FontFamily="../../Fonts\#강원교육모두"
                    FontSize="30"
                    BorderBrush="Black"
                    BorderThickness="1"
                    HorizontalContentAlignment="Center"
                    />
             <Label Content="일론 마스크"
-                   FontFamily="../Fonts\#강원교육모두"
+                   FontFamily="../../Fonts\#강원교육모두"
                    FontSize="30"
                    BorderBrush="Black"
                    BorderThickness="1"
                    HorizontalContentAlignment="Center"
                    />
             <Label Content="제작자"
-                   FontFamily="../Fonts\#강원교육모두"
+                   FontFamily="../../Fonts\#강원교육모두"
                    FontSize="30"
                    BorderBrush="Black"
                    BorderThickness="1"
                    HorizontalContentAlignment="Center"
                    />
             <Label Content="제뉘"
-                   FontFamily="../Fonts\#강원교육모두"
+                   FontFamily="../../Fonts\#강원교육모두"
                    FontSize="30"
                    BorderBrush="Black"
                    BorderThickness="1"
