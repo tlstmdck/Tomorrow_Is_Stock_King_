@@ -22,7 +22,7 @@
 
         <Label Content="내일은" 
                FontSize="70"
-               FontFamily="Fonts\#영도체"
+               FontFamily="../../Fonts\#영도체"
                Foreground="Red"
                Margin="200 70 400 300" RenderTransformOrigin="0.5,0.5"
                >
@@ -38,50 +38,50 @@
 
         <Label Content="주식왕" 
                FontSize="60"
-               FontFamily="Fonts\#영도체"
+               FontFamily="../../Fonts\#영도체"
                Margin="390 90 220 300"
                />
 
         <Button Margin="40 80 660 320"
                 BorderThickness="4"
-                Panel.ZIndex="10"
                 x:Name="bgmBtn"
+                Panel.ZIndex="1"
                 >
             <Button.Background>
                 <SolidColorBrush Opacity="0" />
             </Button.Background>
-            <Image Source="Images/Icons/BGMOnIcon.png"/>
+            <Image Source="../../Images/Icons/BGMOnIcon.png"/>
         </Button>
 
         <Button Margin="40 200 660 200"
                 BorderThickness="4"
-                Panel.ZIndex="10"
                 x:Name="effectBtn"
+                Panel.ZIndex="1"
                 >
             <Button.Background>
                 <SolidColorBrush Opacity="0" />
             </Button.Background>
-            <Image Source="Images/Icons/EffectOnIcon.png"/>
+            <Image Source="../../Images/Icons/EffectOnIcon.png"/>
         </Button>
 
         <Button Margin="40 320 660 80"
                 BorderThickness="4"
-                Panel.ZIndex="10"
+                Panel.ZIndex="1"
                 x:Name="helpBtn"
                 >
             <Button.Background>
                 <SolidColorBrush Opacity="0" />
             </Button.Background>
-            <Image Source="Images/Icons/HelpIcon.png"/>
+            <Image Source="../../Images/Icons/HelpIcon.png"/>
         </Button>
 
         <Button Content="새 게임"
-                FontFamily="Fonts\#강원교육모두"
+                FontFamily="../../Fonts\#강원교육모두"
                 FontSize="50"
                 Width="250"
                 Height="70"
                 Margin="275 180 275 250"
-                Panel.ZIndex="10"
+                Panel.ZIndex="1"
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
                 x:Name="newGameBtn"
@@ -94,12 +94,12 @@
         </Button>
         
         <Button Content="불러오기"
-                FontFamily="Fonts\#강원교육모두"
+                FontFamily="../../Fonts\#강원교육모두"
                 FontSize="50"
                 Width="250"
                 Height="70"
                 Margin="275 270 275 160"
-                Panel.ZIndex="10"
+                Panel.ZIndex="1"
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
                 x:Name="LoadBtn"
@@ -112,12 +112,12 @@
         </Button>
         
         <Button Content="종료"
-                FontFamily="Fonts\#강원교육모두"
+                FontFamily="../../Fonts\#강원교육모두"
                 FontSize="50"
                 Width="250"
                 Height="70"
                 Margin="275 360 275 70"
-                Panel.ZIndex="10"
+                Panel.ZIndex="1"
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
                 x:Name="exitBtn"
@@ -129,7 +129,7 @@
             </Button.Resources>
         </Button>
         
-        <Image Source="Images/mainImage.png"  
+        <Image Source="../../Images/mainImage.png"  
                Height="500"
                Margin="0 50 0 0"/>
     </Grid>

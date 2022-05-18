@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.Windows"
         mc:Ignorable="d"
         Title="GameMainWindow" Height="700" Width="1200">
@@ -26,14 +25,14 @@
             <TabItem Background="{DynamicResource bgColor}"
                      BorderBrush="Black">
                 <TabItem.Header>
-                    <Image Source="..\Images\Icons\mainTapIcon.png" Width="80"/>
+                    <Image Source="../..\Images\Icons\mainTapIcon.png" Width="80"/>
                 </TabItem.Header>
 
                 <Grid>
                     <TabControl Margin="30,100,454,314"
                               TabStripPlacement="Left" 
                               Background="{StaticResource bgColor}"
-                              FontFamily="Fonts\#강원교육모두"
+                              FontFamily="../../Fonts\#강원교육모두"
                               FontSize="15"
                               BorderBrush="Black">
                         <TabItem Background="{StaticResource bgColor}"
@@ -142,7 +141,7 @@
                             CornerRadius="10" 
                             Background="{StaticResource btnBgColor}">
                         <Label HorizontalContentAlignment="Center"
-                                FontFamily="Fonts\#강원교육모두"
+                                FontFamily="../../Fonts\#강원교육모두"
                                 FontSize="30"
                                 Foreground="{StaticResource btnTextColor}"
                                 Content="보유자산&#10;30,000,000원">
@@ -152,7 +151,7 @@
                             CornerRadius="10" 
                             Background="{StaticResource btnBgColor}" Height="40">
                         <Label HorizontalContentAlignment="Center"
-                                FontFamily="Fonts\#강원교육모두"
+                                FontFamily="../../Fonts\#강원교육모두"
                                 FontSize="22"
                                 Foreground="{StaticResource btnTextColor}"
                                 Content="30 주">
@@ -162,7 +161,7 @@
                             CornerRadius="10" 
                             Background="{StaticResource btnBgColor}" Height="40">
                         <Label HorizontalContentAlignment="Center"
-                                FontFamily="Fonts\#강원교육모두"
+                                FontFamily="../../Fonts\#강원교육모두"
                                 FontSize="22"
                                 Foreground="{StaticResource btnTextColor}"
                                 Content="300,000,000 원">
@@ -172,7 +171,7 @@
                         Margin="723,575,75,81"
                         Background="{StaticResource btnBgColor}"
                         Content="매수"
-                        FontFamily="Fonts\#강원교육모두"
+                        FontFamily="../../Fonts\#강원교육모두"
                         FontSize="10"
                         Foreground="{StaticResource btnTextColor}">
                         <Button.Resources>
@@ -185,7 +184,7 @@
                         Margin="775,575,23,81"
                         Background="{StaticResource btnBgColor}"
                         Content="매도"
-                        FontFamily="Fonts\#강원교육모두"
+                        FontFamily="../../Fonts\#강원교육모두"
                         FontSize="10"
                         Foreground="{StaticResource btnTextColor}">
                         <Button.Resources>
@@ -202,7 +201,7 @@
                             HorizontalAlignment="Center" Width="366">
                         <Label Margin="100"
                                 HorizontalContentAlignment="Center"
-                                FontFamily="Fonts\#강원교육모두"
+                                FontFamily="../../Fonts\#강원교육모두"
                                 FontSize="22"
                                 Foreground="Black"
                                 Content="동향">
@@ -221,7 +220,7 @@
             <TabItem Background="{StaticResource bgColor}" 
                      BorderBrush="Black">
                 <TabItem.Header>
-                    <Image Source="..\Images\Icons\graphTapIcon.png" Width="80"/>
+                    <Image Source="../..\Images\Icons\graphTapIcon.png" Width="80"/>
                 </TabItem.Header>
 
                 <Grid>
@@ -232,10 +231,10 @@
             <TabItem Background="{StaticResource bgColor}" 
                      BorderBrush="Black">
                 <TabItem.Header>
-                    <Image Source="..\Images\Icons\loanTapIcon.png" Width="80"/>
+                    <Image Source="../..\Images\Icons\loanTapIcon.png" Width="80"/>
                 </TabItem.Header>
                 <DockPanel>
-                    <Image DockPanel.Dock="Left" Source="..\Images\loanImage.png" Width="400"/>
+                    <Image DockPanel.Dock="Left" Source="../..\Images\loanImage.png" Width="400"/>
                     <Grid DockPanel.Dock="Right">
                         <Border 
                             Margin="20,60,20,500"
@@ -319,15 +318,15 @@
             <TabItem Background="{StaticResource bgColor}" 
                      BorderBrush="Black">
                 <TabItem.Header>
-                    <Image Source="..\Images\Icons\informTapIcon.png" Width="80"/>
+                    <Image Source="../..\Images\Icons\informTapIcon.png" Width="80"/>
                 </TabItem.Header>
                 <StackPanel Margin="90,0,90,0" >
-                    <Image Source="..\Images\informationImage.png" Height="410"/>
+                    <Image Source="../..\Images\informationImage.png" Height="410"/>
                     <Button
                         Content="정보 습득"
                         Background="{StaticResource btnBgColor}"
                         Foreground="{StaticResource btnTextColor}"
-                        FontFamily="Fonts\#강원교육모두"
+                        FontFamily="../../Fonts\#강원교육모두"
                         FontSize="50" Margin="150,0,150,0" Height="150">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
@@ -360,7 +359,7 @@
                     Background="{StaticResource btnBgColor}"
                     Height="50">
                 <Label HorizontalContentAlignment="Center"  
-                           FontFamily="Fonts\#강원교육모두"
+                           FontFamily="../../Fonts\#강원교육모두"
                            FontSize="18"
                            Foreground="{StaticResource btnTextColor}"
                            Content="갱신일&#10;13일">
@@ -371,7 +370,7 @@
                     Margin="10,3,0,0"
                     Background="{StaticResource btnBgColor}"
                     Content="SKIP"
-                    FontFamily="Fonts\#강원교육모두"
+                    FontFamily="../../Fonts\#강원교육모두"
                     FontSize="30"
                     Foreground="{StaticResource btnTextColor}">
                 <Button.Resources>
@@ -388,7 +387,7 @@
                 <Button.Background>
                     <SolidColorBrush Opacity="0" />
                 </Button.Background>
-                <Image Source="../Images/Icons/SettingIcon.png" />
+                <Image Source="../../Images/Icons/SettingIcon.png" />
             </Button>
         </StackPanel>
         <StackPanel Margin="1000,0,0,0"
@@ -396,6 +395,7 @@
             <ListBox Background="#93C47E" 
                      FontSize="30"
                      BorderBrush="#93C47E"
+                     FontFamily="../../Fonts\#강원교육모두"
                      HorizontalContentAlignment="Center">
                 <ListBoxItem Height="60" Content="Ranking"/>
                 <ListBoxItem Height="60" Content="1" />
