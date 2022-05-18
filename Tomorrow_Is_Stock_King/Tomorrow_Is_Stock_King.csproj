@@ -70,6 +70,9 @@
     <Compile Include="View\Windows\GameMainWindow.xaml.cs">
       <DependentUpon>GameMainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\GoMainCheckWindow.xaml.cs">
+      <DependentUpon>GoMainCheckWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\ResultWindow.xaml.cs">
       <DependentUpon>ResultWindow.xaml</DependentUpon>
     </Compile>
@@ -84,6 +87,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\ExitCheckWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\GoMainCheckWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,65 @@
+﻿<Window x:Class="Tomorrow_Is_Stock_King.View.Windows.GoMainCheckWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.View.Windows"
+        mc:Ignorable="d"
+        Title="GoMainCheckWindow" Height="215.96" Width="310">
+    <Window.Resources>
+        <SolidColorBrush x:Key="bgColor"
+                         Color="#FFEBCD"/>
+        <SolidColorBrush x:Key="btnBgColor"
+                         Color="#11264F"/>
+        <SolidColorBrush x:Key="btnTextColor" 
+                         Color="#FFFFFF"/>
+    </Window.Resources>
+
+    <Grid Height="200" Width="300" Background="{StaticResource bgColor}">
+        <TextBlock Text="정말 메인화면으로" 
+                   FontSize="30" 
+                   FontFamily="../../Fonts\#강원교육모두"
+                   HorizontalAlignment="Center"
+                   Margin="40 30 40 130"
+                   />
+        <TextBlock Text="이동 하시겠습니까?" 
+                   FontFamily="../../Fonts\#강원교육모두"
+                   FontSize="30"
+                   HorizontalAlignment="Center"
+                   Margin="40 70 40 90"
+                   />
+
+        <Button Width="90" 
+                Height="50"
+                FontFamily="../../Fonts\#강원교육모두"
+                FontSize="30"
+                Content="예"
+                Margin="50 125 160 25"
+                Background="{StaticResource btnBgColor}"
+                Foreground="{StaticResource btnTextColor}"
+                >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Width="90" 
+                Height="50"
+                FontFamily="../../Fonts\#강원교육모두"
+                FontSize="30"
+                Content="아니오"
+                Margin="160 125 50 25"
+                Background="{StaticResource btnBgColor}"
+                Foreground="{StaticResource btnTextColor}"
+                >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Grid>
+</Window>
