@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King"
+        xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands"
         mc:Ignorable="d"
         Title="MainWindow" Height="515.96" Width="800">
 
@@ -14,6 +15,8 @@
                          Color="#11264F"/>
         <SolidColorBrush x:Key="btnTextColor" 
                          Color="#FFFFFF"/>
+        <command:NewGameBtnCommand x:Key="newgamebtncommand"/>
+        <command:ExitBtnCommand x:Key="exitbtncommand"/>
     </Window.Resources>
 
     <Grid Background="{StaticResource bgColor}" 
@@ -85,6 +88,7 @@
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
                 x:Name="newGameBtn"
+                Command="{Binding Source={StaticResource newgamebtncommand}}"
                 >
             <Button.Resources>
                 <Style TargetType="Border">
@@ -121,6 +125,7 @@
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
                 x:Name="exitBtn"
+                Command="{Binding Source={StaticResource exitbtncommand}}"
                 >
             <Button.Resources>
                 <Style TargetType="Border">
