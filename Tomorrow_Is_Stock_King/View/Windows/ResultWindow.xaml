@@ -1,0 +1,195 @@
+﻿<Window x:Class="Tomorrow_Is_Stock_King.View.Windows.ResultWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.View.Windows"
+        mc:Ignorable="d"
+        Title="ResultWindow" Height="400" Width="600" >
+    <Window.Resources>
+        <SolidColorBrush x:Key="bgColor"
+                         Color="#FFEBCD"/>
+        <SolidColorBrush x:Key="btnBgColor"
+                         Color="#11264F"/>
+        <SolidColorBrush x:Key="btnTextColor" 
+                         Color="#FFFFFF"/>
+
+    </Window.Resources>
+
+    <Grid Background="{StaticResource bgColor}">
+
+        <StackPanel VerticalAlignment="Center"
+                    Margin="70 0 300 0">
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 10"
+                        >
+                <Label Content="경과일 :"
+                       FontSize="30"
+                       FontFamily="../Fonts\#강원교육모두"
+                       />
+                <Label Content="100일"
+                       FontWeight="Bold"
+                       FontSize="30"
+                       FontFamily="../Fonts\#강원교육모두"
+                       />
+            </StackPanel>
+
+            <Label FontSize="24" 
+                   Padding="5 5 5 0"
+                   FontFamily="../Fonts\#강원교육모두"
+                   >
+                보유금액
+            </Label>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 5"
+                        >
+                <Label Foreground="Blue"
+                       FontWeight="Bold"
+                       FontSize="24"
+                       Padding="5 0 5 5 "
+                       FontFamily="../Fonts\#강원교육모두"
+                       >
+                    100,000,000
+                </Label>
+
+                <Label FontSize="24"
+                       Padding="5 0 5 5"
+                       FontFamily="../Fonts\#강원교육모두"
+                       >
+                    원
+                </Label>
+            </StackPanel>
+
+            <Label FontSize="24"
+                   Padding="5 5 5 0"
+                   FontFamily="../Fonts\#강원교육모두"
+                   >
+                보유 주식 환산액
+            </Label>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 5"
+                        >
+                <Label Foreground="Blue"
+                       FontWeight="Bold"
+                       FontSize="24"
+                       Padding="5 0 5 5 "
+                       FontFamily="../Fonts\#강원교육모두"
+                    >
+                    100,000,000
+                </Label>
+
+                <Label FontSize="24"
+                       Padding="5 0 5 5 "
+                       FontFamily="../Fonts\#강원교육모두"
+                       >
+                    원
+                </Label>
+            </StackPanel>
+
+            <Label FontSize="24"
+                   Padding="5 5 5 0"
+                   FontFamily="../Fonts\#강원교육모두"
+                   >
+                총 자산
+            </Label>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 5"
+                        >
+                <Label Foreground="Blue"
+                       FontWeight="Bold"
+                       FontSize="24"
+                       Padding="5 0 5 5 "
+                       FontFamily="../Fonts\#강원교육모두"
+                    >
+                    100,000,000
+                </Label>
+
+                <Label FontSize="24"
+                       Padding="5 0 5 5 "
+                       FontFamily="../Fonts\#강원교육모두"
+                       >
+                    원
+                </Label>
+            </StackPanel>
+            <Button Content="메인화면" 
+                    Width="150"
+                    Height="60"
+                    FontSize="30"
+                    FontFamily="../Fonts\#강원교육모두"
+                    HorizontalAlignment="Left"
+                    Background="{StaticResource btnBgColor}"
+                    Foreground="{StaticResource btnTextColor}"
+                    x:Name="goMainBtn"
+                    >
+
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="320 0 30 0"
+                    Width="230"
+                    Background="#93C47E"
+                    >
+            <Label Content="User Name"
+                   FontFamily="../Fonts\#강원교육모두"
+                   FontSize="30"
+                   BorderBrush="Black"
+                   BorderThickness="1"
+                   HorizontalContentAlignment="Center"
+                   />
+            <Label Content="밀 게이츠"
+                   FontFamily="../Fonts\#강원교육모두"
+                   FontSize="30"
+                   BorderBrush="Black"
+                   BorderThickness="1"
+                   HorizontalContentAlignment="Center"
+                   />
+            <Label Content="워렌 퍼피"
+                   FontFamily="../Fonts\#강원교육모두"
+                   FontSize="30"
+                   BorderBrush="Black"
+                   BorderThickness="1"
+                   HorizontalContentAlignment="Center"
+                   />
+            <Label Content="리재용"
+                   FontFamily="../Fonts\#강원교육모두"
+                   FontSize="30"
+                   BorderBrush="Black"
+                   BorderThickness="1"
+                   HorizontalContentAlignment="Center"
+                   />
+            <Label Content="일론 마스크"
+                   FontFamily="../Fonts\#강원교육모두"
+                   FontSize="30"
+                   BorderBrush="Black"
+                   BorderThickness="1"
+                   HorizontalContentAlignment="Center"
+                   />
+            <Label Content="제작자"
+                   FontFamily="../Fonts\#강원교육모두"
+                   FontSize="30"
+                   BorderBrush="Black"
+                   BorderThickness="1"
+                   HorizontalContentAlignment="Center"
+                   />
+            <Label Content="제뉘"
+                   FontFamily="../Fonts\#강원교육모두"
+                   FontSize="30"
+                   BorderBrush="Black"
+                   BorderThickness="1"
+                   HorizontalContentAlignment="Center"
+                   />
+
+        </StackPanel>
+    </Grid>
+</Window>
