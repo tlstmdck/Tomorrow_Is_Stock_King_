@@ -61,8 +61,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModel\Commands\ExitBtnCommand.cs" />
-    <Compile Include="ViewModel\Commands\NewGameBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\MainWindowCommands\ExitBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\MainWindowCommands\NewGameBtnCommand.cs" />
     <Compile Include="View\Windows\EventPopupWindow.xaml.cs">
       <DependentUpon>EventPopupWindow.xaml</DependentUpon>
     </Compile>
