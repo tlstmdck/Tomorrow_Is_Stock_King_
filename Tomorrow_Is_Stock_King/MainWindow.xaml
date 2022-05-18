@@ -1,0 +1,136 @@
+﻿<Window x:Class="Tomorrow_Is_Stock_King.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tomorrow_Is_Stock_King"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="515.96" Width="800">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="bgColor"
+                         Color="#FFEBCD"/>
+        <SolidColorBrush x:Key="btnBgColor"
+                         Color="#11264F"/>
+        <SolidColorBrush x:Key="btnTextColor" 
+                         Color="#FFFFFF"/>
+    </Window.Resources>
+
+    <Grid Background="{StaticResource bgColor}" 
+          Width="800" 
+          Height="500">
+
+        <Label Content="내일은" 
+               FontSize="70"
+               FontFamily="Fonts\#영도체"
+               Foreground="Red"
+               Margin="200 70 400 300" RenderTransformOrigin="0.5,0.5"
+               >
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-25"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+
+        <Label Content="주식왕" 
+               FontSize="60"
+               FontFamily="Fonts\#영도체"
+               Margin="390 90 220 300"
+               />
+
+        <Button Margin="40 80 660 320"
+                BorderThickness="4"
+                Panel.ZIndex="10"
+                x:Name="bgmBtn"
+                >
+            <Button.Background>
+                <SolidColorBrush Opacity="0" />
+            </Button.Background>
+            <Image Source="Images/Icons/BGMOnIcon.png"/>
+        </Button>
+
+        <Button Margin="40 200 660 200"
+                BorderThickness="4"
+                Panel.ZIndex="10"
+                x:Name="effectBtn"
+                >
+            <Button.Background>
+                <SolidColorBrush Opacity="0" />
+            </Button.Background>
+            <Image Source="Images/Icons/EffectOnIcon.png"/>
+        </Button>
+
+        <Button Margin="40 320 660 80"
+                BorderThickness="4"
+                Panel.ZIndex="10"
+                x:Name="helpBtn"
+                >
+            <Button.Background>
+                <SolidColorBrush Opacity="0" />
+            </Button.Background>
+            <Image Source="Images/Icons/HelpIcon.png"/>
+        </Button>
+
+        <Button Content="새 게임"
+                FontFamily="Fonts\#강원교육모두"
+                FontSize="50"
+                Width="250"
+                Height="70"
+                Margin="275 180 275 250"
+                Panel.ZIndex="10"
+                Background="{StaticResource btnBgColor}"
+                Foreground="{StaticResource btnTextColor}"
+                x:Name="newGameBtn"
+                >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        
+        <Button Content="불러오기"
+                FontFamily="Fonts\#강원교육모두"
+                FontSize="50"
+                Width="250"
+                Height="70"
+                Margin="275 270 275 160"
+                Panel.ZIndex="10"
+                Background="{StaticResource btnBgColor}"
+                Foreground="{StaticResource btnTextColor}"
+                x:Name="LoadBtn"
+                >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        
+        <Button Content="종료"
+                FontFamily="Fonts\#강원교육모두"
+                FontSize="50"
+                Width="250"
+                Height="70"
+                Margin="275 360 275 70"
+                Panel.ZIndex="10"
+                Background="{StaticResource btnBgColor}"
+                Foreground="{StaticResource btnTextColor}"
+                x:Name="exitBtn"
+                >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        
+        <Image Source="Images/mainImage.png"  
+               Height="500"
+               Margin="0 50 0 0"/>
+    </Grid>
+</Window>

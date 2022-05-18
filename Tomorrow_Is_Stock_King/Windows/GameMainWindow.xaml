@@ -1,0 +1,415 @@
+﻿<Window x:Class="Tomorrow_Is_Stock_King.Windows.GameMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+        xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.Windows"
+        mc:Ignorable="d"
+        Title="GameMainWindow" Height="700" Width="1200">
+    <Window.Resources>
+        <SolidColorBrush x:Key="bgColor"
+                         Color="#FFEBCD"/>
+        <SolidColorBrush x:Key="btnBgColor"
+                         Color="#11264F"/>
+        <SolidColorBrush x:Key="btnTextColor" 
+                         Color="#FFFFFF"/>
+
+    </Window.Resources>
+    <Grid Background="{StaticResource bgColor}"
+          Height="700" Width="1200">
+        <TabControl TabStripPlacement="Left" 
+                    Margin="50,0,200,0" 
+                    Background="{StaticResource bgColor}"
+                    BorderBrush="Black">
+
+            <TabItem Background="{DynamicResource bgColor}"
+                     BorderBrush="Black">
+                <TabItem.Header>
+                    <Image Source="..\Images\Icons\mainTapIcon.png" Width="80"/>
+                </TabItem.Header>
+
+                <Grid>
+                    <TabControl Margin="30,100,454,314"
+                              TabStripPlacement="Left" 
+                              Background="{StaticResource bgColor}"
+                              FontFamily="Fonts\#강원교육모두"
+                              FontSize="15"
+                              BorderBrush="Black">
+                        <TabItem Background="{StaticResource bgColor}"
+                                 Header="금융"
+                                 Height="60"
+                                 Width="80"
+                                 BorderBrush="Black">
+                            <ListBox Background="{StaticResource bgColor}"
+                                     HorizontalContentAlignment="Center"
+                                     BorderBrush="{StaticResource bgColor}">
+                                <ListBoxItem Content="신한은행"
+                                             Height="40"   
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="카카오뱅크"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="농협"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="기업은행"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="전북은행"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                            </ListBox>
+                        </TabItem>
+                        <TabItem Background="{StaticResource bgColor}"
+                                 Header="IT"
+                                 Height="60"
+                                 Width="80"
+                                 BorderBrush="Black"
+                                 BorderThickness="3">
+                            <ListBox Background="{StaticResource bgColor}"
+                                     HorizontalContentAlignment="Center"
+                                     BorderBrush="{StaticResource bgColor}">
+                                <ListBoxItem Content="IT1"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="IT2"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="IT3"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="IT4"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="IT5"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                            </ListBox>
+                        </TabItem>
+                        <TabItem Background="{StaticResource bgColor}"
+                                 Header="건설"
+                                 Height="60"
+                                 Width="80"
+                                 BorderBrush="Black">
+                            <ListBox Background="{StaticResource bgColor}"
+                                     HorizontalContentAlignment="Center"
+                                     BorderBrush="{StaticResource bgColor}">
+                                <ListBoxItem Content="건설1"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="건설2"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="건설3"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="건설4"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="건설5"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                            </ListBox>
+                        </TabItem>
+                        <TabItem Background="{StaticResource bgColor}"
+                                 Header="화학"
+                                 Height="60"
+                                 Width="80"
+                                 BorderBrush="Black">
+                            <ListBox Background="{StaticResource bgColor}"
+                                     HorizontalContentAlignment="Center"
+                                     BorderBrush="{StaticResource bgColor}">
+                                <ListBoxItem Content="화학1"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="화학2"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="화학3"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="화학4"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                                <ListBoxItem Content="화학5"
+                                             Height="40"
+                                             BorderBrush="Black"/>
+                            </ListBox>
+                        </TabItem>
+                    </TabControl>
+                    <Border Margin="380,10,10,610"
+                            CornerRadius="10" 
+                            Background="{StaticResource btnBgColor}">
+                        <Label HorizontalContentAlignment="Center"
+                                FontFamily="Fonts\#강원교육모두"
+                                FontSize="30"
+                                Foreground="{StaticResource btnTextColor}"
+                                Content="보유자산&#10;30,000,000원">
+                        </Label>
+                    </Border>
+                    <Border Margin="490,550,150,100"
+                            CornerRadius="10" 
+                            Background="{StaticResource btnBgColor}" Height="40">
+                        <Label HorizontalContentAlignment="Center"
+                                FontFamily="Fonts\#강원교육모두"
+                                FontSize="22"
+                                Foreground="{StaticResource btnTextColor}"
+                                Content="30 주">
+                        </Label>
+                    </Border>
+                    <Border Margin="490,590,150,50"
+                            CornerRadius="10" 
+                            Background="{StaticResource btnBgColor}" Height="40">
+                        <Label HorizontalContentAlignment="Center"
+                                FontFamily="Fonts\#강원교육모두"
+                                FontSize="22"
+                                Foreground="{StaticResource btnTextColor}"
+                                Content="300,000,000 원">
+                        </Label>
+                    </Border>
+                    <Button
+                        Margin="723,575,75,81"
+                        Background="{StaticResource btnBgColor}"
+                        Content="매수"
+                        FontFamily="Fonts\#강원교육모두"
+                        FontSize="10"
+                        Foreground="{StaticResource btnTextColor}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button
+                        Margin="775,575,23,81"
+                        Background="{StaticResource btnBgColor}"
+                        Content="매도"
+                        FontFamily="Fonts\#강원교육모두"
+                        FontSize="10"
+                        Foreground="{StaticResource btnTextColor}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Border Margin="30,406,454,50"
+                            CornerRadius="10" 
+                            Background="{StaticResource bgColor}"
+                            BorderBrush="Black"
+                            BorderThickness="3"
+                            HorizontalAlignment="Center" Width="366">
+                        <Label Margin="100"
+                                HorizontalContentAlignment="Center"
+                                FontFamily="Fonts\#강원교육모두"
+                                FontSize="22"
+                                Foreground="Black"
+                                Content="동향">
+                        </Label>
+                    </Border>
+                    <Border Margin="414,116,10,186"
+                            CornerRadius="10" 
+                            Background="{StaticResource bgColor}"
+                            BorderBrush="Black"
+                            BorderThickness="3"
+                            HorizontalAlignment="Center" Width="426">
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Background="{StaticResource bgColor}" 
+                     BorderBrush="Black">
+                <TabItem.Header>
+                    <Image Source="..\Images\Icons\graphTapIcon.png" Width="80"/>
+                </TabItem.Header>
+
+                <Grid>
+                    
+                </Grid>
+            </TabItem>
+
+            <TabItem Background="{StaticResource bgColor}" 
+                     BorderBrush="Black">
+                <TabItem.Header>
+                    <Image Source="..\Images\Icons\loanTapIcon.png" Width="80"/>
+                </TabItem.Header>
+                <DockPanel>
+                    <Image DockPanel.Dock="Left" Source="..\Images\loanImage.png" Width="400"/>
+                    <Grid DockPanel.Dock="Right">
+                        <Border 
+                            Margin="20,60,20,500"
+                            CornerRadius="10" 
+                            Background="{StaticResource bgColor}"
+                            BorderBrush="Black"
+                            BorderThickness="3" Height="70">
+                            <Label 
+                                HorizontalContentAlignment="Center"
+                                FontSize="20"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                Content="소지금&#10;500,000,00 원"/>
+                        </Border>
+                        <Border 
+                            Margin="20,170,100,450"
+                            CornerRadius="10" 
+                            Background="{StaticResource bgColor}"
+                            BorderBrush="Black"
+                            BorderThickness="3">
+                            <Label 
+                                HorizontalContentAlignment="Center"
+                                FontSize="20"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                Content="대출한도&#10;100,000,000 원"/>
+                        </Border>
+                        <Border 
+                            Margin="20,250,100,370"
+                            CornerRadius="10" 
+                            Background="{StaticResource bgColor}"
+                            BorderBrush="Black"
+                            BorderThickness="3">
+                            <Label 
+                                HorizontalContentAlignment="Center"
+                                FontSize="20"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                Content="대출보유량&#10;50,000,000 원"/>
+                        </Border>
+                        <Button Margin="355,170,20,450"
+                                Background="{StaticResource btnBgColor}"
+                                Foreground="{StaticResource btnTextColor}"
+                                FontSize="20"
+                                Content="대출">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10" />
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <Button Margin="355,250,20,370"
+                                Background="{StaticResource btnBgColor}"
+                                Foreground="{StaticResource btnTextColor}"
+                                FontSize="20"
+                                Content="상환">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10" />
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <Border 
+                            Margin="20,340,20,70"
+                            CornerRadius="10" 
+                            Background="{StaticResource bgColor}"
+                            BorderBrush="Black"
+                            BorderThickness="3">
+                            <Label 
+                                HorizontalAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                FontSize="20"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                Content="대출 설명" Margin="153,110,153,0"/>
+                        </Border>
+                    </Grid>
+                </DockPanel>
+            </TabItem>
+
+            <TabItem Background="{StaticResource bgColor}" 
+                     BorderBrush="Black">
+                <TabItem.Header>
+                    <Image Source="..\Images\Icons\informTapIcon.png" Width="80"/>
+                </TabItem.Header>
+                <StackPanel Margin="90,0,90,0" >
+                    <Image Source="..\Images\informationImage.png" Height="410"/>
+                    <Button
+                        Content="정보 습득"
+                        Background="{StaticResource btnBgColor}"
+                        Foreground="{StaticResource btnTextColor}"
+                        FontFamily="Fonts\#강원교육모두"
+                        FontSize="50" Margin="150,0,150,0" Height="150">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Label
+                        HorizontalContentAlignment="Center"
+                        FontSize="15"
+                        Content="남은 정보갯수 : 3"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Orientation="Vertical"
+                    Margin="0,0,1065,0">
+
+            <ProgressBar Margin="10,380,0,0"
+                         Height="50"
+                         Minimum="0" 
+                         Maximum="100"
+                         Value="30"
+                         Background="{StaticResource bgColor}"
+                         Foreground="{StaticResource btnBgColor}"
+                         x:Name="timer_bar"/>
+
+            <Border Margin="10,3,0,0"
+                    CornerRadius="10" 
+                    Background="{StaticResource btnBgColor}"
+                    Height="50">
+                <Label HorizontalContentAlignment="Center"  
+                           FontFamily="Fonts\#강원교육모두"
+                           FontSize="18"
+                           Foreground="{StaticResource btnTextColor}"
+                           Content="갱신일&#10;13일">
+                </Label>
+            </Border>
+
+            <Button Height="50"
+                    Margin="10,3,0,0"
+                    Background="{StaticResource btnBgColor}"
+                    Content="SKIP"
+                    FontFamily="Fonts\#강원교육모두"
+                    FontSize="30"
+                    Foreground="{StaticResource btnTextColor}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button
+                Margin="40,20,0,0"
+                BorderThickness="4" 
+                Width="70" 
+                Height="70">
+                <Button.Background>
+                    <SolidColorBrush Opacity="0" />
+                </Button.Background>
+                <Image Source="../Images/Icons/SettingIcon.png" />
+            </Button>
+        </StackPanel>
+        <StackPanel Margin="1000,0,0,0"
+                    Background="#93C47E">
+            <ListBox Background="#93C47E" 
+                     FontSize="30"
+                     BorderBrush="#93C47E"
+                     HorizontalContentAlignment="Center">
+                <ListBoxItem Height="60" Content="Ranking"/>
+                <ListBoxItem Height="60" Content="1" />
+                <ListBoxItem Height="60" Content="2"/>
+                <ListBoxItem Height="60" Content="3"/>
+                <ListBoxItem Height="60" Content="4"/>
+                <ListBoxItem Height="60" Content="5"/>
+                <ListBoxItem Height="60" Content="6"/>
+                <ListBoxItem Height="60" Content="7"/>
+                <ListBoxItem Height="60" Content="8"/>
+                <ListBoxItem Height="60" Content="9"/>
+
+            </ListBox>
+        </StackPanel>
+
+    </Grid>
+</Window>
