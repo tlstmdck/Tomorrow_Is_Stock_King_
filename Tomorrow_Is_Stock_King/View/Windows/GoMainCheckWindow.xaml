@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.View.Windows"
+        xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.GoMainCheckWindowCommands"
         mc:Ignorable="d"
         Title="GoMainCheckWindow" Height="215.96" Width="310">
     <Window.Resources>
@@ -13,6 +14,9 @@
                          Color="#11264F"/>
         <SolidColorBrush x:Key="btnTextColor" 
                          Color="#FFFFFF"/>
+
+        <command:NoBtnCommand x:Key="nobtncommand"/>
+        <command:YesBtnCommand x:Key="yesbtncommand"/>
     </Window.Resources>
 
     <Grid Height="200" Width="300" Background="{StaticResource bgColor}">
@@ -37,6 +41,7 @@
                 Margin="50 125 160 25"
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
+                Command="{Binding Source={StaticResource yesbtncommand}}"
                 >
             <Button.Resources>
                 <Style TargetType="Border">
@@ -53,6 +58,7 @@
                 Margin="160 125 50 25"
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
+                Command="{Binding Source={StaticResource nobtncommand}}"
                 >
             <Button.Resources>
                 <Style TargetType="Border">
