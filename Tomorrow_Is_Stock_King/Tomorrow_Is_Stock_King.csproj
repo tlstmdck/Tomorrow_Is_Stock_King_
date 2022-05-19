@@ -64,6 +64,9 @@
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\GoSettingWindowBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\MainWindowCommands\ExitBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\MainWindowCommands\NewGameBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\SettingWindowCommands\ExitCheckWindowCommand.cs" />
+    <Compile Include="ViewModel\Commands\SettingWindowCommands\GoMainBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\SettingWindowCommands\ResumeBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\StartSettingWindowCommands\BackBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\StartSettingWindowCommands\StartBtnCommand.cs" />
     <Compile Include="View\Windows\EventPopupWindow.xaml.cs">

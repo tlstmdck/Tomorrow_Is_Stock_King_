@@ -5,11 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using Tomorrow_Is_Stock_King.View.Windows;
 
-namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
+namespace Tomorrow_Is_Stock_King.ViewModel.Commands.SettingWindowCommands
 {
-    internal class GoSettingWindowBtnCommand : ICommand
+    internal class ResumeBtnCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
@@ -20,8 +19,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
 
         public void Execute(object parameter)
         {
-            SettingWindow settingwindow = new SettingWindow();
-            settingwindow.ShowDialog();
+            Window w = (Window)parameter;
+            w.Close();
         }
     }
 }
