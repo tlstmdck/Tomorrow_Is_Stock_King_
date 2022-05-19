@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\Commands\GameMainWindowCommands\GoSettingWindowBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\MainWindowCommands\ExitBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\MainWindowCommands\NewGameBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\StartSettingWindowCommands\BackBtnCommand.cs" />
