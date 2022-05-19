@@ -61,6 +61,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\Commands\ExitCheckWindowCommands\NoBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\ExitCheckWindowCommands\YesBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\GoSettingWindowBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GoMainCheckWindowCommands\NoBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GoMainCheckWindowCommands\YesBtnCommand.cs" />

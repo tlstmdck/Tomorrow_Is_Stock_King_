@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.View.Windows"
         xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.GoMainCheckWindowCommands"
         mc:Ignorable="d"
+        x:Name="window"
         Title="GoMainCheckWindow" Height="215.96" Width="310">
     <Window.Resources>
         <SolidColorBrush x:Key="bgColor"
@@ -59,6 +60,7 @@
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
                 Command="{Binding Source={StaticResource nobtncommand}}"
+                CommandParameter="{Binding ElementName=window}"
                 >
             <Button.Resources>
                 <Style TargetType="Border">
