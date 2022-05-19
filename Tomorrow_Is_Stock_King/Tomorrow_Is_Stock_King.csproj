@@ -63,6 +63,8 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\Commands\MainWindowCommands\ExitBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\MainWindowCommands\NewGameBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\StartSettingWindowCommands\BackBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\StartSettingWindowCommands\StartBtnCommand.cs" />
     <Compile Include="View\Windows\EventPopupWindow.xaml.cs">
       <DependentUpon>EventPopupWindow.xaml</DependentUpon>
     </Compile>
