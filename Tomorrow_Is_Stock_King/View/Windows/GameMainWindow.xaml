@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.Windows"
         xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands"
+        xmlns:uc="clr-namespace:Tomorrow_Is_Stock_King.View.Usercontrol"
         mc:Ignorable="d"
         Title="GameMainWindow" Height="700" Width="1200">
     <Window.Resources>
@@ -215,6 +216,7 @@
                             BorderBrush="Black"
                             BorderThickness="3"
                             HorizontalAlignment="Center" Width="426">
+                        <uc:StockGraphChartUserControl x:Name="myUC1"/>
                     </Border>
                 </Grid>
             </TabItem>
@@ -226,7 +228,7 @@
                 </TabItem.Header>
 
                 <Grid>
-                    
+                    <uc:StockListUserControl x:Name="myUC2" Margin="10,67,97,76"/>
                 </Grid>
             </TabItem>
 

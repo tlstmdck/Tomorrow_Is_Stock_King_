@@ -73,6 +73,12 @@
     <Compile Include="ViewModel\Commands\SettingWindowCommands\ResumeBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\StartSettingWindowCommands\BackBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\StartSettingWindowCommands\StartBtnCommand.cs" />
+    <Compile Include="View\Usercontrols\StockGraphChartUserControl.xaml.cs">
+      <DependentUpon>StockGraphChartUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Usercontrols\StockListUserControl.xaml.cs">
+      <DependentUpon>StockListUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\EventPopupWindow.xaml.cs">
       <DependentUpon>EventPopupWindow.xaml</DependentUpon>
     </Compile>
@@ -94,6 +100,14 @@
     <Compile Include="View\Windows\StartSettingWindow.xaml.cs">
       <DependentUpon>StartSettingWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Usercontrols\StockGraphChartUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Usercontrols\StockListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\EventPopupWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
