@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.View.Windows"
+        xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.SettingWindowCommands"
         mc:Ignorable="d"
+        x:Name="window"
         Title="SettingWindow" Height="340" Width="500">
     <Window.Resources>
         <SolidColorBrush x:Key="bgColor"
@@ -13,6 +15,10 @@
                          Color="#11264F"/>
         <SolidColorBrush x:Key="btnTextColor" 
                          Color="#FFFFFF"/>
+
+        <command:ResumeBtnCommand x:Key="resumebtncommand"/>
+        <command:GoMainBtnCommand x:Key="gomainbtncommand"/>
+        <command:ExitCheckWindowCommand x:Key="exitcheckcommand"/>
     </Window.Resources>
 
     <Grid Background="{StaticResource bgColor}" 
@@ -68,6 +74,8 @@
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
                 x:Name="resumeBtn"
+                Command="{Binding Source={StaticResource resumebtncommand}}"
+                CommandParameter="{Binding ElementName=window}"
                 >
             <Button.Resources>
                 <Style TargetType="Border">
@@ -86,6 +94,7 @@
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
                 x:Name="mainBtn"
+                Command="{Binding Source={StaticResource gomainbtncommand}}"
                 >
             <Button.Resources>
                 <Style TargetType="Border">
@@ -104,6 +113,7 @@
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
                 x:Name="exitBtn"
+                Command="{Binding Source={StaticResource exitcheckcommand}}"
                 >
             <Button.Resources>
                 <Style TargetType="Border">

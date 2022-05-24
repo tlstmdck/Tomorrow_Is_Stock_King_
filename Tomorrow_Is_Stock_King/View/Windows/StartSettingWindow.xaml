@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.View.Windows"
+        xmlns:command ="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.StartSettingWindowCommands"
         mc:Ignorable="d"
         Title="StartSettingWindow" Height="515.96" Width="800">
     <Window.Resources>
@@ -15,6 +16,9 @@
                          Color="#FFFFFF"/>
         <SolidColorBrush x:Key="labelBgColor"
                          Color="#6DD47E"/>
+
+        <command:BackBtnCommand x:Key="backbtncommand"/>
+        <command:StartBtnCommand x:Key="startbtncommand"/>
     </Window.Resources>
 
     <Grid Background="{StaticResource bgColor}" 
@@ -35,6 +39,7 @@
                 FontSize="40"
                 FontFamily="../../Fonts\#강원교육모두"
                 x:Name="startBtn"
+                Command="{Binding Source={StaticResource startbtncommand}}"
                 >
 
             <Button.Resources>
@@ -51,6 +56,7 @@
                 FontSize="40"
                 FontFamily="../../Fonts\#강원교육모두"
                 x:Name="backBtn"
+                Command="{Binding Source={StaticResource backbtncommand}}"
                 >
 
             <Button.Resources>
@@ -115,6 +121,7 @@
                       Background="{StaticResource btnBgColor}"
                       Foreground="{StaticResource btnTextColor}"
                       x:Name="easyBtn"
+                      
                       >
             <ToggleButton.Resources>
                 <Style TargetType="Border">

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.Windows"
+        xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands"
         mc:Ignorable="d"
         Title="GameMainWindow" Height="700" Width="1200">
     <Window.Resources>
@@ -14,6 +15,7 @@
         <SolidColorBrush x:Key="btnTextColor" 
                          Color="#FFFFFF"/>
 
+        <command:GoSettingWindowBtnCommand x:Key="gosettingwindowbtncommand"/>
     </Window.Resources>
     <Grid Background="{StaticResource bgColor}"
           Height="700" Width="1200">
@@ -383,7 +385,9 @@
                 Margin="40,20,0,0"
                 BorderThickness="4" 
                 Width="70" 
-                Height="70">
+                Height="70"
+                Command="{Binding Source={StaticResource gosettingwindowbtncommand}}"
+                >
                 <Button.Background>
                     <SolidColorBrush Opacity="0" />
                 </Button.Background>

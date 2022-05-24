@@ -61,6 +61,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\Commands\ExitCheckWindowCommands\NoBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\ExitCheckWindowCommands\YesBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\GameMainWindowCommands\GoSettingWindowBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\GoMainCheckWindowCommands\NoBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\GoMainCheckWindowCommands\YesBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\MainWindowCommands\ExitBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\MainWindowCommands\NewGameBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\SettingWindowCommands\ExitCheckWindowCommand.cs" />
+    <Compile Include="ViewModel\Commands\SettingWindowCommands\GoMainBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\SettingWindowCommands\ResumeBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\StartSettingWindowCommands\BackBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\StartSettingWindowCommands\StartBtnCommand.cs" />
     <Compile Include="View\Windows\EventPopupWindow.xaml.cs">
       <DependentUpon>EventPopupWindow.xaml</DependentUpon>
     </Compile>
@@ -154,7 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
+    <Folder Include="ViewModel\Converters\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\informationImage.png" />
