@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.View.Windows"
         xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.ExitCheckWindowCommands"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
         x:Name="window"
         Title="ExitCheckWindow" Height="215.96" Width="310">
     <Window.Resources>

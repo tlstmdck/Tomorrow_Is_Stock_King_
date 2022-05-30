@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King"
         xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="515.96" Width="800">
 
     <Window.Resources>

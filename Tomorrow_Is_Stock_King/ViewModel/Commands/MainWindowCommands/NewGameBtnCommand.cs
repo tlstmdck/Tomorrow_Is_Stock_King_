@@ -22,6 +22,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands
         {
             StartSettingWindow startsettingwindow = new StartSettingWindow();
             startsettingwindow.Show();
+
             Application.Current.MainWindow.Close();
             Application.Current.MainWindow = startsettingwindow;
         }

@@ -7,6 +7,7 @@
         xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.SettingWindowCommands"
         mc:Ignorable="d"
         x:Name="window"
+        WindowStartupLocation="CenterOwner"
         Title="SettingWindow" Height="340" Width="500">
     <Window.Resources>
         <SolidColorBrush x:Key="bgColor"

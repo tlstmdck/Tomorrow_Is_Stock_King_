@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.View.Windows"
         xmlns:command ="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.StartSettingWindowCommands"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="StartSettingWindow" Height="515.96" Width="800">
     <Window.Resources>
         <SolidColorBrush x:Key="bgColor"
