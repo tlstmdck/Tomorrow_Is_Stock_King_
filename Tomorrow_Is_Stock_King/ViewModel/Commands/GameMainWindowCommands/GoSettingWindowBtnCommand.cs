@@ -21,6 +21,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
         public void Execute(object parameter)
         {
             SettingWindow settingwindow = new SettingWindow();
+            settingwindow.Owner = Application.Current.MainWindow;
             settingwindow.ShowDialog();
         }
     }

@@ -7,6 +7,7 @@
         xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands"
         xmlns:uc="clr-namespace:Tomorrow_Is_Stock_King.View.Usercontrol"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="GameMainWindow" Height="700" Width="1200">
     <Window.Resources>
         <SolidColorBrush x:Key="bgColor"
