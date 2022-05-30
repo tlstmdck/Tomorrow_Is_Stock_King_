@@ -23,6 +23,14 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GoMainCheckWindowCommands
             MainWindow mainwindow = new MainWindow();
             mainwindow.Show();
             Application.Current.MainWindow = mainwindow;
+
+            foreach(Window window in System.Windows.Application.Current.Windows)
+            {
+                if(window.Title != "MainWindow")
+                {
+                    window.Close();
+                }
+            }
         }
     }
 }
