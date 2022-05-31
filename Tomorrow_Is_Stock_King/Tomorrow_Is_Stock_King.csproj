@@ -61,6 +61,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\Commands\BGMBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\EffectBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\ExitCheckWindowCommands\NoBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\ExitCheckWindowCommands\YesBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\GoSettingWindowBtnCommand.cs" />

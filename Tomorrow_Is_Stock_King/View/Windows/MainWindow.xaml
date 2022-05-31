@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King"
-        xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands"
+        xmlns:soundcommand="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands"
+        xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.MainWindowCommands"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="515.96" Width="800">
@@ -16,6 +17,9 @@
                          Color="#11264F"/>
         <SolidColorBrush x:Key="btnTextColor" 
                          Color="#FFFFFF"/>
+        
+        <soundcommand:BGMBtnCommand x:Key="bgmbtncommand" />
+        <soundcommand:EffectBtnCommand x:Key="effectbtncommand" />
         <command:NewGameBtnCommand x:Key="newgamebtncommand"/>
         <command:ExitBtnCommand x:Key="exitbtncommand"/>
     </Window.Resources>
@@ -50,22 +54,28 @@
                 BorderThickness="4"
                 x:Name="bgmBtn"
                 Panel.ZIndex="1"
+                Command="{Binding Source={StaticResource bgmbtncommand}}"
+                CommandParameter="{Binding ElementName=bgmImage}"
                 >
             <Button.Background>
                 <SolidColorBrush Opacity="0" />
             </Button.Background>
-            <Image Source="../../Images/Icons/BGMOnIcon.png"/>
+            <Image x:Name="bgmImage" 
+                   Source="../../Images/Icons/BGMOnIcon.png"/>
         </Button>
 
         <Button Margin="40 200 660 200"
                 BorderThickness="4"
                 x:Name="effectBtn"
                 Panel.ZIndex="1"
+                Command="{Binding Source={StaticResource effectbtncommand}}"
+                CommandParameter="{Binding ElementName=effectImage}"
                 >
             <Button.Background>
                 <SolidColorBrush Opacity="0" />
             </Button.Background>
-            <Image Source="../../Images/Icons/EffectOnIcon.png"/>
+            <Image x:Name="effectImage" 
+                   Source="../../Images/Icons/EffectOnIcon.png"/>
         </Button>
 
         <Button Margin="40 320 660 80"

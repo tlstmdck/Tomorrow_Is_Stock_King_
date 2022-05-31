@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using Tomorrow_Is_Stock_King.View.Windows;
 
-namespace Tomorrow_Is_Stock_King.ViewModel.Commands
+namespace Tomorrow_Is_Stock_King.ViewModel.Commands.MainWindowCommands
 {
     internal class NewGameBtnCommand : ICommand
     {
