@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Tomorrow_Is_Stock_King.ViewModel.Commands
+namespace Tomorrow_Is_Stock_King.ViewModel.Commands.MainWindowCommands
 {
     internal class ExitBtnCommand : ICommand
     {

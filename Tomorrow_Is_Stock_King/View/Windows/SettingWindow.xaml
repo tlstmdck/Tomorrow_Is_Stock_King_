@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.View.Windows"
+        xmlns:vm="clr-namespace:Tomorrow_Is_Stock_King.ViewModel"
+        xmlns:converter="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Converters"
         xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.SettingWindowCommands"
         mc:Ignorable="d"
         x:Name="window"
@@ -17,6 +18,9 @@
         <SolidColorBrush x:Key="btnTextColor" 
                          Color="#FFFFFF"/>
 
+        <vm:SoundVM x:Key="soundvm" />
+        <converter:BGMBtnConverter x:Key="bgmbtnconverter" />
+        <converter:EffectBtnConverter x:Key="effectbtnconverter" />
         <command:ResumeBtnCommand x:Key="resumebtncommand"/>
         <command:GoMainBtnCommand x:Key="gomainbtncommand"/>
         <command:ExitCheckWindowCommand x:Key="exitcheckcommand"/>
@@ -32,11 +36,14 @@
                 Width="80"
                 Height="80"
                 x:Name="bgmBtn"
+                DataContext="{Binding Source={StaticResource soundvm},Path=SoundDataToShow}"
+                Command="{Binding Source={StaticResource soundvm}, Path=BGMBtnCommand}"
                 >
             <Button.Background>
                 <SolidColorBrush Opacity="0" />
             </Button.Background>
-            <Image Source="../../Images/Icons/BGMOnIcon.png"/>
+            <Image x:Name="bgmImage"
+                   Source="{Binding Path=IsTurnOnBgm, Converter={StaticResource bgmbtnconverter}}" />
         </Button>
 
         <Button Margin="20 110 400 110"
@@ -45,11 +52,14 @@
                 Width="80"
                 Height="80"
                 x:Name="effectBtn"
+                DataContext="{Binding Source={StaticResource soundvm},Path=SoundDataToShow}"
+                Command="{Binding Source={StaticResource soundvm}, Path=EffectBtnCommand}"
                 >
             <Button.Background>
                 <SolidColorBrush Opacity="0" />
             </Button.Background>
-            <Image Source="../../Images/Icons/EffectOnIcon.png"/>
+            <Image x:Name="effectImage"
+                   Source="{Binding Path=IsTurnOnEffect, Converter={StaticResource effectbtnconverter}}" />
         </Button>
 
         <Button Margin="20 200 400 20"

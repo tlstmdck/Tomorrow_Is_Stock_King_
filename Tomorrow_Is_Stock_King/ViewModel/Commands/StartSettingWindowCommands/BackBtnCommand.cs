@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Tomorrow_Is_Stock_King.ViewModel.Commands.StartSettingWindowCommands
 {
-    internal class BackBtnCommand : ICommand
+    public class BackBtnCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
