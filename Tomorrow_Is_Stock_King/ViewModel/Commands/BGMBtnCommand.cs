@@ -7,11 +7,19 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using Tomorrow_Is_Stock_King.Model;
 
 namespace Tomorrow_Is_Stock_King.ViewModel.Commands
 {
     public class BGMBtnCommand : ICommand
     {
+        private SoundVM VM { get; set; }
+
+        public BGMBtnCommand(SoundVM vm)
+        {
+            VM = vm;
+        }
+
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
@@ -21,14 +29,13 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands
 
         public void Execute(object parameter)
         {
-            Image img = (Image)parameter;
-            if(img.Source.ToString().Equals("pack://application:,,,/Tomorrow_Is_Stock_King;component/Images/Icons/BGMOnIcon.png"))
+            if (VM.SoundDataToShow.IsTurnOnBgm)
             {
-                img.Source = new BitmapImage(new Uri("pack://application:,,,/Tomorrow_Is_Stock_King;component/Images/Icons/BGMOffIcon.png"));
+                VM.setBgm(false);
             }
             else
             {
-                img.Source = new BitmapImage(new Uri("pack://application:,,,/Tomorrow_Is_Stock_King;component/Images/Icons/BGMOnIcon.png"));
+                VM.setBgm(true);
             }
         }
     }
