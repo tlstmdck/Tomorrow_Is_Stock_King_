@@ -86,11 +86,11 @@
         <TextBox Background="{StaticResource btnBgColor}"
                  Foreground="{StaticResource btnTextColor}"
                  Margin="340 140 80 300"
-                 FontFamily="../../Fonts\#강원교육모두"
                  FontSize="40"
                  Padding="30 0 0 0"
-                 Text="이름을 입력해 주세요."
                  x:Name="nameBox"
+                 FontFamily="../../Fonts\#강원교육모두"
+                 Cursor="Arrow"
                  >
             <TextBox.Resources>
                 <Style TargetType="Border">
@@ -98,6 +98,26 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
+        <TextBlock FontFamily="../../Fonts\#강원교육모두"
+                   Text="이름을 입력하세요" 
+                   Margin="340 140 80 300"
+                   VerticalAlignment="Center"
+                   FontSize="40"
+                   Padding="30 0 0 0"
+                   IsHitTestVisible="False"
+                   >
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Setter Property="Foreground" Value="{StaticResource btnTextColor}"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=nameBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
 
         <Label Content="난이도" 
                FontFamily="../../Fonts\#강원교육모두"
