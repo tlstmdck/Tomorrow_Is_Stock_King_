@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King"
-        xmlns:soundvm="clr-namespace:Tomorrow_Is_Stock_King.ViewModel"
         xmlns:converter="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Converters"
         xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.MainWindowCommands"
         mc:Ignorable="d"
@@ -19,7 +18,6 @@
         <SolidColorBrush x:Key="btnTextColor" 
                          Color="#FFFFFF"/>
 
-        <soundvm:SoundVM x:Key="soundvm" />
         <converter:BGMBtnConverter x:Key="bgmbtnconverter" />
         <converter:EffectBtnConverter x:Key="effectbtnconverter" />
         <command:NewGameBtnCommand x:Key="newgamebtncommand"/>

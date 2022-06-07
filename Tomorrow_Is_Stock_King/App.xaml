@@ -2,8 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Tomorrow_Is_Stock_King"
+             xmlns:vm="clr-namespace:Tomorrow_Is_Stock_King.ViewModel"
              StartupUri="View/Windows/MainWindow.xaml">
     <Application.Resources>
-         
+        <vm:SoundVM x:Key="soundvm" />
     </Application.Resources>
 </Application>
