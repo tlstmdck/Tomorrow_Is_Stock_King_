@@ -7,33 +7,43 @@ using System.Threading.Tasks;
 
 namespace Tomorrow_Is_Stock_King.Model
 {
-    internal class StockData : INotifyPropertyChanged
+    public class Header
     {
-        private int stockCode;
-
-        public int StockCode
-        {
-            get { return stockCode; }
-            set { stockCode = value; }
-        }
-
-        private int price;
-
-
-        public int Price
-        {
-            get { return price; }
-            set { price = value; }
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string propName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
-            }
-        }
+        public string resultCode { get; set; }
+        public string resultMsg { get; set; }
     }
+
+    public class Item
+    {
+        public string srtnCd { get; set; }
+        public string clpr { get; set; }
+        public string itmsNm { get; set; }
+
+    }
+
+    public class Items
+    {
+        public IList<Item> item { get; set; }
+
+    }
+
+    public class Body
+    {
+        public int numOfRows { get; set; }
+        public int pageNo { get; set; }
+        public int totalCount { get; set; }
+        public Items items { get; set; }
+    }
+
+    public class Response
+    {
+        public Header header { get; set; }
+        public Body body { get; set; }
+    }
+
+    public class Example
+    {
+        public Response response { get; set; }
+    }
+
 }
