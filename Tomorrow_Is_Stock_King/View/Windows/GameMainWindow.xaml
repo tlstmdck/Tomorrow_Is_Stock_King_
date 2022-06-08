@@ -46,22 +46,9 @@
                                  BorderBrush="Black">
                             <ListBox Background="{StaticResource bgColor}"
                                      HorizontalContentAlignment="Center"
-                                     BorderBrush="{StaticResource bgColor}">
-                                <ListBoxItem Content="신한은행"
-                                             Height="40"   
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="카카오뱅크"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="농협"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="기업은행"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="전북은행"
-                                             Height="40"
-                                             BorderBrush="Black"/>
+                                     BorderBrush="{StaticResource bgColor}"
+                                     ItemsSource="{Binding Source={StaticResource stockvm}, Path=Companies}"
+                                     SelectedItem="{Binding Source={StaticResource stockvm}, Path=SelectedStock}">
                             </ListBox>
                         </TabItem>
                         <TabItem Background="{StaticResource bgColor}"
