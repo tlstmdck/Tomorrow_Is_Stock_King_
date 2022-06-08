@@ -99,7 +99,6 @@ namespace Tomorrow_Is_Stock_King.Model
 
     public class Example : INotifyPropertyChanged
     {
-
         private Response response;
         public Response Response
         {

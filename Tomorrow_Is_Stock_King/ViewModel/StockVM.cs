@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,12 @@ namespace Tomorrow_Is_Stock_King.ViewModel
     public class StockVM
     {
         //public List<List<Item>> TurnList { get; set; }
-        public Item item { get; set; }
+        private Item item;
+        public Item Item
+        {
+            get { return item; }
+            set { item = value; OnPropertyChanged("Item"); }
+        }
         public List<Item> StockDataToShow { get; set; }
         public ObservableCollection<string> Companies { get; set; }
         public StockGraphChartUserControl StockGraphChart { get; set; }
@@ -47,6 +53,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 StockDataToShow.Add(stock);
 
             }
+            Item = StockDataToShow[0];
             //TurnList.Add(StockDataToShow);  //1턴 완성
             //StockDataToShow.Clear();
         }
@@ -54,8 +61,19 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         {
             int index = Companies.IndexOf(selectedStock);
 
-            MessageBox.Show(StockDataToShow[index].Clpr);
-            item = StockDataToShow[index];
+            var temp = StockDataToShow[index];
+            Item.Clpr = temp.Clpr;
+            Item.ItmsNm = temp.ItmsNm;
+            item.SrtnCd = temp.SrtnCd;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
         }
     }
 }
