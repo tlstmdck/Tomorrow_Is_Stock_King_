@@ -7,5 +7,6 @@
     <Application.Resources>
         <vm:SoundVM x:Key="soundvm" />
         <vm:StockVM x:Key="stockvm" />
+        <vm:GameTurnVM x:Key="gameturnvm" />
     </Application.Resources>
 </Application>

@@ -86,6 +86,7 @@
     <Compile Include="ViewModel\Commands\StartSettingWindowCommands\StartBtnCommand.cs" />
     <Compile Include="ViewModel\Converters\BGMBtnConverter.cs" />
     <Compile Include="ViewModel\Converters\EffectBtnConverter.cs" />
+    <Compile Include="ViewModel\GameTurnVM.cs" />
     <Compile Include="ViewModel\PlayerVM.cs" />
     <Compile Include="ViewModel\SettingVM.cs" />
     <Compile Include="ViewModel\SoundVM.cs" />

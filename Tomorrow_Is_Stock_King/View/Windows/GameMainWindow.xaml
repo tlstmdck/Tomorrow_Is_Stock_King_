@@ -8,6 +8,7 @@
         xmlns:uc="clr-namespace:Tomorrow_Is_Stock_King.View.Usercontrol"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
+        DataContext="{StaticResource gameturnvm}"
         Title="GameMainWindow" Height="700" Width="1200">
     <Window.Resources>
         <SolidColorBrush x:Key="bgColor"
@@ -47,8 +48,8 @@
                             <ListBox Background="{StaticResource bgColor}"
                                      HorizontalContentAlignment="Center"
                                      BorderBrush="{StaticResource bgColor}"
-                                     ItemsSource="{Binding Source={StaticResource stockvm}, Path=Companies}"
-                                     SelectedItem="{Binding Source={StaticResource stockvm}, Path=SelectedStock}">
+                                     ItemsSource="{Binding Path=StockVM.Companies}"
+                                     SelectedItem="{Binding Path=StockVM.SelectedStock}">
                             </ListBox>
                         </TabItem>
                         <TabItem Background="{StaticResource bgColor}"
@@ -341,12 +342,12 @@
             <ProgressBar Margin="10,380,0,0"
                          Height="50"
                          Minimum="0" 
-                         Maximum="100"
-                         Value="30"
+                         Maximum="100"                       
+                         Value="{Binding Source={StaticResource gameturnvm}, Path=TimerValue}"
                          Background="{StaticResource bgColor}"
                          Foreground="{StaticResource btnBgColor}"
                          x:Name="timer_bar"/>
-
+            <!--Value=-->
             <Border Margin="10,3,0,0"
                     CornerRadius="10" 
                     Background="{StaticResource btnBgColor}"

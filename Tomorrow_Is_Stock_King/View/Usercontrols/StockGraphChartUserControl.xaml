@@ -27,8 +27,8 @@
             </Button>
             <Button Click="ResetZoomOnClick">Reset Zoom</Button>
             <Grid >
-                <Grid DataContext="{StaticResource stockvm}">
-                    <TextBlock Text="{Binding Path=Item.Clpr, Mode=TwoWay}" Panel.ZIndex="10" Foreground="Black"/>
+                <Grid DataContext="{StaticResource gameturnvm}">
+                    <TextBlock Text="{Binding Path=StockVM.Item.Clpr, Mode=TwoWay}" Panel.ZIndex="10" Foreground="Black"/>
                 </Grid>
             </Grid>
 
