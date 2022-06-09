@@ -7,8 +7,16 @@ using System.Threading.Tasks;
 
 namespace Tomorrow_Is_Stock_King.Model
 {
-    internal class PlayerData : PersonData, INotifyPropertyChanged
+    public class PlayerData : PersonData, INotifyPropertyChanged
     {
+
+        private PersonData personData;
+
+        public PersonData PersonData
+        {
+            get { return personData; }
+            set { personData = value; }
+        }
         private long curMoney;
 
         public long CurMoney
@@ -42,6 +50,14 @@ namespace Tomorrow_Is_Stock_King.Model
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
+        }
+
+        public PlayerData()
+        {
+            PersonData = new PersonData();
+            CurMoney = 0;
+            StockMoney = 0;
+            TotalMoney = 0;
         }
     }
 }
