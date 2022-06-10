@@ -67,7 +67,12 @@ namespace Tomorrow_Is_Stock_King.Model
             get { return items; }
             set { items = value; OnPropertyChanged("Items"); }
         }
-
+        private int totalCount;
+        public int TotalCount
+        {
+            get { return totalCount; }
+            set { totalCount = value; OnPropertyChanged("TotalCount"); }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propName)
         {
@@ -76,6 +81,7 @@ namespace Tomorrow_Is_Stock_King.Model
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
+
     }
 
     public class Response : INotifyPropertyChanged
