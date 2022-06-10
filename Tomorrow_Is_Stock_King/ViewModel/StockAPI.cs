@@ -17,7 +17,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public static Item GetStockData(string date ,string Stockname)
         {
             Example result = new Example();
-
+            Item resultitem = new Item();
             string url = String.Format(BASE_URL, date, Stockname, API_KEY);
 
             HttpClient client = new HttpClient();
@@ -26,8 +26,15 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             client.Dispose();
 
             result = JsonConvert.DeserializeObject<Example>(resultString);
-
-            Item resultitem = (Item)result.Response.Body.Items.Item[0];
+            if(result.Response.Body.TotalCount == 0)
+            {
+                
+            }
+            else
+            {
+                resultitem = (Item)result.Response.Body.Items.Item[0];
+            }
+            
             
             return resultitem;
 

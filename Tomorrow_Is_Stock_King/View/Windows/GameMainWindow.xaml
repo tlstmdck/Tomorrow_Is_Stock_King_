@@ -8,7 +8,6 @@
         xmlns:uc="clr-namespace:Tomorrow_Is_Stock_King.View.Usercontrol"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        DataContext="{StaticResource gameturnvm}"
         Title="GameMainWindow" Height="700" Width="1200">
     <Window.Resources>
         <SolidColorBrush x:Key="bgColor"
@@ -21,7 +20,8 @@
         <command:GoSettingWindowBtnCommand x:Key="gosettingwindowbtncommand"/>
     </Window.Resources>
     <Grid Background="{StaticResource bgColor}"
-          Height="700" Width="1200">
+          Height="700" Width="1200"
+          DataContext="{StaticResource gameturnvm}">
         <TabControl TabStripPlacement="Left" 
                     Margin="50,0,200,0" 
                     Background="{StaticResource bgColor}"
@@ -338,12 +338,11 @@
 
         <StackPanel Orientation="Vertical"
                     Margin="0,0,1065,0">
-
+            
             <ProgressBar Margin="10,380,0,0"
                          Height="50"
                          Minimum="0" 
                          Maximum="100"                       
-                         Value="{Binding Source={StaticResource gameturnvm}, Path=TimerValue}"
                          Background="{StaticResource bgColor}"
                          Foreground="{StaticResource btnBgColor}"
                          x:Name="timer_bar"/>
@@ -366,7 +365,8 @@
                     Content="SKIP"
                     FontFamily="../../Fonts\#강원교육모두"
                     FontSize="30"
-                    Foreground="{StaticResource btnTextColor}">
+                    Foreground="{StaticResource btnTextColor}"
+                    Command="{Binding Path=TurnSkipBtnCommand}">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10" />

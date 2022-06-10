@@ -41,7 +41,9 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             StockDataToShow = new List<Item>();
             TurnList = new List<List<Item>>();
             Companies = new ObservableCollection<string>();
+
             
+
         }
         public void GetCompanies()
         {
@@ -54,6 +56,10 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             for (int i = 0; i < Companies.Count; i++)
             {
                 var stock = StockAPI.GetStockData(stock_date, Companies[i]);
+                if (stock.Clpr == null)
+                {
+                    stock = TurnList[TurnList.Count-1][i];
+                }
                 StockDataToShow.Add(stock);
 
             }
@@ -82,6 +88,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 Item.ItmsNm = temp.ItmsNm;
                 item.SrtnCd = temp.SrtnCd;
             }
+            MessageBox.Show(Item.Clpr + "," + Item.ItmsNm + "," + TurnList.Count + "턴쨰");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
