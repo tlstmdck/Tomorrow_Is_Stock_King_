@@ -33,7 +33,8 @@
 
     <Grid Background="{StaticResource bgColor}" 
           Width="800" 
-          Height="500">
+          Height="500"
+          DataContext="{StaticResource gameturnvm}">
 
         <Label Content="시작 설정" 
                FontFamily="../../Fonts\#강원교육모두"
@@ -49,7 +50,7 @@
                 FontSize="40"
                 FontFamily="../../Fonts\#강원교육모두"
                 x:Name="startBtn"
-                DataContext="{Binding Source={StaticResource settingvm}}"
+                DataContext="{Binding Path=SettingVM}"
                 Command="{Binding Path=StartBtnCommand}"
                 CommandParameter="{Binding ElementName=nameBox, Path=Text}"
                 >
@@ -141,20 +142,20 @@
             </Label.Resources>
         </Label>
 
-        <StackPanel Orientation="Horizontal" Margin="340 240 80 200" DataContext="{Binding Source={StaticResource settingvm},Path=SettingDataToShow}">
-            <RadioButton Command="{Binding Source={StaticResource settingvm}, Path=LevelBtnCommand}"
+        <StackPanel Orientation="Horizontal" Margin="340 240 80 200" DataContext="{Binding Path=SettingVM}">
+            <RadioButton Command="{Binding Path=LevelBtnCommand}"
                          CommandParameter="{Binding ElementName=easyBtn, Path=Tag}"
-                         IsChecked="{Binding Path=Level, Converter={StaticResource levelconverter}, ConverterParameter=1}" 
+                         IsChecked="{Binding Path=SettingDataToShow.Level, Converter={StaticResource levelconverter}, ConverterParameter=1}" 
                          Content="쉬움" Tag="1" Width="126" x:Name="easyBtn"/>
 
-            <RadioButton Command="{Binding Source={StaticResource settingvm}, Path=LevelBtnCommand}"
+            <RadioButton Command="{Binding Path=LevelBtnCommand}"
                          CommandParameter="{Binding ElementName=normalBtn, Path=Tag}"
-                         IsChecked="{Binding Path=Level, Converter={StaticResource levelconverter}, ConverterParameter=2}" 
+                         IsChecked="{Binding Path=SettingDataToShow.Level, Converter={StaticResource levelconverter}, ConverterParameter=2}" 
                          Content="보통" Tag="2" Width="126" x:Name="normalBtn"/>
 
-            <RadioButton Command="{Binding Source={StaticResource settingvm}, Path=LevelBtnCommand}"
+            <RadioButton Command="{Binding Path=LevelBtnCommand}"
                          CommandParameter="{Binding ElementName=hardBtn, Path=Tag}"
-                         IsChecked="{Binding Path=Level, Converter={StaticResource levelconverter}, ConverterParameter=3}" 
+                         IsChecked="{Binding Path=SettingDataToShow.Level, Converter={StaticResource levelconverter}, ConverterParameter=3}" 
                          Content="어려움" Tag="3" Width="126" x:Name="hardBtn"/>
         </StackPanel>
 
@@ -174,30 +175,30 @@
             </Label.Resources>
         </Label>
 
-        <StackPanel Orientation="Horizontal" Margin="340 340 80 100" DataContext="{Binding Source={StaticResource settingvm},Path=SettingDataToShow}">
-            <RadioButton Command="{Binding Source={StaticResource settingvm}, Path=UpdateTimeCommand}"
+        <StackPanel Orientation="Horizontal" Margin="340 340 80 100" DataContext="{Binding Path=SettingVM}">
+            <RadioButton Command="{Binding Path=UpdateTimeCommand}"
                          CommandParameter="{Binding ElementName=tensec, Path=Content}"
-                         IsChecked="{Binding Path=UpdateTime, Converter={StaticResource updatetimeconverter}, ConverterParameter=10}" 
+                         IsChecked="{Binding Path=SettingDataToShow.UpdateTime, Converter={StaticResource updatetimeconverter}, ConverterParameter=10}" 
                          Content="10" Width="76" x:Name="tensec"/>
 
-            <RadioButton Command="{Binding Source={StaticResource settingvm}, Path=UpdateTimeCommand}"
+            <RadioButton Command="{Binding Path=UpdateTimeCommand}"
                          CommandParameter="{Binding ElementName=fifteensec, Path=Content}"
-                         IsChecked="{Binding Path=UpdateTime, Converter={StaticResource updatetimeconverter}, ConverterParameter=15}" 
+                         IsChecked="{Binding Path=SettingDataToShow.UpdateTime, Converter={StaticResource updatetimeconverter}, ConverterParameter=15}" 
                          Content="15" Width="76" x:Name="fifteensec"/>
 
-            <RadioButton Command="{Binding Source={StaticResource settingvm}, Path=UpdateTimeCommand}"
+            <RadioButton Command="{Binding Path=UpdateTimeCommand}"
                          CommandParameter="{Binding ElementName=twentysec, Path=Content}"
-                         IsChecked="{Binding Path=UpdateTime, Converter={StaticResource updatetimeconverter}, ConverterParameter=20}" 
+                         IsChecked="{Binding Path=SettingDataToShow.UpdateTime, Converter={StaticResource updatetimeconverter}, ConverterParameter=20}" 
                          Content="20" Width="76" x:Name="twentysec"/>
 
-            <RadioButton Command="{Binding Source={StaticResource settingvm}, Path=UpdateTimeCommand}"
+            <RadioButton Command="{Binding Path=UpdateTimeCommand}"
                          CommandParameter="{Binding ElementName=twentyfivesec, Path=Content}"
-                         IsChecked="{Binding Path=UpdateTime, Converter={StaticResource updatetimeconverter}, ConverterParameter=25}" 
+                         IsChecked="{Binding Path=SettingDataToShow.UpdateTime, Converter={StaticResource updatetimeconverter}, ConverterParameter=25}" 
                          Content="25" Width="76" x:Name="twentyfivesec"/>
 
-            <RadioButton Command="{Binding Source={StaticResource settingvm}, Path=UpdateTimeCommand}"
+            <RadioButton Command="{Binding Path=UpdateTimeCommand}"
                          CommandParameter="{Binding ElementName=thirtysec, Path=Content}"
-                         IsChecked="{Binding Path=UpdateTime, Converter={StaticResource updatetimeconverter}, ConverterParameter=30}" 
+                         IsChecked="{Binding Path=SettingDataToShow.UpdateTime, Converter={StaticResource updatetimeconverter}, ConverterParameter=30}" 
                          Content="30" Width="76" x:Name="thirtysec"/>
         </StackPanel>
     </Grid>

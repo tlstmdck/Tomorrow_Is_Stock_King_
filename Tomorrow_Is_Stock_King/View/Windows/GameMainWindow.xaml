@@ -142,13 +142,14 @@
                                    Foreground="{StaticResource btnTextColor}"
                                    HorizontalAlignment="Center"
                                    />
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                        DataContext="{StaticResource gameturnvm}">
                                 <Label HorizontalContentAlignment="Center"
                                        FontFamily="../../Fonts\#강원교육모두"
                                        FontSize="22"
                                        x:Name="curmoney"
                                        Foreground="{StaticResource btnTextColor}"
-                                       Content="{Binding Source={StaticResource settingvm}, Path=PlayerDataToShow.CurMoney, Converter={StaticResource numconverter}}"
+                                       Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.CurMoney, Converter={StaticResource numconverter}}"
                                        />
                                 <Label Content="원" 
                                        FontFamily="../../Fonts\#강원교육모두"
@@ -420,7 +421,7 @@
                      BorderBrush="#93C47E"
                      FontFamily="../../Fonts\#강원교육모두"
                      HorizontalContentAlignment="Center"
-                     DataContext="{Binding Source={StaticResource settingvm}}"
+                     DataContext="{StaticResource gameturnvm}"
                      >
                 <ListBoxItem Height="60" Content="1" />
                 <ListBoxItem Height="60" Content="2"/>

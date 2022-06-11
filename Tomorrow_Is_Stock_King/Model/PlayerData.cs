@@ -4,21 +4,20 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI;
 
 namespace Tomorrow_Is_Stock_King.Model
 {
-    public class PlayerData : PersonData, INotifyPropertyChanged
+    public class PlayerData : INotifyPropertyChanged
     {
-
-        private PersonData personData;
-
-        public PersonData PersonData
+        private string name;
+        public string Name
         {
-            get { return personData; }
-            set { personData = value; OnPropertyChanged("PersonData"); }
+            get { return name; }
+            set { name = value; OnPropertyChanged("Name"); }
         }
-        private long curMoney;
 
+        private long curMoney;
         public long CurMoney
         {
             get { return curMoney; }
@@ -26,7 +25,6 @@ namespace Tomorrow_Is_Stock_King.Model
         }
 
         private long stockMoney;
-
         public long StockMoney
         {
             get { return stockMoney; }
@@ -34,14 +32,18 @@ namespace Tomorrow_Is_Stock_King.Model
         }
 
         private long totalMoney;
-
         public long TotalMoney
         {
             get { return totalMoney; }
             set { totalMoney = value; OnPropertyChanged("TotalMoney"); }
         }
 
-
+        private List<Pair> stocks;
+        public List<Pair> Stocks
+        {
+            get { return stocks; }
+            set { stocks = value; OnPropertyChanged("Stocks"); }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propName)
@@ -54,10 +56,11 @@ namespace Tomorrow_Is_Stock_King.Model
 
         public PlayerData()
         {
-            PersonData = new PersonData();
+            Name = "";
             CurMoney = 30000000;
             StockMoney = 0;
             TotalMoney = 30000000;
+            Stocks = new List<Pair>();
         }
     }
 }

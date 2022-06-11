@@ -11,9 +11,17 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 {
     public class PlayerVM
     {
+        public List<AIsData> AIsDataToShow { get; set; }
+        public PlayerData PlayerDataToShow { get; set; }
         
-       
-
-        
+        public PlayerVM()
+        {
+            AIsDataToShow = new List<AIsData>();
+            for(int i = 1;i <= 9; i++)
+            {
+                AIsDataToShow.Add(new AIsData(i.ToString(), 500000000 * i));
+            }
+            PlayerDataToShow = new PlayerData();
+        }
     }
 }
