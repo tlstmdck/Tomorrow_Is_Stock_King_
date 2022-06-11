@@ -57,7 +57,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             XFormatter = val => new DateTime((long)val).ToString("dd MMM");
             YFormatter = val => val.ToString("C");
 
-            AddListStockData();
         }
         public ZoomingOptions ZoomingMode
         {
@@ -122,7 +121,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             if (PropertyChanged != null) PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void AddListStockData()
+        public void AddListStockData(Dictionary<string, int> stocks)
         {
             List<PieSeries> pieSeries = new List<PieSeries>();
             ListSeriesCollection = new SeriesCollection
@@ -153,7 +152,11 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 }
             };
         }
-        public void RemoveListStockData()
+        public void RemoveListStockData(Dictionary<string, int> stocks)
+        {
+
+        }
+        public void UpdateListStockData(Dictionary<string, int> stocks)
         {
 
         }

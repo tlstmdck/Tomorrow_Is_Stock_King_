@@ -24,7 +24,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
         public bool CanExecute(object parameter)
         {
             if (parameter == null) return true;
-            if ((string)parameter == "") return false;
+            if ((string)parameter == "" || (string)parameter == "0") return false;
 
             if (!GameTurnVM.SettingVM.PlayerVM.PlayerDataToShow.Stocks.ContainsKey(GameTurnVM.StockVM.Item.ItmsNm))
             {

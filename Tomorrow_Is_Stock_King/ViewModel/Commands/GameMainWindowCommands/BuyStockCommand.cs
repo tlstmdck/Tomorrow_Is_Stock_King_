@@ -25,7 +25,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
         public bool CanExecute(object parameter)
         {
             if (parameter == null) return true;
-            if ((string)parameter == "") return false;
+            if ((string)parameter == "" || (string)parameter == "0") return false;
 
             long cnt  = long.Parse((string)parameter);
             if(cnt * long.Parse(GameTurnVM.StockVM.Item.Clpr) > GameTurnVM.SettingVM.PlayerVM.PlayerDataToShow.CurMoney)

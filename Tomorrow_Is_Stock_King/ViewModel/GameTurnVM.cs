@@ -46,13 +46,18 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             Date = Date.AddDays(1);
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             SettingVM.NextTurn();
+            if(SettingVM.PlayerVM.PlayerDataToShow.Stocks.Count > 0)
+            {
+                StockVM.GraphVM.UpdateListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);
+            }
+            
         }
 
         public void BuyStock(string buyCnt)
         {
             int buyCount = int.Parse(buyCnt);
             string stockName = StockVM.Item.ItmsNm;
-
+            int stock_num = SettingVM.PlayerVM.PlayerDataToShow.Stocks.Count;
             // 주식 구입으로 인해 현재 보유금액에서 산 만큼 뺌
             SettingVM.PlayerVM.PlayerDataToShow.CurMoney -= buyCount * long.Parse(StockVM.Item.Clpr);
 
@@ -64,14 +69,33 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             else {
                 SettingVM.PlayerVM.PlayerDataToShow.Stocks.Add(stockName, buyCount);
             }
+            if(stock_num != SettingVM.PlayerVM.PlayerDataToShow.Stocks.Count)
+            {
+                StockVM.GraphVM.AddListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);
+            }
+            else
+            {
+                StockVM.GraphVM.UpdateListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);
+            }
         }
         
         public void SellStock(string buyCnt)
         {
             int buyCount = int.Parse(buyCnt);
+            int stock_num = SettingVM.PlayerVM.PlayerDataToShow.Stocks.Count;
             SettingVM.PlayerVM.PlayerDataToShow.CurMoney += buyCount * long.Parse(StockVM.Item.Clpr);
 
             SettingVM.PlayerVM.PlayerDataToShow.Stocks.Remove(StockVM.Item.ItmsNm);
+            
+
+            if (stock_num != SettingVM.PlayerVM.PlayerDataToShow.Stocks.Count)
+            {
+                StockVM.GraphVM.RemoveListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);
+            }
+            else
+            {
+                StockVM.GraphVM.UpdateListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
