@@ -27,7 +27,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         }
         public List<Item> StockDataToShow { get; set; }
         public ObservableCollection<string> Companies { get; set; }
-        public StockGraphChartUserControl StockGraphChart { get; set; }
+        public GraphVM GraphVM { get; set; }
         private string selectedStock;   //ex> 삼성전자string
         public string SelectedStock
         {
@@ -41,7 +41,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             StockDataToShow = new List<Item>();
             TurnList = new List<List<Item>>();
             Companies = new ObservableCollection<string>();
-
+            GraphVM = new GraphVM();
             
 
         }
@@ -88,6 +88,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 Item.ItmsNm = temp.ItmsNm;
                 item.SrtnCd = temp.SrtnCd;
             }
+            GraphVM.ChangeData(TurnList, index);
             MessageBox.Show(Item.Clpr + "," + Item.ItmsNm + "," + TurnList.Count + "턴쨰");
         }
 
