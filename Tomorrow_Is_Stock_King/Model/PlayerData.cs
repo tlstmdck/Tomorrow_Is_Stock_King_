@@ -15,14 +15,14 @@ namespace Tomorrow_Is_Stock_King.Model
         public PersonData PersonData
         {
             get { return personData; }
-            set { personData = value; }
+            set { personData = value; OnPropertyChanged("PersonData"); }
         }
         private long curMoney;
 
         public long CurMoney
         {
             get { return curMoney; }
-            set { curMoney = value; }
+            set { curMoney = value; OnPropertyChanged("CurMoney"); }
         }
 
         private long stockMoney;
@@ -30,7 +30,7 @@ namespace Tomorrow_Is_Stock_King.Model
         public long StockMoney
         {
             get { return stockMoney; }
-            set { stockMoney = value; }
+            set { stockMoney = value; OnPropertyChanged("StockMoney"); }
         }
 
         private long totalMoney;
@@ -38,7 +38,7 @@ namespace Tomorrow_Is_Stock_King.Model
         public long TotalMoney
         {
             get { return totalMoney; }
-            set { totalMoney = value; }
+            set { totalMoney = value; OnPropertyChanged("TotalMoney"); }
         }
 
 
@@ -55,9 +55,9 @@ namespace Tomorrow_Is_Stock_King.Model
         public PlayerData()
         {
             PersonData = new PersonData();
-            CurMoney = 0;
+            CurMoney = 30000000;
             StockMoney = 0;
-            TotalMoney = 0;
+            TotalMoney = 30000000;
         }
     }
 }

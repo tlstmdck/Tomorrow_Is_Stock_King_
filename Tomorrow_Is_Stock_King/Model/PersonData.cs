@@ -15,7 +15,7 @@ namespace Tomorrow_Is_Stock_King.Model
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set { name = value; OnPropertyChanged("Name"); }
         }
 
         private List<Pair> stocks;
@@ -23,7 +23,7 @@ namespace Tomorrow_Is_Stock_King.Model
         public List<Pair> Stocks
         {
             get { return stocks; }
-            set { stocks = value; }
+            set { stocks = value; OnPropertyChanged("Stocks"); }
         }
 
 
