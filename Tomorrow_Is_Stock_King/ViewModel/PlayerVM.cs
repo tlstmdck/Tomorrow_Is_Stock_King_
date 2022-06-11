@@ -30,7 +30,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             PlayerDataToShow = new PlayerData();
         }
         
-        public void sortPlayers()
+        public void SortPlayers()
         {
             PlayersDataToShow.Clear();
             PlayersData.Clear();
@@ -69,7 +69,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 MessageBox.Show(AIsDataToShow[i].Name + " 돈: " + AIsDataToShow[i].TotalMoney.ToString());
             }
 
-            sortPlayers();
+            SortPlayers();
         }
+        
     }
 }

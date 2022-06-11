@@ -170,10 +170,10 @@
                      Cursor="Hand"
                      />
                     <TextBlock FontFamily="../../Fonts\#강원교육모두"
-                       Text="몇 주를 사실껀가요" 
+                       Text="사고 팔 개수를 입력하세요." 
                        Margin="490,550,150,100"
                        VerticalAlignment="Center"
-                       FontSize="25"
+                       FontSize="18"
                        Padding="20 0 0 0"
                        IsHitTestVisible="False"
                        >
@@ -193,9 +193,10 @@
                             CornerRadius="10" 
                             Background="{StaticResource btnBgColor}" Height="40">
                         <Label HorizontalContentAlignment="Center"
-                                FontFamily="../../Fonts\#강원교육모두"
-                                FontSize="22"
-                                Foreground="{StaticResource btnTextColor}"
+                               FontFamily="../../Fonts\#강원교육모두"
+                               FontSize="22"
+                               Foreground="{StaticResource btnTextColor}"
+                               x:Name="stockprice" 
                                 >
                             <Label.Content>
                                 <MultiBinding Converter="{StaticResource stocktomoneyconverter}">
@@ -213,7 +214,9 @@
                         FontFamily="../../Fonts\#강원교육모두"
                         FontSize="10"
                         Foreground="{StaticResource btnTextColor}"
-                        Command="">
+                        Command="{Binding Path=BuyStockCommand}"
+                        CommandParameter="{Binding ElementName=stock_num, Path=Text}"
+                        >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10" />
@@ -226,7 +229,10 @@
                         Content="매도"
                         FontFamily="../../Fonts\#강원교육모두"
                         FontSize="10"
-                        Foreground="{StaticResource btnTextColor}">
+                        Foreground="{StaticResource btnTextColor}"
+                        Command="{Binding Path=SellStockCommand}"
+                        CommandParameter="{Binding ElementName=stock_num, Path=Text}"
+                        >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10" />
