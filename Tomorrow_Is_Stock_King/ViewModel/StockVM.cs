@@ -13,6 +13,12 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 {
     public class StockVM
     {
+        private List<List<Item>> realstockturnList;
+        public List<List<Item>> RealStockTurnList
+        {
+            get { return realstockturnList; }
+            set { realstockturnList = value; }
+        }
         private List<List<Item>> turnList;
         public List<List<Item>> TurnList
         {
@@ -39,6 +45,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public StockVM()
         {
             StockDataToShow = new List<Item>();
+            RealStockTurnList = new List<List<Item>>();
             TurnList = new List<List<Item>>();
             Companies = new ObservableCollection<string>();
             GraphVM = new GraphVM();
@@ -58,20 +65,41 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 var stock = StockAPI.GetStockData(stock_date, Companies[i]);
                 if (stock.Clpr == null)
                 {
-                    stock = TurnList[TurnList.Count-1][i];
+                    stock = RealStockTurnList[RealStockTurnList.Count-1][i];
                 }
                 StockDataToShow.Add(stock);
 
             }
-            Item = StockDataToShow[0];
+            if(Item == null)
+            {
+                Item = StockDataToShow[0];
+            }
             List<Item> temp = new List<Item>();
             for(int i=0; i<StockDataToShow.Count; i++)
             {
                 temp.Add(StockDataToShow[i]);
             }
-            TurnList.Add(temp);  //1턴 완성
+            RealStockTurnList.Add(temp);  //1턴 완성
+            TurnList.Add(temp);
+
+            // 실제 주식데이터가지고 계산
+            if(RealStockTurnList.Count > 1)
+            {
+                for (int i = 0; i < Companies.Count; i++)
+                {
+                    double Stocknum1 = Double.Parse(RealStockTurnList[RealStockTurnList.Count - 2][i].Clpr);
+                    double Stocknum2 = Double.Parse(RealStockTurnList[RealStockTurnList.Count - 1][i].Clpr);
+                    double Stockrate = (Stocknum1 / Stocknum2);
+
+                    int Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr) / Stockrate);
+                    TurnList[TurnList.Count - 1][i].Clpr = Turnnum.ToString();
+
+                }
+                
+            }
+
+            GraphVM.ChangeData(TurnList, 0);
             StockDataToShow.Clear();
-            
         }
         public void GetStockGraph()
         {

@@ -206,7 +206,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModel\Commands\StockListUserControlCommands\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\informationImage.png" />
     <Resource Include="Images\loanImage.png" />
