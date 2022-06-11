@@ -11,8 +11,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.StartSettingWindowCommands
 {
     public class StartBtnCommand : ICommand
     {
-        PlayerVM VM { get; set; }
-        public StartBtnCommand(PlayerVM vm)
+        SettingVM VM { get; set; }
+        public StartBtnCommand(SettingVM vm)
         {
             VM = vm;
         }

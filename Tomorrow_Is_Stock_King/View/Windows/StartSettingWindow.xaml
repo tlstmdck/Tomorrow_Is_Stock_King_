@@ -49,7 +49,7 @@
                 FontSize="40"
                 FontFamily="../../Fonts\#강원교육모두"
                 x:Name="startBtn"
-                DataContext="{Binding Source={StaticResource playervm}}"
+                DataContext="{Binding Source={StaticResource settingvm}}"
                 Command="{Binding Path=StartBtnCommand}"
                 CommandParameter="{Binding ElementName=nameBox, Path=Text}"
                 >

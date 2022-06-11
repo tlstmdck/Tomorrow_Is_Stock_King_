@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.Windows"
         xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands"
+        xmlns:converter="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Converters"
         xmlns:uc="clr-namespace:Tomorrow_Is_Stock_King.View.Usercontrol"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
@@ -18,6 +19,8 @@
                          Color="#FFFFFF"/>
 
         <command:GoSettingWindowBtnCommand x:Key="gosettingwindowbtncommand"/>
+        <converter:NumConverter x:Key="numconverter"/>
+        
     </Window.Resources>
     <Grid Background="{StaticResource bgColor}"
           Height="700" Width="1200"
@@ -132,12 +135,28 @@
                     <Border Margin="380,10,10,610"
                             CornerRadius="10" 
                             Background="{StaticResource btnBgColor}">
-                        <Label HorizontalContentAlignment="Center"
-                                FontFamily="../../Fonts\#강원교육모두"
-                                FontSize="30"
-                                Foreground="{StaticResource btnTextColor}"
-                                Content="보유자산&#10;30,000,000원">
-                        </Label>
+                        <StackPanel>
+                            <Label Content="자산"
+                                   FontSize="22"
+                                   FontFamily="../../Fonts\#강원교육모두"
+                                   Foreground="{StaticResource btnTextColor}"
+                                   HorizontalAlignment="Center"
+                                   />
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Label HorizontalContentAlignment="Center"
+                                       FontFamily="../../Fonts\#강원교육모두"
+                                       FontSize="22"
+                                       x:Name="curmoney"
+                                       Foreground="{StaticResource btnTextColor}"
+                                       Content="{Binding Source={StaticResource settingvm}, Path=PlayerDataToShow.CurMoney, Converter={StaticResource numconverter}}"
+                                       />
+                                <Label Content="원" 
+                                       FontFamily="../../Fonts\#강원교육모두"
+                                       FontSize="22"
+                                       Foreground="{StaticResource btnTextColor}"
+                                       />
+                            </StackPanel>
+                        </StackPanel>
                     </Border>
                     <Border Margin="490,550,150,100"
                             CornerRadius="10" 
@@ -386,14 +405,23 @@
                 <Image Source="../../Images/Icons/SettingIcon.png" />
             </Button>
         </StackPanel>
-        <StackPanel Margin="1000,0,0,0"
+        <StackPanel Margin="1000 0 0 0"
                     Background="#93C47E">
+            <Label Content="Ranking"
+                   FontSize="30"
+                   FontFamily="../../Fonts\#강원교육모두"
+                   Height="60"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   />
+
             <ListBox Background="#93C47E" 
                      FontSize="30"
                      BorderBrush="#93C47E"
                      FontFamily="../../Fonts\#강원교육모두"
-                     HorizontalContentAlignment="Center">
-                <ListBoxItem Height="60" Content="Ranking"/>
+                     HorizontalContentAlignment="Center"
+                     DataContext="{Binding Source={StaticResource settingvm}}"
+                     >
                 <ListBoxItem Height="60" Content="1" />
                 <ListBoxItem Height="60" Content="2"/>
                 <ListBoxItem Height="60" Content="3"/>
@@ -403,7 +431,7 @@
                 <ListBoxItem Height="60" Content="7"/>
                 <ListBoxItem Height="60" Content="8"/>
                 <ListBoxItem Height="60" Content="9"/>
-
+                <ListBoxItem Height="60" Content="10"/>
             </ListBox>
         </StackPanel>
 

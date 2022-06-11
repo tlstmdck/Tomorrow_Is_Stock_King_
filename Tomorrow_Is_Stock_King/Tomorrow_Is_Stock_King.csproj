@@ -90,6 +90,7 @@
     <Compile Include="ViewModel\Converters\BGMBtnConverter.cs" />
     <Compile Include="ViewModel\Converters\EffectBtnConverter.cs" />
     <Compile Include="ViewModel\Converters\LevelConverter.cs" />
+    <Compile Include="ViewModel\Converters\NumConverter.cs" />
     <Compile Include="ViewModel\Converters\UpdateTimeConverter.cs" />
     <Compile Include="ViewModel\GameTurnVM.cs" />
     <Compile Include="ViewModel\PlayerVM.cs" />
