@@ -71,11 +71,12 @@
     <Compile Include="Model\SoundData.cs" />
     <Compile Include="Model\StockData.cs" />
     <Compile Include="ViewModel\Commands\BGMBtnCommand.cs" />
-    <Compile Include="ViewModel\Commands\BuyStockCommand.cs" />
     <Compile Include="ViewModel\Commands\EffectBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\ExitCheckWindowCommands\NoBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\ExitCheckWindowCommands\YesBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\GameMainWindowCommands\BuyStockCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\GoSettingWindowBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\GameMainWindowCommands\SellStockCommand.cs" />
     <Compile Include="ViewModel\Commands\TurnSkipBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GoMainCheckWindowCommands\NoBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GoMainCheckWindowCommands\YesBtnCommand.cs" />

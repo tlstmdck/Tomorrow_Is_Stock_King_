@@ -31,7 +31,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.StartSettingWindowCommands
             Application.Current.MainWindow = gamemainwindow;
 
             VM.setPlayerName((string)parameter);
-            VM.PlayerVM.sortPlayers();
+            VM.PlayerVM.SortPlayers();
         }
     }
 }

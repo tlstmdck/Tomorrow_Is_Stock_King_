@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.UI;
 using Tomorrow_Is_Stock_King.ViewModel.Commands;
+using Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands;
 using Tomorrow_Is_Stock_King.ViewModel.Converters;
 
 namespace Tomorrow_Is_Stock_King.ViewModel
@@ -15,6 +17,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public SettingVM SettingVM { get; set; }
         public StockVM StockVM { get; set; }
         public TurnSkipBtnCommand TurnSkipBtnCommand { get; set; }
+        public BuyStockCommand BuyStockCommand { get; set; }
+        public SellStockCommand SellStockCommand { get; set; }
         private DateTime date;
         public DateTime Date
         {
@@ -22,27 +26,13 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             set { date = value; }
         }
 
-        /*
-        private int timerValue;
-
-        public int TimerValue
-        {
-            get { return timerValue; }
-            set 
-            {
-                timerValue = value;
-                if(PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("TimerValue"));
-                }
-            }
-        }
-        */
         public GameTurnVM()
         {
             SettingVM = new SettingVM();
             StockVM = new StockVM();
             TurnSkipBtnCommand = new TurnSkipBtnCommand(this);
+            BuyStockCommand = new BuyStockCommand(this);
+            SellStockCommand = new SellStockCommand(this);
             StockVM.GetCompanies();
 
             Date = new DateTime(2022, 6, 7);
@@ -56,6 +46,32 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             Date = Date.AddDays(1);
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             SettingVM.NextTurn();
+        }
+
+        public void BuyStock(string buyCnt)
+        {
+            int buyCount = int.Parse(buyCnt);
+            string stockName = StockVM.Item.ItmsNm;
+
+            // 주식 구입으로 인해 현재 보유금액에서 산 만큼 뺌
+            SettingVM.PlayerVM.PlayerDataToShow.CurMoney -= buyCount * long.Parse(StockVM.Item.Clpr);
+
+            // 구매한 주식을 보유 주식 dictionary에 넣음
+            if (SettingVM.PlayerVM.PlayerDataToShow.Stocks.ContainsKey(stockName))
+            {
+                SettingVM.PlayerVM.PlayerDataToShow.Stocks[stockName] += buyCount;
+            }
+            else {
+                SettingVM.PlayerVM.PlayerDataToShow.Stocks.Add(stockName, buyCount);
+            }
+        }
+        
+        public void SellStock(string buyCnt)
+        {
+            int buyCount = int.Parse(buyCnt);
+            SettingVM.PlayerVM.PlayerDataToShow.CurMoney += buyCount * long.Parse(StockVM.Item.Clpr);
+
+            SettingVM.PlayerVM.PlayerDataToShow.Stocks.Remove(StockVM.Item.ItmsNm);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

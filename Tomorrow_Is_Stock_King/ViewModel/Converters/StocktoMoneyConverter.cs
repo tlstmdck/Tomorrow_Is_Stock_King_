@@ -18,13 +18,13 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Converters
             }
             int stock_num = Int32.Parse((string)values[0]);
             int stock_clpr = Int32.Parse((string)values[1]);
-            int result = (stock_clpr * stock_num);
+            long result = (stock_clpr * stock_num);
             string money_str = values[2].ToString().Replace(",", "");
             
             int usermoney = Int32.Parse(money_str);
-            if(result > usermoney)
+            if(result < 0)
             {
-                result = usermoney;
+                result = long.MaxValue;
             }
             return result.ToString();
         }

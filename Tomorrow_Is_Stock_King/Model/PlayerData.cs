@@ -38,8 +38,8 @@ namespace Tomorrow_Is_Stock_King.Model
             set { totalMoney = value; OnPropertyChanged("TotalMoney"); }
         }
 
-        private List<Pair> stocks;
-        public List<Pair> Stocks
+        private Dictionary<string, int> stocks;
+        public Dictionary<string, int> Stocks
         {
             get { return stocks; }
             set { stocks = value; OnPropertyChanged("Stocks"); }
@@ -60,7 +60,7 @@ namespace Tomorrow_Is_Stock_King.Model
             CurMoney = 30000000;
             StockMoney = 0;
             TotalMoney = 30000000;
-            Stocks = new List<Pair>();
+            Stocks = new Dictionary<string, int>();
         }
     }
 }
