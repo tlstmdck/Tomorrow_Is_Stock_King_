@@ -17,26 +17,18 @@ using System.Windows.Shapes;
 using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
-using Tomorrow_Is_Stock_King.ViewModel;
+using Tomorrow_Is_Stock_King.Model;
 
-namespace Tomorrow_Is_Stock_King.View.Usercontrol
+namespace Tomorrow_Is_Stock_King.ViewModel
 {
-    /// <summary>
-    /// LivechartUserControl.xaml에 대한 상호 작용 논리
-    /// </summary>
-    
-    public partial class StockGraphChartUserControl : UserControl
+    public class GraphVM : INotifyPropertyChanged
     {
-        public StockGraphChartUserControl()
-        {
-            InitializeComponent();
-        }
-        /*
         private ZoomingOptions _zoomingMode;
+
+
         public StockVM StockVM { get; set; }
-        public StockGraphChartUserControl()
+        public GraphVM()
         {
-            InitializeComponent();
             var gradientBrush = new LinearGradientBrush
             {
                 StartPoint = new Point(0, 0),
@@ -45,17 +37,18 @@ namespace Tomorrow_Is_Stock_King.View.Usercontrol
             gradientBrush.GradientStops.Add(new GradientStop(Color.FromRgb(33, 148, 241), 0));
             gradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
 
-           
-
             ZoomingMode = ZoomingOptions.X;
 
             XFormatter = val => new DateTime((long)val).ToString("dd MMM");
             YFormatter = val => val.ToString("C");
 
-            DataContext = this;
-
         }
-        public SeriesCollection SeriesCollection { get; set; }
+        private SeriesCollection seriesCollection;
+        public SeriesCollection SeriesCollection 
+        {
+            get { return seriesCollection; }
+            set { seriesCollection = value; OnPropertyChanged();  }
+        }
         public Func<double, string> XFormatter { get; set; }
         public Func<double, string> YFormatter { get; set; }
         public ZoomingOptions ZoomingMode
@@ -67,8 +60,6 @@ namespace Tomorrow_Is_Stock_King.View.Usercontrol
                 OnPropertyChanged();
             }
         }
-
-
         private ChartValues<DateTimePoint> GetData()
         {
             var r = new Random();
@@ -84,6 +75,17 @@ namespace Tomorrow_Is_Stock_King.View.Usercontrol
 
             return values;
         }
+        private ChartValues<DateTimePoint> GetData(List<List<Item>> TurnList, int index)
+        {
+            var values = new ChartValues<DateTimePoint>();
+
+            for(int i=0; i< TurnList.Count; i++)
+            {
+                values.Add(new DateTimePoint(DateTime.Now.AddDays(i), Double.Parse(TurnList[i][index].Clpr)));
+            }
+
+            return values;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -92,18 +94,7 @@ namespace Tomorrow_Is_Stock_King.View.Usercontrol
             if (PropertyChanged != null) PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void ResetZoomOnClick(object sender, RoutedEventArgs e)
-        {
-            //Use the axis MinValue/MaxValue properties to specify the values to display.
-            //use double.Nan to clear it.
-
-            X.MinValue = double.NaN;
-            X.MaxValue = double.NaN;
-            Y.MinValue = double.NaN;
-            Y.MaxValue = double.NaN;
-        }
-
-        public void ChangeData()
+        public void ChangeData(List<List<Item>> TurnList, int index)
         {
             var gradientBrush = new LinearGradientBrush
             {
@@ -116,39 +107,12 @@ namespace Tomorrow_Is_Stock_King.View.Usercontrol
             {
                 new LineSeries
                 {
-                    Values = GetData(),
+                    Values = GetData(TurnList, index),
                     Fill = gradientBrush,
                     StrokeThickness = 1,
                     PointGeometrySize = 0
                 }
             };
         }
-        */
     }
-    /*
-    public class ZoomingModeCoverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            switch ((ZoomingOptions)value)
-            {
-                case ZoomingOptions.None:
-                    return "None";
-                case ZoomingOptions.X:
-                    return "X";
-                case ZoomingOptions.Y:
-                    return "Y";
-                case ZoomingOptions.Xy:
-                    return "XY";
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
-    */
 }
