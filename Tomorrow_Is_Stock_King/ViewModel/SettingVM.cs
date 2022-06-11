@@ -12,8 +12,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
     public class SettingVM
     {
         public SettingData SettingDataToShow { get; set; }
-        public PlayerData PlayerDataToShow { get; set; }
-        public List<PlayerData> AIsDataToShow { get; set; }
+        public PlayerVM PlayerVM { get; set; }
         public LevelBtnCommand LevelBtnCommand { get; set; }
         public UpdateTimeCommand UpdateTimeCommand { get; set; }
         public StartBtnCommand StartBtnCommand { get; set; }
@@ -21,8 +20,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public SettingVM()
         {
             SettingDataToShow = new SettingData();
-            PlayerDataToShow = new PlayerData();
-            AIsDataToShow = new List<PlayerData>();
+            PlayerVM = new PlayerVM();
             LevelBtnCommand = new LevelBtnCommand(this);
             UpdateTimeCommand = new UpdateTimeCommand(this);
             StartBtnCommand = new StartBtnCommand(this);
@@ -33,18 +31,18 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             SettingDataToShow.Level = lev;
             if(lev == 1)
             {
-                PlayerDataToShow.CurMoney = 30000000;
-                PlayerDataToShow.TotalMoney = 30000000;
+                PlayerVM.PlayerDataToShow.CurMoney = 30000000;
+                PlayerVM.PlayerDataToShow.TotalMoney = 30000000;
             }
             else if(lev == 2)
             {
-                PlayerDataToShow.CurMoney = 20000000;
-                PlayerDataToShow.TotalMoney = 20000000;
+                PlayerVM.PlayerDataToShow.CurMoney = 20000000;
+                PlayerVM.PlayerDataToShow.TotalMoney = 20000000;
             }
             else
             {
-                PlayerDataToShow.CurMoney = 10000000;
-                PlayerDataToShow.TotalMoney = 10000000;
+                PlayerVM.PlayerDataToShow.CurMoney = 10000000;
+                PlayerVM.PlayerDataToShow.TotalMoney = 10000000;
             }
         }
         public void setUpdateTime(int time)
@@ -53,11 +51,11 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         }
         public void setName(string name)
         {
-            PlayerDataToShow.Name = name;
+            PlayerVM.PlayerDataToShow.Name = name;
         }
         public void setMoney(long money)
         {
-            PlayerDataToShow.CurMoney = money;
+            PlayerVM.PlayerDataToShow.CurMoney = money;
         }
     }
 }

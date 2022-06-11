@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 
 namespace Tomorrow_Is_Stock_King.Model
 {
-
-
     public class Item : INotifyPropertyChanged
     {
         private string srtnCd;

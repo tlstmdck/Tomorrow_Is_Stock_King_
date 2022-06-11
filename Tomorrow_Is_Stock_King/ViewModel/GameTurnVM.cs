@@ -11,6 +11,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 {
     public class GameTurnVM : INotifyPropertyChanged
     {
+        public SettingVM SettingVM { get; set; }
         public StockVM StockVM { get; set; }
         public TurnSkipBtnCommand TurnSkipBtnCommand { get; set; }
         private DateTime date;
@@ -38,6 +39,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         */
         public GameTurnVM()
         {
+            SettingVM = new SettingVM();
             StockVM = new StockVM();
             TurnSkipBtnCommand = new TurnSkipBtnCommand(this);
 

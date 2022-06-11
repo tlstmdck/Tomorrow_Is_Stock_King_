@@ -4,31 +4,26 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.UI;
 
 namespace Tomorrow_Is_Stock_King.Model
 {
-    public class PersonData : INotifyPropertyChanged
+    public class AIsData : INotifyPropertyChanged
     {
-        private string name;
+        private long totalMoney;
+        public long TotalMoney
+        {
+            get { return totalMoney; }
+            set { totalMoney = value; OnPropertyChanged("TotalMoney"); }
+        }
 
+        private string name;
         public string Name
         {
             get { return name; }
             set { name = value; OnPropertyChanged("Name"); }
         }
 
-        private List<Pair> stocks;
-
-        public List<Pair> Stocks
-        {
-            get { return stocks; }
-            set { stocks = value; OnPropertyChanged("Stocks"); }
-        }
-
-
         public event PropertyChangedEventHandler PropertyChanged;
-        // 추후의 사용을 위해 미리 구현
         private void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)
@@ -36,11 +31,10 @@ namespace Tomorrow_Is_Stock_King.Model
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
-
-        public PersonData()
+        public AIsData(String idx, long money)
         {
-            Name = "";
-            Stocks = new List<Pair>();
+            Name = "AI" + idx;
+            TotalMoney = money;
         }
     }
 }
