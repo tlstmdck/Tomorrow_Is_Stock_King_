@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Tomorrow_Is_Stock_King.ViewModel.Commands;
+using Tomorrow_Is_Stock_King.ViewModel.Converters;
 
 namespace Tomorrow_Is_Stock_King.ViewModel
 {
@@ -42,7 +43,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             SettingVM = new SettingVM();
             StockVM = new StockVM();
             TurnSkipBtnCommand = new TurnSkipBtnCommand(this);
-
             StockVM.GetCompanies();
 
             Date = new DateTime(2022, 6, 7);

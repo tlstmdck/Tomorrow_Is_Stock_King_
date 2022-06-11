@@ -71,6 +71,7 @@
     <Compile Include="Model\SoundData.cs" />
     <Compile Include="Model\StockData.cs" />
     <Compile Include="ViewModel\Commands\BGMBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\BuyStockCommand.cs" />
     <Compile Include="ViewModel\Commands\EffectBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\ExitCheckWindowCommands\NoBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\ExitCheckWindowCommands\YesBtnCommand.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="ViewModel\Converters\EffectBtnConverter.cs" />
     <Compile Include="ViewModel\Converters\LevelConverter.cs" />
     <Compile Include="ViewModel\Converters\NumConverter.cs" />
+    <Compile Include="ViewModel\Converters\StocktoMoneyConverter.cs" />
     <Compile Include="ViewModel\Converters\UpdateTimeConverter.cs" />
     <Compile Include="ViewModel\GameTurnVM.cs" />
     <Compile Include="ViewModel\GraphVM.cs" />

@@ -20,7 +20,7 @@
 
         <command:GoSettingWindowBtnCommand x:Key="gosettingwindowbtncommand"/>
         <converter:NumConverter x:Key="numconverter"/>
-        
+        <converter:StocktoMoneyConverter x:Key="stocktomoneyconverter"/>
     </Window.Resources>
     <Grid Background="{StaticResource bgColor}"
           Height="700" Width="1200"
@@ -159,16 +159,35 @@
                             </StackPanel>
                         </StackPanel>
                     </Border>
-                    <Border Margin="490,550,150,100"
-                            CornerRadius="10" 
-                            Background="{StaticResource btnBgColor}" Height="40">
-                        <Label HorizontalContentAlignment="Center"
-                                FontFamily="../../Fonts\#강원교육모두"
-                                FontSize="22"
-                                Foreground="{StaticResource btnTextColor}"
-                                Content="30 주">
-                        </Label>
-                    </Border>
+                    <TextBox Background="{StaticResource btnBgColor}"
+                     Foreground="{StaticResource btnTextColor}"
+                     Margin="490,550,150,100"
+                     FontSize="40"
+                     Padding="30 0 0 0"
+                     x:Name="stock_num"
+                     FontFamily="../../Fonts\#강원교육모두"
+                     Cursor="Hand"
+                     />
+                    <TextBlock FontFamily="../../Fonts\#강원교육모두"
+                       Text="몇 주를 사실껀가요" 
+                       Margin="490,550,150,100"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       Padding="20 0 0 0"
+                       IsHitTestVisible="False"
+                       >
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Visibility" Value="Hidden"/>
+                                <Setter Property="Foreground" Value="{StaticResource btnTextColor}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=stock_num}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                     <Border Margin="490,590,150,50"
                             CornerRadius="10" 
                             Background="{StaticResource btnBgColor}" Height="40">
@@ -176,7 +195,14 @@
                                 FontFamily="../../Fonts\#강원교육모두"
                                 FontSize="22"
                                 Foreground="{StaticResource btnTextColor}"
-                                Content="300,000,000 원">
+                                >
+                            <Label.Content>
+                                <MultiBinding Converter="{StaticResource stocktomoneyconverter}">
+                                    <Binding ElementName="stock_num" Path="Text"/>
+                                    <Binding ElementName="stock_clpr" Path="Text"/>
+                                    <Binding ElementName="curmoney" Path="Content"/>
+                                </MultiBinding>
+                            </Label.Content>
                         </Label>
                     </Border>
                     <Button
@@ -185,7 +211,8 @@
                         Content="매수"
                         FontFamily="../../Fonts\#강원교육모두"
                         FontSize="10"
-                        Foreground="{StaticResource btnTextColor}">
+                        Foreground="{StaticResource btnTextColor}"
+                        Command="">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10" />
@@ -225,7 +252,11 @@
                             BorderBrush="Black"
                             BorderThickness="3"
                             HorizontalAlignment="Center" Width="426">
-                        <uc:StockGraphChartUserControl x:Name="myUC1"/>
+                        <Grid>
+                            <TextBox x:Name="stock_clpr" Text="{Binding StockVM.Item.Clpr}" Panel.ZIndex="10" Foreground="Black" Margin="0,0,0,365"/>
+                            <uc:StockGraphChartUserControl x:Name="myUC1" Margin="0,26,0,0"/>
+                        </Grid>
+                        
                        
                     </Border>
                 </Grid>
