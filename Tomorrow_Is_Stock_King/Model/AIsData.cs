@@ -33,7 +33,7 @@ namespace Tomorrow_Is_Stock_King.Model
         }
         public AIsData(String idx, long money)
         {
-            Name = "AI" + idx;
+            Name = "AI " + idx;
             TotalMoney = money;
         }
     }

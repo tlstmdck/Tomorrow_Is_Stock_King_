@@ -55,6 +55,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         {
             Date = Date.AddDays(1);
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
+            SettingVM.NextTurn();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

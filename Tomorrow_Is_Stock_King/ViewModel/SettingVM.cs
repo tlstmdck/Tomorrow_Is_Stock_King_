@@ -45,17 +45,22 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 PlayerVM.PlayerDataToShow.TotalMoney = 10000000;
             }
         }
-        public void setUpdateTime(int time)
-        {
-            SettingDataToShow.UpdateTime = time;
-        }
-        public void setName(string name)
+        public void setPlayerName(string name)
         {
             PlayerVM.PlayerDataToShow.Name = name;
         }
         public void setMoney(long money)
         {
             PlayerVM.PlayerDataToShow.CurMoney = money;
+        }
+        public void setUpdateTime(int time)
+        {
+            SettingDataToShow.UpdateTime = time;
+        }
+        public void NextTurn()
+        {
+            SettingDataToShow.TurnCnt++;
+            PlayerVM.UpdateAIsMoney();
         }
     }
 }

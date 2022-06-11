@@ -20,7 +20,7 @@
 
         <command:GoSettingWindowBtnCommand x:Key="gosettingwindowbtncommand"/>
         <converter:NumConverter x:Key="numconverter"/>
-        
+
     </Window.Resources>
     <Grid Background="{StaticResource bgColor}"
           Height="700" Width="1200"
@@ -417,23 +417,16 @@
                    />
 
             <ListBox Background="#93C47E" 
-                     FontSize="30"
+                     FontSize="45"
                      BorderBrush="#93C47E"
                      FontFamily="../../Fonts\#강원교육모두"
                      HorizontalContentAlignment="Center"
-                     DataContext="{StaticResource gameturnvm}"
+                     x:Name="rank"                   
+                     ItemsSource="{Binding Path=SettingVM.PlayerVM.PlayersDataToShow}"
                      >
-                <ListBoxItem Height="60" Content="1" />
-                <ListBoxItem Height="60" Content="2"/>
-                <ListBoxItem Height="60" Content="3"/>
-                <ListBoxItem Height="60" Content="4"/>
-                <ListBoxItem Height="60" Content="5"/>
-                <ListBoxItem Height="60" Content="6"/>
-                <ListBoxItem Height="60" Content="7"/>
-                <ListBoxItem Height="60" Content="8"/>
-                <ListBoxItem Height="60" Content="9"/>
-                <ListBoxItem Height="60" Content="10"/>
+
             </ListBox>
+
         </StackPanel>
 
     </Grid>
