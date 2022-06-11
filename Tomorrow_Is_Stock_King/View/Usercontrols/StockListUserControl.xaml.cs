@@ -26,6 +26,7 @@ namespace Tomorrow_Is_Stock_King.View.Usercontrol
         public StockListUserControl()
         {
             InitializeComponent();
+            /*
             SeriesCollection = new SeriesCollection
             {
                 new PieSeries
@@ -59,8 +60,9 @@ namespace Tomorrow_Is_Stock_King.View.Usercontrol
             //SeriesCollection[0].Values.Add(5);
 
             DataContext = this;
+            */
         }
-
+/*
         public SeriesCollection SeriesCollection { get; set; }
         private void ListMoneyOnClick(object sender, RoutedEventArgs e)
         {
@@ -84,5 +86,7 @@ namespace Tomorrow_Is_Stock_King.View.Usercontrol
                 }
             }
         }
+    */
     }
+
 }

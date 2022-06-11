@@ -26,15 +26,22 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             client.Dispose();
 
             result = JsonConvert.DeserializeObject<Example>(resultString);
-            if(result.Response.Body.TotalCount == 0)
-            {
-                
-            }
-            else
+            if(result.Response.Body.TotalCount != 0)
             {
                 resultitem = (Item)result.Response.Body.Items.Item[0];
+                //Random random = new Random();
+                //int ran = random.Next(1, 11);
+                //if(ran <= 5)
+                //{
+                //    double num = Convert.ToInt64(resultitem.Clpr) * 1.03;
+                //    resultitem.Clpr = num.ToString();
+                //}
+                //else
+                //{
+                //    double num = Convert.ToInt64(resultitem.Clpr) * 0.97;
+                //    resultitem.Clpr = num.ToString();
+                //}
             }
-            
             
             return resultitem;
 

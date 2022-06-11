@@ -27,6 +27,21 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
 
         public StockVM StockVM { get; set; }
+
+        private SeriesCollection chartseriesCollection;
+        public SeriesCollection ChartSeriesCollection
+        {
+            get { return chartseriesCollection; }
+            set { chartseriesCollection = value; OnPropertyChanged(); }
+        }
+        private SeriesCollection listseriesCollection;
+        public SeriesCollection ListSeriesCollection
+        {
+            get { return listseriesCollection; }
+            set { listseriesCollection = value; OnPropertyChanged(); }
+        }
+        public Func<double, string> XFormatter { get; set; }
+        public Func<double, string> YFormatter { get; set; }
         public GraphVM()
         {
             var gradientBrush = new LinearGradientBrush
@@ -42,15 +57,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             XFormatter = val => new DateTime((long)val).ToString("dd MMM");
             YFormatter = val => val.ToString("C");
 
+            AddListStockData();
         }
-        private SeriesCollection seriesCollection;
-        public SeriesCollection SeriesCollection 
-        {
-            get { return seriesCollection; }
-            set { seriesCollection = value; OnPropertyChanged();  }
-        }
-        public Func<double, string> XFormatter { get; set; }
-        public Func<double, string> YFormatter { get; set; }
         public ZoomingOptions ZoomingMode
         {
             get { return _zoomingMode; }
@@ -87,13 +95,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             return values;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName = null)
-        {
-            if (PropertyChanged != null) PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         public void ChangeData(List<List<Item>> TurnList, int index)
         {
             var gradientBrush = new LinearGradientBrush
@@ -103,7 +104,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             };
             gradientBrush.GradientStops.Add(new GradientStop(Color.FromRgb(33, 148, 241), 0));
             gradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
-            SeriesCollection = new SeriesCollection
+            ChartSeriesCollection = new SeriesCollection
             {
                 new LineSeries
                 {
@@ -114,5 +115,48 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 }
             };
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName = null)
+        {
+            if (PropertyChanged != null) PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void AddListStockData()
+        {
+            List<PieSeries> pieSeries = new List<PieSeries>();
+            ListSeriesCollection = new SeriesCollection
+            {
+                 new PieSeries
+                {
+                    Title = "삼성전자",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(8) },
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title = "카카오",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(6) },
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title = "네이버",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(10) },
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title = "SK하이닉스",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(4) },
+                    DataLabels = true
+                }
+            };
+        }
+        public void RemoveListStockData()
+        {
+
+        }
     }
+
 }
