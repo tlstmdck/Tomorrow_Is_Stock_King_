@@ -45,6 +45,15 @@ namespace Tomorrow_Is_Stock_King.Model
             set { stocks = value; OnPropertyChanged("Stocks"); }
         }
 
+        private long loanMoney;
+
+        public long LoanMoney
+        {
+            get { return loanMoney; }
+            set { loanMoney = value; OnPropertyChanged("LoanMoney"); }
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propName)
         {
@@ -61,6 +70,7 @@ namespace Tomorrow_Is_Stock_King.Model
             StockMoney = 0;
             TotalMoney = 30000000;
             Stocks = new Dictionary<string, int>();
+            LoanMoney = 0;
         }
     }
 }

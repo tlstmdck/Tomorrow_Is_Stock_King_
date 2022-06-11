@@ -36,10 +36,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             PlayersData.Clear();
 
             PlayersData.Add(new Pair(PlayerDataToShow.TotalMoney, PlayerDataToShow.Name));
-            MessageBox.Show(PlayerDataToShow.TotalMoney + " 이름 : " + PlayerDataToShow.Name);
             for (int i = 0; i < AIsDataToShow.Count; i++)
             {
-                MessageBox.Show(AIsDataToShow[i].TotalMoney + " 이름 : " + AIsDataToShow[i].Name);
                 PlayersData.Add(new Pair(AIsDataToShow[i].TotalMoney, AIsDataToShow[i].Name));
             }
             PlayersData = PlayersData.OrderByDescending(x => x.First).ToList();
@@ -66,7 +64,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 {
                     AIsDataToShow[i].TotalMoney = Convert.ToInt64(AIsDataToShow[i].TotalMoney * 0.97);
                 }
-                MessageBox.Show(AIsDataToShow[i].Name + " 돈: " + AIsDataToShow[i].TotalMoney.ToString());
             }
 
             SortPlayers();

@@ -12,7 +12,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values[0] == "")
+            if ((string)values[0] == "")
             {
                 values[0] = "0";
             }

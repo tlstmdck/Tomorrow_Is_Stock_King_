@@ -19,6 +19,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public TurnSkipBtnCommand TurnSkipBtnCommand { get; set; }
         public BuyStockCommand BuyStockCommand { get; set; }
         public SellStockCommand SellStockCommand { get; set; }
+        public RepaymentCommand RepaymentCommand { get; set; }
+        public TakeLoanCommand TakeLoanCommand { get; set; }
         private DateTime date;
         public DateTime Date
         {
@@ -33,6 +35,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             TurnSkipBtnCommand = new TurnSkipBtnCommand(this);
             BuyStockCommand = new BuyStockCommand(this);
             SellStockCommand = new SellStockCommand(this);
+            RepaymentCommand = new RepaymentCommand(this);
+            TakeLoanCommand = new TakeLoanCommand(this);
             StockVM.GetCompanies();
 
             Date = new DateTime(2022, 6, 7);
@@ -72,6 +76,11 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             SettingVM.PlayerVM.PlayerDataToShow.CurMoney += buyCount * long.Parse(StockVM.Item.Clpr);
 
             SettingVM.PlayerVM.PlayerDataToShow.Stocks.Remove(StockVM.Item.ItmsNm);
+        }
+
+        public void TakeLoan()
+        {
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
