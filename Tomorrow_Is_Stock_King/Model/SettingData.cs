@@ -45,11 +45,19 @@ namespace Tomorrow_Is_Stock_King.Model
             }
         }
 
+        private int intformation;
+        public int Information
+        {
+            get { return intformation; }
+            set { intformation = value; OnPropertyChanged("Information"); }
+        }
+
         public SettingData()
         {
             Level = 1;
             UpdateTime = 10;
             TurnCnt = 0;
+            intformation = 3;
         }
     }
 }

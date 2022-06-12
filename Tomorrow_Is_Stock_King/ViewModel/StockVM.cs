@@ -146,7 +146,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 var temp = TurnList[i][index];
                 Item.Clpr = temp.Clpr;
                 Item.ItmsNm = temp.ItmsNm;
-                item.SrtnCd = temp.SrtnCd;
             }
             GraphVM.ChangeData(TurnList, index);
             MessageBox.Show(Item.Clpr + "," + Item.ItmsNm + "," + TurnList.Count + "턴쨰");

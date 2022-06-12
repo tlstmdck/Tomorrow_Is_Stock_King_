@@ -75,6 +75,7 @@
     <Compile Include="ViewModel\Commands\ExitCheckWindowCommands\NoBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\ExitCheckWindowCommands\YesBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\BuyStockCommand.cs" />
+    <Compile Include="ViewModel\Commands\GameMainWindowCommands\GetInformationCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\GoSettingWindowBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\RepaymentCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\SellStockCommand.cs" />
