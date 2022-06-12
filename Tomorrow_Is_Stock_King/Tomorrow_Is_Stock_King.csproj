@@ -95,6 +95,7 @@
     <Compile Include="ViewModel\Commands\UpdateTimeCommand.cs" />
     <Compile Include="ViewModel\Converters\BGMBtnConverter.cs" />
     <Compile Include="ViewModel\Converters\EffectBtnConverter.cs" />
+    <Compile Include="ViewModel\Converters\CompaniesConverter.cs" />
     <Compile Include="ViewModel\Converters\LevelConverter.cs" />
     <Compile Include="ViewModel\Converters\LoanConverter.cs" />
     <Compile Include="ViewModel\Converters\NumConverter.cs" />
@@ -212,7 +213,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModel\Converters\GameMainWindowConvertes\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\informationImage.png" />
     <Resource Include="Images\loanImage.png" />

@@ -54,9 +54,18 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         }
         public void GetCompanies()
         {
-            Companies.Add("삼성전자");
+            //금융
+            Companies.Add("KB금융");
+
+            //IT
             Companies.Add("카카오");
-            Companies.Add("SK하이닉스");
+
+            //제조
+            Companies.Add("삼성전자");
+            //Companies.Add("SK하이닉스");
+
+            //화학
+            Companies.Add("SK이노베이션");
         }
         public void GetStock(string stock_date)  //턴종료마다 발동
         {
