@@ -20,9 +20,14 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public TurnSkipBtnCommand TurnSkipBtnCommand { get; set; }
         public BuyStockCommand BuyStockCommand { get; set; }
         public SellStockCommand SellStockCommand { get; set; }
+        public RepaymentCommand RepaymentCommand { get; set; }
+        public TakeLoanCommand TakeLoanCommand { get; set; }
         public ViewStockListCommand ViewStockListCommand { get; set; }
         public ViewMoneyListCommand ViewMoneyListCommand { get; set; }
         private DateTime date;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public DateTime Date
         {
             get { return date; }
@@ -36,6 +41,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             TurnSkipBtnCommand = new TurnSkipBtnCommand(this);
             BuyStockCommand = new BuyStockCommand(this);
             SellStockCommand = new SellStockCommand(this);
+            RepaymentCommand = new RepaymentCommand(this);
+            TakeLoanCommand = new TakeLoanCommand(this);
             ViewStockListCommand = new ViewStockListCommand(this);
             ViewMoneyListCommand = new ViewMoneyListCommand(this);
             StockVM.GetCompanies();
@@ -102,6 +109,30 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public void TakeLoan(long request)
+        {
+            // 현재 대출금액, 현재금액, 전체금액 증가
+            SettingVM.PlayerVM.PlayerDataToShow.LoanMoney += request;
+            SettingVM.PlayerVM.PlayerDataToShow.CurMoney += request;
+            SettingVM.PlayerVM.PlayerDataToShow.TotalMoney += request;
+            // 현재 대출 가능한 금액
+            SettingVM.PlayerVM.PlayerDataToShow.CurCanTakeLoan -= request;
+        }
+
+        public void RepaymentLoan(long request)
+        {
+            // 현재 대출금액, 현재금액, 전체금액 증가
+            SettingVM.PlayerVM.PlayerDataToShow.LoanMoney -= request;
+            SettingVM.PlayerVM.PlayerDataToShow.CurMoney -= request;
+            SettingVM.PlayerVM.PlayerDataToShow.TotalMoney -= request;
+            // 현재 대출 가능한 금액
+            SettingVM.PlayerVM.PlayerDataToShow.CurCanTakeLoan += request;
+        }
+
+        public void updateCanLoan(bool flag, long request)
+        {
+            SettingVM.PlayerVM.PlayerDataToShow.CanTakeMaxLoan = (long)((SettingVM.PlayerVM.PlayerDataToShow.TotalMoney - SettingVM.PlayerVM.PlayerDataToShow.LoanMoney) * 0.9);
+            SettingVM.PlayerVM.PlayerDataToShow.CurCanTakeLoan = SettingVM.PlayerVM.PlayerDataToShow.CanTakeMaxLoan - SettingVM.PlayerVM.PlayerDataToShow.LoanMoney;
+        }
     }
 }

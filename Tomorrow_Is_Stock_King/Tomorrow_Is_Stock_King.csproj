@@ -76,7 +76,9 @@
     <Compile Include="ViewModel\Commands\ExitCheckWindowCommands\YesBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\BuyStockCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\GoSettingWindowBtnCommand.cs" />
+    <Compile Include="ViewModel\Commands\GameMainWindowCommands\RepaymentCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\SellStockCommand.cs" />
+    <Compile Include="ViewModel\Commands\GameMainWindowCommands\TakeLoanCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\StockListTabCommands\ViewMoneyListCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\StockListTabCommands\ViewStockListCommand.cs" />
     <Compile Include="ViewModel\Commands\TurnSkipBtnCommand.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="ViewModel\Converters\BGMBtnConverter.cs" />
     <Compile Include="ViewModel\Converters\EffectBtnConverter.cs" />
     <Compile Include="ViewModel\Converters\LevelConverter.cs" />
+    <Compile Include="ViewModel\Converters\LoanConverter.cs" />
     <Compile Include="ViewModel\Converters\NumConverter.cs" />
     <Compile Include="ViewModel\Converters\StocktoMoneyConverter.cs" />
     <Compile Include="ViewModel\Converters\UpdateTimeConverter.cs" />

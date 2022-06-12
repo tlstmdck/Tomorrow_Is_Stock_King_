@@ -64,7 +64,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 {
                     AIsDataToShow[i].TotalMoney = Convert.ToInt64(AIsDataToShow[i].TotalMoney * 0.97);
                 }
-
             }
 
             SortPlayers();
