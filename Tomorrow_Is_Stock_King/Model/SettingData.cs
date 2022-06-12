@@ -52,12 +52,30 @@ namespace Tomorrow_Is_Stock_King.Model
             set { intformation = value; OnPropertyChanged("Information"); }
         }
 
+        private Dictionary<int, bool> popUpEvent;
+        public Dictionary<int, bool> PopUpEvent
+        {
+            get { return popUpEvent; }
+            set { popUpEvent = value; }
+        }
+
+
         public SettingData()
         {
             Level = 1;
             UpdateTime = 10;
             TurnCnt = 0;
             intformation = 3;
+            popUpEvent = new Dictionary<int, bool>();
+
+            int turn = 5;
+            Random random = new Random();
+            for(int i = 0;i < 10; i++)
+            {
+                int rand = random.Next(2);
+                bool flag = (rand == 0) ? true : false;
+                PopUpEvent.Add(turn + i * 10, flag);
+            }
         }
     }
 }
