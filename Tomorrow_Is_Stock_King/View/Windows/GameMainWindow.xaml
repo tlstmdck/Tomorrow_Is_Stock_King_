@@ -21,7 +21,6 @@
         <command:GoSettingWindowBtnCommand x:Key="gosettingwindowbtncommand"/>
         <converter:NumConverter x:Key="numconverter"/>
         <converter:StocktoMoneyConverter x:Key="stocktomoneyconverter"/>
-        <converter:LoanConverter x:Key="loanconverter" />
 
     </Window.Resources>
     <Grid Background="{StaticResource bgColor}"
@@ -324,7 +323,7 @@
                             Background="{StaticResource bgColor}"
                             BorderBrush="Black"
                             BorderThickness="3">
-                            <StackPanel HorizontalAlignment="Center">
+                            <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label 
                                         HorizontalContentAlignment="Center"
@@ -332,29 +331,31 @@
                                         Foreground="Black"
                                         FontFamily="../../Fonts\#강원교육모두"
                                         FontWeight="Bold"
-                                        Content="대출한도"/>
+                                        Content="대출한도"
+                                        Margin="50 0 0 0"/>
                                     <Label HorizontalContentAlignment="Center"
                                            FontSize="20"
                                            Foreground="Black"
                                            FontFamily="../../Fonts\#강원교육모두"
                                            FontWeight="Bold"
-                                           Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.TotalMoney,
-                                           Converter={StaticResource loanconverter}}"/>
+                                           Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.CurCanTakeLoan,
+                                           Converter={StaticResource numconverter}}"/>
                                     <Label Content="원"
                                            HorizontalContentAlignment="Center"
                                            FontSize="20"
                                            FontFamily="../../Fonts\#강원교육모두"
                                            HorizontalAlignment="Center"
-                                            />
+                                           />
                                 </StackPanel>
                                 <Canvas>
-                                    <TextBox Background="{StaticResource btnBgColor}"
-                                             Foreground="{StaticResource btnTextColor}"
+                                    <TextBox Background="{StaticResource bgColor}"
+                                             Foreground="#000000"
                                              FontSize="20"
                                              FontFamily="../../Fonts\#강원교육모두"
                                              Cursor="Hand"
                                              x:Name="loan_num"
-                                             Width="200"
+                                             Width="240"
+                                             Margin="50 0 0 0"
                                              Padding="5 0 0 0 "
                                              />
                                     <TextBlock FontFamily="../../Fonts\#강원교육모두"
@@ -362,7 +363,9 @@
                                                VerticalAlignment="Center"
                                                FontSize="20"
                                                IsHitTestVisible="False"
+                                               Margin="50 0 0 0 "
                                                Padding="10 0 0 0"
+                                               Foreground="#000000"
                                                >
                                         <TextBlock.Style>
                                             <Style TargetType="TextBlock">
@@ -386,37 +389,73 @@
                             Background="{StaticResource bgColor}"
                             BorderBrush="Black"
                             BorderThickness="3">
-                            <StackPanel HorizontalAlignment="Center">
-                                <Label 
-                                    HorizontalContentAlignment="Center"
-                                    FontSize="20"
-                                    Foreground="Black"
-                                    FontFamily="../../Fonts\#강원교육모두"
-                                    FontWeight="Bold"
-                                    Content="대출보유량"/>
+                            <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label 
-                                        HorizontalAlignment="Center"
+                                        HorizontalContentAlignment="Center"
                                         FontSize="20"
                                         Foreground="Black"
                                         FontFamily="../../Fonts\#강원교육모두"
                                         FontWeight="Bold"
-                                        x:Name="loanmoney"
-                                        Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.LoanMoney,
-                                        Converter={StaticResource numconverter}}"/>
+                                        Content="대출보유량"
+                                        Margin="50 0 0 0"/>
+                                    <Label HorizontalContentAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="Black"
+                                           FontFamily="../../Fonts\#강원교육모두"
+                                           FontWeight="Bold"
+                                           x:Name="loan_money"
+                                           Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.LoanMoney}"/>
                                     <Label Content="원"
                                            HorizontalContentAlignment="Center"
                                            FontSize="20"
                                            FontFamily="../../Fonts\#강원교육모두"
-                                           />
+                                           HorizontalAlignment="Center"
+                                            />
                                 </StackPanel>
+                                <Canvas>
+                                    <TextBox Background="{StaticResource bgColor}"
+                                             Foreground="#000000"
+                                             FontSize="20"
+                                             FontFamily="../../Fonts\#강원교육모두"
+                                             Cursor="Hand"
+                                             Width="240"
+                                             Margin="50 0 0 0 "
+                                             Padding="5 0 0 0 "
+                                             x:Name="loanrepayment"
+                                             />
+                                    <TextBlock FontFamily="../../Fonts\#강원교육모두"
+                                               Text="상환하실 금액을 적어주세요." 
+                                               VerticalAlignment="Center"
+                                               FontSize="20"
+                                               IsHitTestVisible="False"
+                                               Margin="50 0 0 0"
+                                               Padding="10 0 0 0"
+                                               Foreground="#000000"
+                                               >
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                                <Setter Property="Foreground" Value="{StaticResource btnTextColor}"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=loanrepayment}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Canvas>
                             </StackPanel>
                         </Border>
+                        
                         <Button Margin="355,170,20,450"
                                 Background="{StaticResource btnBgColor}"
                                 Foreground="{StaticResource btnTextColor}"
                                 FontSize="20"
                                 Content="대출"
+                                Command="{Binding TakeLoanCommand}"
+                                CommandParameter="{Binding ElementName=loan_num, Path=Text}"
                                 >
                             <Button.Resources>
                                 <Style TargetType="Border">
@@ -430,7 +469,7 @@
                                 FontSize="20"
                                 Content="상환"
                                 Command="{Binding Path=RepaymentCommand}"
-                                CommandParameter="{Binding ElementName=loanmoney, Path=Content}"
+                                CommandParameter="{Binding ElementName=loanrepayment, Path=Text}"
                                 >
                             <Button.Resources>
                                 <Style TargetType="Border">
@@ -488,15 +527,7 @@
         <StackPanel Orientation="Vertical"
                     Margin="0,0,1065,0">
             
-            <ProgressBar Margin="10,380,0,0"
-                         Height="50"
-                         Minimum="0" 
-                         Maximum="100"                       
-                         Background="{StaticResource bgColor}"
-                         Foreground="{StaticResource btnBgColor}"
-                         x:Name="timer_bar"/>
-            <!--Value=-->
-            <Border Margin="10,3,0,0"
+            <Border Margin="10,440,0,0"
                     CornerRadius="10" 
                     Background="{StaticResource btnBgColor}"
                     Height="50">

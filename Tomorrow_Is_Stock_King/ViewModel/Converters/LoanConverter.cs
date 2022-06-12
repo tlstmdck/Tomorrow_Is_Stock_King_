@@ -8,14 +8,20 @@ using System.Windows.Data;
 
 namespace Tomorrow_Is_Stock_King.ViewModel.Converters
 {
-    internal class LoanConverter : IValueConverter
+    public class LoanConverter : IValueConverter
     {
+        GameTurnVM GameTurnVM { get; set; }
+        public LoanConverter(GameTurnVM vm)
+        {
+            GameTurnVM = vm;
+        }
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            long curMoney = (long)value;
-            if(curMoney > 10000000)
+            long totalMoney = (long)value;
+            long loanMoney = GameTurnVM.SettingVM.PlayerVM.PlayerDataToShow.LoanMoney;
+            if(totalMoney > 10000000)
             {
-                return String.Format("{0:#,0}", (curMoney * 0.9).ToString());
+                return String.Format("{0:#,0}", (totalMoney * 0.9 - loanMoney).ToString());
             }
             else
             {

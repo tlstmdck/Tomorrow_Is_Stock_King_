@@ -15,16 +15,31 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
             GameTurnVM = vm;
         }
 
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            if (parameter == null) return true;
+            if ((string)parameter == "") return false;
+
+            long request = long.Parse((string)parameter);
+            if (request > GameTurnVM.SettingVM.PlayerVM.PlayerDataToShow.CurCanTakeLoan)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public void Execute(object parameter)
         {
-            GameTurnVM.TakeLoan();
+            GameTurnVM.TakeLoan(long.Parse((string)parameter));
         }
     }
 }

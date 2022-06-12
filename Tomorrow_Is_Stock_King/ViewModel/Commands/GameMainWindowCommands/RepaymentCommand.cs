@@ -24,15 +24,15 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
         public bool CanExecute(object parameter)
         {
             if (parameter == null) return true;
+            if ((string)parameter == "") return false;
 
             if (GameTurnVM.SettingVM.PlayerVM.PlayerDataToShow.CurMoney < long.Parse((string)parameter)) return false;
-
             return true;
         }
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            GameTurnVM.RepaymentLoan(long.Parse((string)parameter));
         }
     }
 }

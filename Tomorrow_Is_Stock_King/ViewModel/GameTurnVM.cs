@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Web.UI;
 using Tomorrow_Is_Stock_King.ViewModel.Commands;
 using Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands;
-using Tomorrow_Is_Stock_King.ViewModel.Converters;
 
 namespace Tomorrow_Is_Stock_King.ViewModel
 {
@@ -22,6 +21,9 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public RepaymentCommand RepaymentCommand { get; set; }
         public TakeLoanCommand TakeLoanCommand { get; set; }
         private DateTime date;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public DateTime Date
         {
             get { return date; }
@@ -78,11 +80,30 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             SettingVM.PlayerVM.PlayerDataToShow.Stocks.Remove(StockVM.Item.ItmsNm);
         }
 
-        public void TakeLoan()
+        public void TakeLoan(long request)
         {
-            
+            // 현재 대출금액, 현재금액, 전체금액 증가
+            SettingVM.PlayerVM.PlayerDataToShow.LoanMoney += request;
+            SettingVM.PlayerVM.PlayerDataToShow.CurMoney += request;
+            SettingVM.PlayerVM.PlayerDataToShow.TotalMoney += request;
+            // 현재 대출 가능한 금액
+            SettingVM.PlayerVM.PlayerDataToShow.CurCanTakeLoan -= request;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public void RepaymentLoan(long request)
+        {
+            // 현재 대출금액, 현재금액, 전체금액 증가
+            SettingVM.PlayerVM.PlayerDataToShow.LoanMoney -= request;
+            SettingVM.PlayerVM.PlayerDataToShow.CurMoney -= request;
+            SettingVM.PlayerVM.PlayerDataToShow.TotalMoney -= request;
+            // 현재 대출 가능한 금액
+            SettingVM.PlayerVM.PlayerDataToShow.CurCanTakeLoan += request;
+        }
+
+        public void updateCanLoan(bool flag, long request)
+        {
+            SettingVM.PlayerVM.PlayerDataToShow.CanTakeMaxLoan = (long)((SettingVM.PlayerVM.PlayerDataToShow.TotalMoney - SettingVM.PlayerVM.PlayerDataToShow.LoanMoney) * 0.9);
+            SettingVM.PlayerVM.PlayerDataToShow.CurCanTakeLoan = SettingVM.PlayerVM.PlayerDataToShow.CanTakeMaxLoan - SettingVM.PlayerVM.PlayerDataToShow.LoanMoney;
+        }
     }
 }

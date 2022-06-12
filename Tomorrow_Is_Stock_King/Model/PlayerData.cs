@@ -46,11 +46,24 @@ namespace Tomorrow_Is_Stock_King.Model
         }
 
         private long loanMoney;
-
         public long LoanMoney
         {
             get { return loanMoney; }
             set { loanMoney = value; OnPropertyChanged("LoanMoney"); }
+        }
+
+        private long canTakeMaxLoan;
+        public long CanTakeMaxLoan
+        {
+            get { return canTakeMaxLoan; }
+            set { canTakeMaxLoan = value; OnPropertyChanged("CanTakeMaxLoan"); }
+        }
+
+        private long curCanTakeLoan;
+        public long CurCanTakeLoan
+        {
+            get { return curCanTakeLoan; }
+            set { curCanTakeLoan = value; OnPropertyChanged("CurCanTakeLoan"); }
         }
 
 
@@ -71,6 +84,8 @@ namespace Tomorrow_Is_Stock_King.Model
             TotalMoney = 30000000;
             Stocks = new Dictionary<string, int>();
             LoanMoney = 0;
+            CanTakeMaxLoan = (long)(TotalMoney * 0.9);
+            CurCanTakeLoan = CanTakeMaxLoan;
         }
     }
 }
