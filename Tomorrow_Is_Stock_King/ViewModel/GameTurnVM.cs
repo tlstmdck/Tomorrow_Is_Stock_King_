@@ -51,7 +51,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             Date = Date.AddDays(1);
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
-
         }
         public void NextTurn()
         {
@@ -63,7 +62,11 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             {
                 StockVM.GraphVM.UpdateListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);
             }
-            
+            GetInterest();
+        }
+        private void GetInterest()
+        {
+            SettingVM.PlayerVM.PlayerDataToShow.LoanMoney += (long)(SettingVM.PlayerVM.PlayerDataToShow.LoanMoney * 0.01);
         }
 
         public void BuyStock(string buyCnt)
@@ -104,9 +107,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 SettingVM.PlayerVM.PlayerDataToShow.Stocks[stockName] -= buyCount;      //보유주식에서 판 주식수만큼 제거
                 StockVM.GraphVM.UpdateListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);    //단순 리스트 업데이트
             }
-
-            
-
         }
 
         public void TakeLoan(long request)
