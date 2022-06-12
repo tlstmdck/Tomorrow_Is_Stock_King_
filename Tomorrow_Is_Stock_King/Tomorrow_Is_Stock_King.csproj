@@ -70,6 +70,7 @@
     <Compile Include="Model\SettingData.cs" />
     <Compile Include="Model\SoundData.cs" />
     <Compile Include="Model\StockData.cs" />
+    <Compile Include="Model\TrendsData.cs" />
     <Compile Include="ViewModel\Commands\BGMBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\EffectBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\ExitCheckWindowCommands\NoBtnCommand.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="ViewModel\Converters\LoanConverter.cs" />
     <Compile Include="ViewModel\Converters\NumConverter.cs" />
     <Compile Include="ViewModel\Converters\StocktoMoneyConverter.cs" />
+    <Compile Include="ViewModel\Converters\TrendstoViewConverter.cs" />
     <Compile Include="ViewModel\Converters\UpdateTimeConverter.cs" />
     <Compile Include="ViewModel\GameTurnVM.cs" />
     <Compile Include="ViewModel\GraphVM.cs" />

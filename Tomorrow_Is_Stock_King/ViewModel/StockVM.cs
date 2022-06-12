@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Tomorrow_Is_Stock_King.Model;
 using Tomorrow_Is_Stock_King.View.Usercontrol;
+using Tomorrow_Is_Stock_King.ViewModel.Converters;
 
 namespace Tomorrow_Is_Stock_King.ViewModel
 {
@@ -41,12 +42,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             get { return selectedStock; }
             set { selectedStock = value; GetStockGraph(); }
         }
-        private Tuple<string, double> trendsDataToShow;
-        public Tuple<string, double> TrendsDataToShow
-        {
-            get { return trendsDataToShow; }
-            set { trendsDataToShow = value; OnPropertyChanged("TrendsDataToShow"); }
-        }
+        public TrendsData TrendsDataToShow { get; set; }
         private List<double> stockrateList;
         public List<double> StockrateList
         {
@@ -62,7 +58,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             StockrateList = new List<double>();
             Companies = new ObservableCollection<string>();
             GraphVM = new GraphVM();
-            
+            TrendsDataToShow = new TrendsData();
             Item = new Item() { Clpr = "0", ItmsNm =""};
 
         }
@@ -70,16 +66,32 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         {
             //금융
             Companies.Add("KB금융");
+            Companies.Add("하나금융지주");
+            Companies.Add("우리금융지주");
+            Companies.Add("신한지주");
+            Companies.Add("기업은행");
 
             //IT
+            Companies.Add("삼성전자");
+            Companies.Add("SK하이닉스");
             Companies.Add("카카오");
+            Companies.Add("NAVER");
+            Companies.Add("삼성SDI");
+            
 
             //제조
-            Companies.Add("삼성전자");
-            //Companies.Add("SK하이닉스");
+            Companies.Add("현대제철");
+            Companies.Add("대우건설");
+            Companies.Add("기아");
+            Companies.Add("현대모비스");
+            Companies.Add("GS리테일");
 
             //화학
-            Companies.Add("SK이노베이션");
+            Companies.Add("SK케미칼");
+            Companies.Add("LG화학");
+            Companies.Add("금호석유");
+            Companies.Add("롯데케미칼");
+            Companies.Add("한화솔루션");
         }
         public void GetStock(string stock_date)  //턴종료마다 발동
         {
@@ -179,7 +191,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         private void GetTrendsData()  //주식 증가시 수정필요
         {
             List<double> sum = new List<double>();
-            int index = 1;  //카테고리당 주식 갯수
+            int index = 5;  //카테고리당 주식 갯수
             for (int i = 1; i < 5; i++)
             {
                 double sum_num = 0;
@@ -194,20 +206,20 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             switch (companyindex)
             {
                 case 1:
-                    TrendsDataToShow = new Tuple<string, double>("금융", sum[companyindex-1]);
-                    MessageBox.Show(TrendsDataToShow.Item1);
+                    TrendsDataToShow.TrendsDataToShow_Name = "금융";
+                    TrendsDataToShow.TrendsDataToShow_Rate = sum[companyindex - 1];
                     break;
                 case 2:
-                    TrendsDataToShow = new Tuple<string, double>("IT", sum[companyindex - 1]);
-                    MessageBox.Show(TrendsDataToShow.Item1);
+                    TrendsDataToShow.TrendsDataToShow_Name = "IT";
+                    TrendsDataToShow.TrendsDataToShow_Rate = sum[companyindex - 1];
                     break;
                 case 3:
-                    TrendsDataToShow = new Tuple<string, double>("제조", sum[companyindex - 1]);
-                    MessageBox.Show(TrendsDataToShow.Item1);
+                    TrendsDataToShow.TrendsDataToShow_Name = "제조";
+                    TrendsDataToShow.TrendsDataToShow_Rate = sum[companyindex - 1];
                     break;
                 case 4:
-                    TrendsDataToShow = new Tuple<string, double>("화학", sum[companyindex - 1]);
-                    MessageBox.Show(TrendsDataToShow.Item1);
+                    TrendsDataToShow.TrendsDataToShow_Name = "화학";
+                    TrendsDataToShow.TrendsDataToShow_Rate = sum[companyindex - 1];
                     break;
                 default:
                     break;
