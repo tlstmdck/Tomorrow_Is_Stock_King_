@@ -149,6 +149,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             if(ListSeriesCollection.Count > 0)
             {
                 ListSeriesCollection.RemoveAt(index);
+                StrList.Remove(itemnms);
             }
         }
         public void UpdateListStockData(Dictionary<string, int> stocks)
