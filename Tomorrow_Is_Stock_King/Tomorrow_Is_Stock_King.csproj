@@ -234,5 +234,11 @@
     <Resource Include="Images\Icons\mainTapIcon.png" />
     <Resource Include="Images\Icons\SettingIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FireD.png" />
+    <Resource Include="Images\NewInvestI.png" />
+    <Resource Include="Images\NewTechI.png" />
+    <Resource Include="Images\TechLeakD.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

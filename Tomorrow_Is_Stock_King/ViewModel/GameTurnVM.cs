@@ -7,10 +7,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.UI;
 using Tomorrow_Is_Stock_King.Model;
+using Tomorrow_Is_Stock_King.View.Windows;
 using Tomorrow_Is_Stock_King.ViewModel.Commands;
 using Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands;
 using Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands.StockListTabCommands;
-using Tomorrow_Is_Stock_King.ViewModel.Converters;
 
 namespace Tomorrow_Is_Stock_King.ViewModel
 {
@@ -57,10 +57,18 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         }
         public void NextTurn()
         {
+            // 턴증가
+            SettingVM.SettingDataToShow.TurnCnt++;
+
             Date = Date.AddDays(1);
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             StockVM.SelectedStock = StockVM.SelectedStock;
-            SettingVM.SettingDataToShow.TurnCnt++;
+            
+            if(SettingVM.SettingDataToShow.TurnCnt % 10 == 5)
+            {
+                PopUpEvent();
+            }
+
             UpdateMoney();
             SettingVM.PlayerVM.UpdateAIsMoney();
             if (SettingVM.PlayerVM.PlayerDataToShow.Stocks.Count > 0)
@@ -69,6 +77,18 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             }
             GetInterest();
         }
+
+        private void PopUpEvent()
+        {
+            bool flag = SettingVM.SettingDataToShow.PopUpEvent[SettingVM.SettingDataToShow.TurnCnt];
+            Random random = new Random();
+            SettingVM.SettingDataToShow.EventTarget = random.Next(1, 21);
+            SettingVM.SettingDataToShow.EventNum = random.Next(0, 4);
+            SettingVM.setCompany();
+            EventPopupWindow eventpopupwindow = new EventPopupWindow();
+            eventpopupwindow.ShowDialog();
+        }
+
         private void UpdateMoney()
         {
             long sum = 0;
