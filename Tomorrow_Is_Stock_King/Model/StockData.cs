@@ -9,12 +9,6 @@ namespace Tomorrow_Is_Stock_King.Model
 {
     public class Item : INotifyPropertyChanged
     {
-        private string srtnCd;
-        public string SrtnCd
-        {
-            get { return srtnCd; }
-            set { srtnCd = value; OnPropertyChanged("SrtnCd"); }
-        }
         private string clpr;
         public string Clpr
         {

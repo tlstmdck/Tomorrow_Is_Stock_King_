@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tomorrow_Is_Stock_King.Model;
 using Tomorrow_Is_Stock_King.ViewModel.Commands;
+using Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands;
 using Tomorrow_Is_Stock_King.ViewModel.Commands.StartSettingWindowCommands;
 
 namespace Tomorrow_Is_Stock_King.ViewModel
@@ -16,6 +17,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public LevelBtnCommand LevelBtnCommand { get; set; }
         public UpdateTimeCommand UpdateTimeCommand { get; set; }
         public StartBtnCommand StartBtnCommand { get; set; }
+        public GetInformationCommand GetInformationCommand { get; set; }
 
         public SettingVM()
         {
@@ -24,6 +26,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             LevelBtnCommand = new LevelBtnCommand(this);
             UpdateTimeCommand = new UpdateTimeCommand(this);
             StartBtnCommand = new StartBtnCommand(this);
+            GetInformationCommand = new GetInformationCommand(this);
         }
 
         public void setLevel(int lev)
@@ -56,11 +59,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public void setUpdateTime(int time)
         {
             SettingDataToShow.UpdateTime = time;
-        }
-        public void NextTurn()
-        {
-            SettingDataToShow.TurnCnt++;
-            PlayerVM.UpdateAIsMoney();
         }
     }
 }

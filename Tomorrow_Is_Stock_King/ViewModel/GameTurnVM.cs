@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.UI;
+using Tomorrow_Is_Stock_King.Model;
 using Tomorrow_Is_Stock_King.ViewModel.Commands;
 using Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands;
 using Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands.StockListTabCommands;
@@ -57,12 +58,34 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             Date = Date.AddDays(1);
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             StockVM.SelectedStock = StockVM.SelectedStock;
-            SettingVM.NextTurn();
-            if(SettingVM.PlayerVM.PlayerDataToShow.Stocks.Count > 0)
+            SettingVM.SettingDataToShow.TurnCnt++;
+            UpdateMoney();
+            SettingVM.PlayerVM.UpdateAIsMoney();
+            if (SettingVM.PlayerVM.PlayerDataToShow.Stocks.Count > 0)
             {
                 StockVM.GraphVM.UpdateListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);
             }
             GetInterest();
+        }
+        private void UpdateMoney()
+        {
+            long sum = 0;
+            foreach(KeyValuePair<string, int> each in SettingVM.PlayerVM.PlayerDataToShow.Stocks)
+            {
+                string companyName = each.Key;
+                int ownCnt = each.Value;
+
+                foreach(Item item in StockVM.TurnList[SettingVM.SettingDataToShow.TurnCnt + 1])
+                {
+                    if(item.ItmsNm == companyName)
+                    {
+                        sum += long.Parse(item.Clpr) * (long)ownCnt;
+                        break;
+                    }
+                }
+            }
+            SettingVM.PlayerVM.PlayerDataToShow.LoanMoney = sum;
+            SettingVM.PlayerVM.PlayerDataToShow.TotalMoney = SettingVM.PlayerVM.PlayerDataToShow.LoanMoney + SettingVM.PlayerVM.PlayerDataToShow.CurMoney;
         }
         private void GetInterest()
         {

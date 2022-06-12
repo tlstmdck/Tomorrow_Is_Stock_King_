@@ -38,7 +38,7 @@
                 </TabItem.Header>
 
                 <Grid>
-                    <TabControl Margin="30,100,454,314"
+                    <TabControl Margin="30,116,454,314"
                               TabStripPlacement="Left" 
                               Background="{StaticResource bgColor}"
                               FontFamily="../../Fonts\#강원교육모두"
@@ -46,19 +46,20 @@
                               BorderBrush="Black">
                         <TabItem Background="{StaticResource bgColor}"
                                  Header="금융"
-                                 Height="60"
+                                 Height="65"
                                  Width="80"
                                  BorderBrush="Black">
                             <ListBox Background="{StaticResource bgColor}"
                                      HorizontalContentAlignment="Center"
                                      BorderBrush="{StaticResource bgColor}"
                                      ItemsSource="{Binding Path=StockVM.Companies}"
-                                     SelectedItem="{Binding Path=StockVM.SelectedStock}">
+                                     SelectedItem="{Binding Path=StockVM.SelectedStock}"
+                                     FontSize="25">
                             </ListBox>
                         </TabItem>
                         <TabItem Background="{StaticResource bgColor}"
                                  Header="IT"
-                                 Height="60"
+                                 Height="65"
                                  Width="80"
                                  BorderBrush="Black"
                                  BorderThickness="3">
@@ -84,7 +85,7 @@
                         </TabItem>
                         <TabItem Background="{StaticResource bgColor}"
                                  Header="건설"
-                                 Height="60"
+                                 Height="65"
                                  Width="80"
                                  BorderBrush="Black">
                             <ListBox Background="{StaticResource bgColor}"
@@ -109,7 +110,7 @@
                         </TabItem>
                         <TabItem Background="{StaticResource bgColor}"
                                  Header="화학"
-                                 Height="60"
+                                 Height="65"
                                  Width="80"
                                  BorderBrush="Black">
                             <ListBox Background="{StaticResource bgColor}"
@@ -133,11 +134,40 @@
                             </ListBox>
                         </TabItem>
                     </TabControl>
-                    <Border Margin="380,10,10,610"
+
+                    <Border Margin="30,10,454,610"
                             CornerRadius="10" 
                             Background="{StaticResource btnBgColor}">
                         <StackPanel>
-                            <Label Content="자산"
+                            <Label Content="전체 자산(주식가치 + 소지금)"
+                                   FontSize="22"
+                                   FontFamily="../../Fonts\#강원교육모두"
+                                   Foreground="{StaticResource btnTextColor}"
+                                   HorizontalAlignment="Center"
+                                   />
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                        DataContext="{StaticResource gameturnvm}">
+                                <Label HorizontalContentAlignment="Center"
+                                       FontFamily="../../Fonts\#강원교육모두"
+                                       FontSize="22"
+                                       Foreground="{StaticResource btnTextColor}"
+                                       Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.TotalMoney, Converter={StaticResource numconverter}}"
+                                       />
+                                <Label Content="원" 
+                                       FontFamily="../../Fonts\#강원교육모두"
+                                       FontSize="22"
+                                       Foreground="{StaticResource btnTextColor}"
+                                       />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Margin="414,10,10,610"
+                            CornerRadius="10" 
+                            Background="{StaticResource btnBgColor}">
+                        <StackPanel>
+                            <Label Content="소지금"
                                    FontSize="22"
                                    FontFamily="../../Fonts\#강원교육모두"
                                    Foreground="{StaticResource btnTextColor}"
@@ -148,8 +178,8 @@
                                 <Label HorizontalContentAlignment="Center"
                                        FontFamily="../../Fonts\#강원교육모두"
                                        FontSize="22"
-                                       x:Name="curmoney"
                                        Foreground="{StaticResource btnTextColor}"
+                                       x:Name="curmoney"
                                        Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.CurMoney, Converter={StaticResource numconverter}}"
                                        />
                                 <Label Content="원" 
@@ -245,13 +275,29 @@
                             BorderBrush="Black"
                             BorderThickness="3"
                             HorizontalAlignment="Center" Width="366">
-                        <Label Margin="100"
-                                HorizontalContentAlignment="Center"
-                                FontFamily="../../Fonts\#강원교육모두"
-                                FontSize="22"
-                                Foreground="Black"
-                                Content="동향">
-                        </Label>
+                        <StackPanel>
+                            <Label HorizontalAlignment="Center"
+                                   FontFamily="../../Fonts\#강원교육모두"
+                                   FontSize="40"
+                                   Content="동향"
+                                   Margin="0 10 0 0"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Padding="40 20 0 0 "
+                                       FontFamily="../../Fonts\#강원교육모두"
+                                       FontSize="40"
+                                       Content="종목 : " />
+                                <Label FontFamily="../../Fonts\#강원교육모두"
+                                       FontSize="40"
+                                       Padding="0 20 0 0 "
+                                       Content="SK이노베이션"/>
+                            </StackPanel>
+                            <Label Content="약간 불안정함"
+                                   HorizontalAlignment="Center"
+                                   FontSize="40"
+                                   FontFamily="../../Fonts\#강원교육모두"
+                                   Margin="0 30 0 0 "
+                                   Padding="20 0 20 0"/>
+                        </StackPanel>
                     </Border>
                     <Border Margin="414,116,10,186"
                             CornerRadius="10" 
@@ -543,10 +589,19 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Label
-                        HorizontalContentAlignment="Center"
-                        FontSize="15"
-                        Content="남은 정보갯수 : 3"/>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                        <Label
+                            HorizontalContentAlignment="Center"
+                            FontSize="20"
+                            FontFamily="../../Fonts\#강원교육모두"
+                            Content="남은 정보갯수 :"/>
+                        <Label
+                            HorizontalContentAlignment="Center"
+                            FontSize="20"
+                            FontFamily="../../Fonts\#강원교육모두"
+                            Content="{Binding SettingVM.SettingDataToShow.Information}"/>
+                    </StackPanel>
                 </StackPanel>
             </TabItem>
         </TabControl>
