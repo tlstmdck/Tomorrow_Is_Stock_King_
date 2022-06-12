@@ -567,7 +567,8 @@
                         Background="{StaticResource btnBgColor}"
                         Foreground="{StaticResource btnTextColor}"
                         FontFamily="../../Fonts\#강원교육모두"
-                        FontSize="50" Margin="150,0,150,0" Height="150">
+                        FontSize="50" Margin="150,0,150,0" Height="150"
+                        Command="{Binding Path=SettingVM.GetInformationCommand}">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10" />

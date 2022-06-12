@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
@@ -23,10 +24,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
 
         public bool CanExecute(object parameter)
         {
-            if (parameter == null)
-            {
-                return true;
-            }
             if(SettingVM.SettingDataToShow.Information == 0)
             {
                 return false;
@@ -37,6 +34,16 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
         public void Execute(object parameter)
         {
             SettingVM.SettingDataToShow.Information--;
+
+            foreach(KeyValuePair<int, bool> pair in SettingVM.SettingDataToShow.PopUpEvent)
+            {
+                if(pair.Key > SettingVM.SettingDataToShow.TurnCnt)
+                {
+                    string eventStr = pair.Value ? "떡상합니다." : "떡락합니다.";
+                    MessageBox.Show(pair.Key - SettingVM.SettingDataToShow.TurnCnt + "턴 뒤 " + eventStr);
+                    break;
+                }
+            }
         }
     }
 }
