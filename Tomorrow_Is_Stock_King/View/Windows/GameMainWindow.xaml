@@ -54,10 +54,8 @@
                             <ListBox Background="{StaticResource bgColor}"
                                      HorizontalContentAlignment="Center"
                                      BorderBrush="{StaticResource bgColor}"
-                                     ItemsSource="{Binding Path=StockVM.Companies}"
                                      SelectedItem="{Binding Path=StockVM.SelectedStock}"
                                      FontSize="25">
-                                     SelectedItem="{Binding Path=StockVM.SelectedStock}">
                                 <ListBox.ItemsSource>
                                     <MultiBinding Converter="{StaticResource companiesconverter}">
                                         <Binding Path="StockVM.Companies"/>
