@@ -22,7 +22,8 @@
         <converter:NumConverter x:Key="numconverter"/>
         <converter:CompaniesConverter x:Key="companiesconverter"/>
         <converter:StocktoMoneyConverter x:Key="stocktomoneyconverter"/>
-    
+        <converter:TrendstoViewConverter x:Key="trendstoviewconverter"/>
+
     </Window.Resources>
     <Grid Background="{StaticResource bgColor}"
           Height="700" Width="1200"
@@ -274,9 +275,9 @@
                                 <Label FontFamily="../../Fonts\#강원교육모두"
                                        FontSize="40"
                                        Padding="0 20 0 0 "
-                                       Content="SK이노베이션"/>
+                                       Content="{Binding StockVM.TrendsDataToShow.TrendsDataToShow_Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                             </StackPanel>
-                            <Label Content="약간 불안정함"
+                            <Label Content="{Binding StockVM.TrendsDataToShow.TrendsDataToShow_Rate, Converter={StaticResource trendstoviewconverter},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                    HorizontalAlignment="Center"
                                    FontSize="40"
                                    FontFamily="../../Fonts\#강원교육모두"
