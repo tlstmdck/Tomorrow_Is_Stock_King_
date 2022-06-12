@@ -82,13 +82,30 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         {
             bool flag = SettingVM.SettingDataToShow.PopUpEvent[SettingVM.SettingDataToShow.TurnCnt];
             Random random = new Random();
-            SettingVM.SettingDataToShow.EventTarget = random.Next(1, 21);
+            SettingVM.SettingDataToShow.EventTarget = random.Next(0, StockVM.Companies.Count);
             SettingVM.SettingDataToShow.EventNum = random.Next(0, 4);
-            SettingVM.setCompany();
+
+            UpdateEventStock(SettingVM.SettingDataToShow.EventTarget, SettingVM.SettingDataToShow.EventNum);
+            string EventCompany = StockVM.Companies[SettingVM.SettingDataToShow.EventTarget];
+            SettingVM.setCompany(EventCompany);
+            StockVM.GetStockGraph();
             EventPopupWindow eventpopupwindow = new EventPopupWindow();
             eventpopupwindow.ShowDialog();
         }
+        private void UpdateEventStock(int eventTarget, int eventNum)
+        {
+            Random random = new Random();
+            Double Eventrate = random.NextDouble() * (0.3 - 0.2) + 0.2;
+            if(eventNum < 2)    //증가 이벤트
+            {
+                StockVM.TurnList[StockVM.TurnList.Count - 1][eventTarget].Clpr = ((int)(Double.Parse(StockVM.TurnList[StockVM.TurnList.Count - 1][eventTarget].Clpr) + Double.Parse(StockVM.TurnList[StockVM.TurnList.Count - 1][eventTarget].Clpr) * Eventrate)).ToString();
 
+            }
+            else        //감소 이벤트
+            {
+                StockVM.TurnList[StockVM.TurnList.Count - 1][eventTarget].Clpr = ((int)(Double.Parse(StockVM.TurnList[StockVM.TurnList.Count - 1][eventTarget].Clpr) - Double.Parse(StockVM.TurnList[StockVM.TurnList.Count - 1][eventTarget].Clpr) * Eventrate)).ToString();
+            }
+        }
         private void UpdateMoney()
         {
             long sum = 0;

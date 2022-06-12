@@ -59,39 +59,39 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             Companies = new ObservableCollection<string>();
             GraphVM = new GraphVM();
             TrendsDataToShow = new TrendsData();
-            Item = new Item() { Clpr = "0", ItmsNm =""};
+            Item = new Item() { Clpr = "0", ItmsNm = "", Rate = "0" };
 
         }
         public void GetCompanies()
         {
             //금융
             Companies.Add("KB금융");
-            Companies.Add("하나금융지주");
-            Companies.Add("우리금융지주");
-            Companies.Add("신한지주");
-            Companies.Add("기업은행");
+            //Companies.Add("하나금융지주");
+            //Companies.Add("우리금융지주");
+            //Companies.Add("신한지주");
+            //Companies.Add("기업은행");
 
             //IT
             Companies.Add("삼성전자");
-            Companies.Add("SK하이닉스");
-            Companies.Add("카카오");
-            Companies.Add("NAVER");
-            Companies.Add("삼성SDI");
+            //Companies.Add("SK하이닉스");
+            //Companies.Add("카카오");
+            //Companies.Add("NAVER");
+            //Companies.Add("삼성SDI");
             
 
             //제조
             Companies.Add("현대제철");
-            Companies.Add("대우건설");
-            Companies.Add("기아");
-            Companies.Add("현대모비스");
-            Companies.Add("GS리테일");
+            //Companies.Add("대우건설");
+            //Companies.Add("기아");
+            //Companies.Add("현대모비스");
+            //Companies.Add("GS리테일");
 
             //화학
             Companies.Add("SK케미칼");
-            Companies.Add("LG화학");
-            Companies.Add("금호석유");
-            Companies.Add("롯데케미칼");
-            Companies.Add("한화솔루션");
+            //Companies.Add("LG화학");
+            //Companies.Add("금호석유");
+            //Companies.Add("롯데케미칼");
+            //Companies.Add("한화솔루션");
         }
         public void GetStock(string stock_date)  //턴종료마다 발동
         {
@@ -118,7 +118,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             if (RealStockTurnList.Count == 2)
             {
                 TurnList.Add(temp);
-                GetStockRateList(RealStockTurnList, clprnull);
+                GetStockRateList(RealStockTurnList, clprnull, 0);
             }
             // 실제 주식데이터가지고 계산
             if (RealStockTurnList.Count > 2)
@@ -155,7 +155,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
                 }
                 StockrateList.Clear();
-                GetStockRateList(RealStockTurnList, clprnull);
+                GetStockRateList(RealStockTurnList, clprnull, 0);
                 GetTrendsData();
                 
             }
@@ -164,7 +164,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             StockDataToShow.Clear();
         }
 
-        private void GetStockRateList(List<List<Item>> realStockTurnList, int clprnull)
+        private void GetStockRateList(List<List<Item>> realStockTurnList, int clprnull, int index)
         {
             Random rand = new Random();
             for (int i=0; i<Companies.Count; i++)
@@ -178,9 +178,9 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 }
                 else        //평일
                 {
-                    Stocknum1 = Double.Parse(RealStockTurnList[RealStockTurnList.Count - 2][i].Clpr);
-                    Stocknum2 = Double.Parse(RealStockTurnList[RealStockTurnList.Count - 1][i].Clpr);
-                    Stocknum3 = Stocknum1 - Stocknum2;
+                    Stocknum1 = Double.Parse(RealStockTurnList[RealStockTurnList.Count - (index + 2)][i].Clpr);
+                    Stocknum2 = Double.Parse(RealStockTurnList[RealStockTurnList.Count - (index + 1)][i].Clpr);
+                    Stocknum3 = Stocknum2 - Stocknum1;
 
                     StockrateList.Add(Stocknum3 / Stocknum1);
 
@@ -191,7 +191,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         private void GetTrendsData()  //주식 증가시 수정필요
         {
             List<double> sum = new List<double>();
-            int index = 5;  //카테고리당 주식 갯수
+            int index = Companies.Count/4;  //카테고리당 주식 갯수
             for (int i = 1; i < 5; i++)
             {
                 double sum_num = 0;
@@ -240,8 +240,12 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 Item.Clpr = temp.Clpr;
                 Item.ItmsNm = temp.ItmsNm;
             }
+            double Stocknum1 = Double.Parse(TurnList[TurnList.Count - 2][index].Clpr);
+            double Stocknum2 = Double.Parse(TurnList[TurnList.Count - 1][index].Clpr);
+            double Stocknum3 = Stocknum2 - Stocknum1;
+            Item.Rate = String.Format("{0:0.00}", ((Stocknum3 / Stocknum1) * 100)) + "%";
             GraphVM.ChangeData(TurnList, index);
-            MessageBox.Show(Item.Clpr + "," + Item.ItmsNm + "," + TurnList.Count + "턴쨰");
+            //MessageBox.Show(Item.Clpr + "," + Item.ItmsNm + "," + TurnList.Count + "턴쨰");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -21,7 +21,12 @@ namespace Tomorrow_Is_Stock_King.Model
             get { return itmsNm; }
             set { itmsNm = value; OnPropertyChanged("ItmsNm"); }
         }
-
+        private string rate;
+        public string Rate
+        {
+            get { return rate; }
+            set { rate = value; OnPropertyChanged("Rate"); }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propName)
         {

@@ -267,8 +267,9 @@
                                    FontSize="40"
                                    Content="동향"
                                    Margin="0 10 0 0"/>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Padding="40 20 0 0 "
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+                                <Label Padding="0 20 0 0 "
                                        FontFamily="../../Fonts\#강원교육모두"
                                        FontSize="40"
                                        Content="종목 : " />
@@ -312,7 +313,7 @@
                                             HorizontalAlignment="Right"
                                             Background="{StaticResource bgColor}">
                                     <Label Content="증감률 :"/>
-                                    <Label Content="구현바람" 
+                                    <Label Content="{Binding StockVM.Item.Rate}" 
                                            Panel.ZIndex="10" 
                                            Foreground="Black" 
                                            />

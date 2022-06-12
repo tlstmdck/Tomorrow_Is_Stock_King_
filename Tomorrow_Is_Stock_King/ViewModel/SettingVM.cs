@@ -61,14 +61,14 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             SettingDataToShow.UpdateTime = time;
         }
 
-        public void setCompany()
+        public void setCompany(string EventCompany)
         {
             //SettingDataToShow._Events[SettingDataToShow.EventNum].Title = SettingDataToShow._Events[SettingDataToShow.EventNum].Title.Insert(0, SettingDataToShow.EventTarget.ToString() + " ");
             //SettingDataToShow._Events[SettingDataToShow.EventNum].Content = SettingDataToShow._Events[SettingDataToShow.EventNum].Content.Insert(0, SettingDataToShow.EventTarget.ToString() + " ");
 
             SettingDataToShow.EventImg = SettingDataToShow._Events[SettingDataToShow.EventNum].ImgSrc;
-            SettingDataToShow.EventTitle = SettingDataToShow.EventTarget.ToString() + " " + SettingDataToShow._Events[SettingDataToShow.EventNum].Title;
-            SettingDataToShow.EventContent = SettingDataToShow.EventTarget.ToString() + " " + SettingDataToShow._Events[SettingDataToShow.EventNum].Content;
+            SettingDataToShow.EventTitle = EventCompany.ToString() + " " + SettingDataToShow._Events[SettingDataToShow.EventNum].Title;
+            SettingDataToShow.EventContent = EventCompany.ToString() + " " + SettingDataToShow._Events[SettingDataToShow.EventNum].Content;
         }
     }
 }
