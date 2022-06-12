@@ -20,6 +20,7 @@
 
         <command:GoSettingWindowBtnCommand x:Key="gosettingwindowbtncommand"/>
         <converter:NumConverter x:Key="numconverter"/>
+        <converter:CompaniesConverter x:Key="companiesconverter"/>
         <converter:StocktoMoneyConverter x:Key="stocktomoneyconverter"/>
     
     </Window.Resources>
@@ -48,6 +49,7 @@
                                  Header="금융"
                                  Height="65"
                                  Width="80"
+                                 x:Name="finance"
                                  BorderBrush="Black">
                             <ListBox Background="{StaticResource bgColor}"
                                      HorizontalContentAlignment="Center"
@@ -55,82 +57,67 @@
                                      ItemsSource="{Binding Path=StockVM.Companies}"
                                      SelectedItem="{Binding Path=StockVM.SelectedStock}"
                                      FontSize="25">
+                                     SelectedItem="{Binding Path=StockVM.SelectedStock}">
+                                <ListBox.ItemsSource>
+                                    <MultiBinding Converter="{StaticResource companiesconverter}">
+                                        <Binding Path="StockVM.Companies"/>
+                                        <Binding ElementName="finance" Path="Header"/>
+                                    </MultiBinding>
+                                </ListBox.ItemsSource>
                             </ListBox>
                         </TabItem>
                         <TabItem Background="{StaticResource bgColor}"
                                  Header="IT"
                                  Height="65"
                                  Width="80"
-                                 BorderBrush="Black"
-                                 BorderThickness="3">
-                            <ListBox Background="{StaticResource bgColor}"
-                                     HorizontalContentAlignment="Center"
-                                     BorderBrush="{StaticResource bgColor}">
-                                <ListBoxItem Content="IT1"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="IT2"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="IT3"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="IT4"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="IT5"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                            </ListBox>
-                        </TabItem>
-                        <TabItem Background="{StaticResource bgColor}"
-                                 Header="건설"
-                                 Height="65"
-                                 Width="80"
+                                 x:Name="IT"
                                  BorderBrush="Black">
                             <ListBox Background="{StaticResource bgColor}"
                                      HorizontalContentAlignment="Center"
-                                     BorderBrush="{StaticResource bgColor}">
-                                <ListBoxItem Content="건설1"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="건설2"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="건설3"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="건설4"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="건설5"
-                                             Height="40"
-                                             BorderBrush="Black"/>
+                                     BorderBrush="{StaticResource bgColor}"
+                                     SelectedItem="{Binding Path=StockVM.SelectedStock}">
+                                <ListBox.ItemsSource>
+                                    <MultiBinding Converter="{StaticResource companiesconverter}">
+                                        <Binding Path="StockVM.Companies"/>
+                                        <Binding ElementName="IT" Path="Header"/>
+                                    </MultiBinding>
+                                </ListBox.ItemsSource>
+                            </ListBox>
+                        </TabItem>
+                        <TabItem Background="{StaticResource bgColor}"
+                                 Header="제조"
+                                 Height="60"
+                                 Width="80"
+                                 x:Name="produce"
+                                 BorderBrush="Black">
+                            <ListBox Background="{StaticResource bgColor}"
+                                     HorizontalContentAlignment="Center"
+                                     BorderBrush="{StaticResource bgColor}"
+                                     SelectedItem="{Binding Path=StockVM.SelectedStock}">
+                                <ListBox.ItemsSource>
+                                    <MultiBinding Converter="{StaticResource companiesconverter}">
+                                        <Binding Path="StockVM.Companies"/>
+                                        <Binding ElementName="produce" Path="Header"/>
+                                    </MultiBinding>
+                                </ListBox.ItemsSource>
                             </ListBox>
                         </TabItem>
                         <TabItem Background="{StaticResource bgColor}"
                                  Header="화학"
                                  Height="65"
                                  Width="80"
+                                 x:Name="chemical"
                                  BorderBrush="Black">
                             <ListBox Background="{StaticResource bgColor}"
                                      HorizontalContentAlignment="Center"
-                                     BorderBrush="{StaticResource bgColor}">
-                                <ListBoxItem Content="화학1"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="화학2"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="화학3"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="화학4"
-                                             Height="40"
-                                             BorderBrush="Black"/>
-                                <ListBoxItem Content="화학5"
-                                             Height="40"
-                                             BorderBrush="Black"/>
+                                     BorderBrush="{StaticResource bgColor}"
+                                     SelectedItem="{Binding Path=StockVM.SelectedStock}">
+                                <ListBox.ItemsSource>
+                                    <MultiBinding Converter="{StaticResource companiesconverter}">
+                                        <Binding Path="StockVM.Companies"/>
+                                        <Binding ElementName="chemical" Path="Header"/>
+                                    </MultiBinding>
+                                </ListBox.ItemsSource>
                             </ListBox>
                         </TabItem>
                     </TabControl>
