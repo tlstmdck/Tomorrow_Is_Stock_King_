@@ -216,7 +216,7 @@
                             <Label.Content>
                                 <MultiBinding Converter="{StaticResource stocktomoneyconverter}">
                                     <Binding ElementName="stock_num" Path="Text"/>
-                                    <Binding ElementName="stock_clpr" Path="Text"/>
+                                    <Binding ElementName="stock_clpr" Path="Content"/>
                                     <Binding ElementName="curmoney" Path="Content"/>
                                 </MultiBinding>
                             </Label.Content>
@@ -291,7 +291,32 @@
                             BorderThickness="3"
                             HorizontalAlignment="Center" Width="426">
                         <Grid>
-                            <TextBox x:Name="stock_clpr" Text="{Binding StockVM.Item.Clpr}" Panel.ZIndex="10" Foreground="Black" Margin="0,0,0,365"/>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" 
+                                            HorizontalAlignment="Right"
+                                            Background="{StaticResource bgColor}">
+                                    <Label Content="{Binding StockVM.Item.ItmsNm}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" 
+                                            HorizontalAlignment="Right"
+                                            Background="{StaticResource bgColor}">
+                                    <Label Content="주식가격 :"/>
+                                    <Label x:Name="stock_clpr" 
+                                           Content="{Binding StockVM.Item.Clpr}" 
+                                           Panel.ZIndex="10" 
+                                           Foreground="Black" 
+                                           />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" 
+                                            HorizontalAlignment="Right"
+                                            Background="{StaticResource bgColor}">
+                                    <Label Content="증감률 :"/>
+                                    <Label Content="구현바람" 
+                                           Panel.ZIndex="10" 
+                                           Foreground="Black" 
+                                           />
+                                </StackPanel>
+                            </StackPanel>
                             <uc:StockGraphChartUserControl x:Name="myUC1" Margin="0,26,0,0"/>
                         </Grid>
                         
