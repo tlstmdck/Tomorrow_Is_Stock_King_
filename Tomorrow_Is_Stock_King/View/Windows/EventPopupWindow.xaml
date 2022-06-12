@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.View.Windows"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="EventPopUpWindow" Height="515.96" Width="400">
     <Window.Resources>
         <SolidColorBrush x:Key="bgColor"
@@ -16,7 +17,8 @@
     </Window.Resources>
 
     <Grid Width="400" Height="500"
-          Background="{StaticResource bgColor}">
+          Background="{StaticResource bgColor}"
+          DataContext="{StaticResource gameturnvm}">
 
         <Label Content="JB뉴스"
                FontSize="40"
@@ -37,10 +39,10 @@
 
             <Image Height="150" 
                    Width="270"
-                   />
+                   Source="{Binding Path=SettingVM.SettingDataToShow.EventImg}"/>
         </Border>
 
-        <TextBlock Text="00전자 구미공장에서 화재"
+        <TextBlock Text="{Binding Path=SettingVM.SettingDataToShow.EventTitle}"
                    FontWeight="Bold"
                    FontSize="20"
                    HorizontalAlignment="Center"
@@ -48,7 +50,7 @@
                    Margin="0 330 0 130"
                    />
 
-        <TextBlock Text="오늘 아침 OO전자 소유인 구미공장에서 화재가 발생하여 주가가 폭락 "
+        <TextBlock Text="{Binding Path=SettingVM.SettingDataToShow.EventContent}"
                    FontSize="15"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
