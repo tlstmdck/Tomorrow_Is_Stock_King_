@@ -65,37 +65,35 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             if (SettingVM.PlayerVM.PlayerDataToShow.Stocks.ContainsKey(stockName))
             {
                 SettingVM.PlayerVM.PlayerDataToShow.Stocks[stockName] += buyCount;
+                StockVM.GraphVM.UpdateListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);
             }
             else {
                 SettingVM.PlayerVM.PlayerDataToShow.Stocks.Add(stockName, buyCount);
-            }
-            if(stock_num != SettingVM.PlayerVM.PlayerDataToShow.Stocks.Count)
-            {
                 StockVM.GraphVM.AddListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);
-            }
-            else
-            {
-                StockVM.GraphVM.UpdateListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);
             }
         }
         
         public void SellStock(string buyCnt)
         {
             int buyCount = int.Parse(buyCnt);
+            string stockName = StockVM.Item.ItmsNm;
             int stock_num = SettingVM.PlayerVM.PlayerDataToShow.Stocks.Count;
-            SettingVM.PlayerVM.PlayerDataToShow.CurMoney += buyCount * long.Parse(StockVM.Item.Clpr);
 
-            SettingVM.PlayerVM.PlayerDataToShow.Stocks.Remove(StockVM.Item.ItmsNm);
+            if (SettingVM.PlayerVM.PlayerDataToShow.Stocks[stockName] <= buyCount)  // 전부 판매하거나 그 이상값으로 판매하려고 할 시
+            {
+                buyCount = SettingVM.PlayerVM.PlayerDataToShow.Stocks[stockName];                   //구매수를 내주식 보유량으로 제한
+                SettingVM.PlayerVM.PlayerDataToShow.CurMoney += buyCount * long.Parse(StockVM.Item.Clpr);   //돈 받기
+                SettingVM.PlayerVM.PlayerDataToShow.Stocks.Remove(StockVM.Item.ItmsNm);         //보유주식에서 제거
+                StockVM.GraphVM.RemoveListStockData(StockVM.Item.ItmsNm);       //리스트에서 제거
+            }
+            else        //일부만 판매
+            {
+                SettingVM.PlayerVM.PlayerDataToShow.Stocks[stockName] -= buyCount;      //보유주식에서 판 주식수만큼 제거
+                StockVM.GraphVM.UpdateListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);    //단순 리스트 업데이트
+            }
+
             
 
-            if (stock_num != SettingVM.PlayerVM.PlayerDataToShow.Stocks.Count)
-            {
-                StockVM.GraphVM.RemoveListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);
-            }
-            else
-            {
-                StockVM.GraphVM.UpdateListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);
-            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

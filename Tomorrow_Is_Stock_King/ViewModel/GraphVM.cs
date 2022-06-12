@@ -40,6 +40,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             get { return listseriesCollection; }
             set { listseriesCollection = value; OnPropertyChanged(); }
         }
+        public List<string> StrList { get; set; }
         public Func<double, string> XFormatter { get; set; }
         public Func<double, string> YFormatter { get; set; }
         public GraphVM()
@@ -57,6 +58,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             XFormatter = val => new DateTime((long)val).ToString("dd MMM");
             YFormatter = val => val.ToString("C");
 
+            ListSeriesCollection = new SeriesCollection();
+            StrList = new List<string>();
         }
         public ZoomingOptions ZoomingMode
         {
@@ -123,42 +126,43 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
         public void AddListStockData(Dictionary<string, int> stocks)
         {
-            List<PieSeries> pieSeries = new List<PieSeries>();
-            ListSeriesCollection = new SeriesCollection
+            
+            foreach(string key in stocks.Keys)
             {
-                 new PieSeries
+                if (!StrList.Contains(key))
                 {
-                    Title = "삼성전자",
-                    Values = new ChartValues<ObservableValue> { new ObservableValue(8) },
-                    DataLabels = true
-                },
-                new PieSeries
-                {
-                    Title = "카카오",
-                    Values = new ChartValues<ObservableValue> { new ObservableValue(6) },
-                    DataLabels = true
-                },
-                new PieSeries
-                {
-                    Title = "네이버",
-                    Values = new ChartValues<ObservableValue> { new ObservableValue(10) },
-                    DataLabels = true
-                },
-                new PieSeries
-                {
-                    Title = "SK하이닉스",
-                    Values = new ChartValues<ObservableValue> { new ObservableValue(4) },
-                    DataLabels = true
+                    StrList.Add(key);
                 }
-            };
+                
+                
+            }
+            for(int i=ListSeriesCollection.Count; i<stocks.Count; i++)
+            {
+                PieSeries temp = new PieSeries { Title = StrList[i], Values = new ChartValues<ObservableValue> { new ObservableValue(stocks[StrList[i]]) }, DataLabels = true };
+                ListSeriesCollection.Add(temp);
+            }
+            
         }
-        public void RemoveListStockData(Dictionary<string, int> stocks)
+        public void RemoveListStockData(string itemnms)
         {
-
+            int index = StrList.IndexOf(itemnms);
+            if(ListSeriesCollection.Count > 0)
+            {
+                ListSeriesCollection.RemoveAt(index);
+            }
         }
         public void UpdateListStockData(Dictionary<string, int> stocks)
         {
-
+            int index = 0;
+            foreach(var series in ListSeriesCollection)
+            {
+                
+                foreach(var observable in series.Values.Cast<ObservableValue>())
+                {
+                    observable.Value = stocks[StrList[index]];
+                }
+                index++;
+            }
         }
     }
 
