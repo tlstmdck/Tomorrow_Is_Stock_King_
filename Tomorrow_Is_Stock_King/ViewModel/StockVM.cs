@@ -34,13 +34,19 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public List<Item> StockDataToShow { get; set; }
         public ObservableCollection<string> Companies { get; set; }
         public GraphVM GraphVM { get; set; }
+
         private string selectedStock;   //ex> 삼성전자string
         public string SelectedStock
         {
             get { return selectedStock; }
             set { selectedStock = value; GetStockGraph(); }
         }
-
+        private KeyValuePair<string, int> trendsDataToShow;
+        public KeyValuePair<string, int> TrendsDataToShow
+        {
+            get { return trendsDataToShow; }
+            set { trendsDataToShow = value; OnPropertyChanged("TrendsDataToShow"); }
+        }
 
         public StockVM()
         {
@@ -50,6 +56,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             Companies = new ObservableCollection<string>();
             GraphVM = new GraphVM();
             
+            Item = new Item() { Clpr = "0", ItmsNm =""};
 
         }
         public void GetCompanies()
@@ -75,73 +82,89 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 var stock = StockAPI.GetStockData(stock_date, Companies[i]);
                 if (stock.Clpr == null)
                 {
-                    stock = RealStockTurnList[RealStockTurnList.Count-1][i];
+                    stock = RealStockTurnList[RealStockTurnList.Count - 1][i];
                     clprnull++;
                 }
                 StockDataToShow.Add(stock);
 
             }
 
-            if(Item == null)
-            {
-                Item = StockDataToShow[0];
-            }
+
             List<Item> temp = new List<Item>();
-            for(int i=0; i<StockDataToShow.Count; i++)
+            for (int i = 0; i < StockDataToShow.Count; i++)
             {
                 temp.Add(StockDataToShow[i]);
             }
             RealStockTurnList.Add(temp);  //1턴 완성
-            TurnList.Add(temp);
+            if (RealStockTurnList.Count > 1)
+            {
+                TurnList.Add(temp);
 
+            }
             // 실제 주식데이터가지고 계산
-            if(RealStockTurnList.Count > 1)
+            if (RealStockTurnList.Count > 2)
             {
                 Random rand = new Random();
+                List<double> StockrateList = new List<double>();
                 for (int i = 0; i < Companies.Count; i++)
                 {
-                    double Stocknum1; 
+                    double Stocknum1;
                     double Stocknum2;
                     double Stockrate;
                     if (clprnull == Companies.Count) //공휴일, 주말
                     {
-                        Stockrate = rand.NextDouble()*(1.2 - 0.8) + 0.8;
+                        Stockrate = rand.NextDouble() * (1.2 - 1.0) + 1.0;
                     }
                     else        //평일
                     {
-                        Stocknum1 = Double.Parse(RealStockTurnList[RealStockTurnList.Count - 2][i].Clpr);
-                        Stocknum2 = Double.Parse(RealStockTurnList[RealStockTurnList.Count - 1][i].Clpr);
+                        Stocknum1 = Double.Parse(RealStockTurnList[RealStockTurnList.Count - 3][i].Clpr);
+                        Stocknum2 = Double.Parse(RealStockTurnList[RealStockTurnList.Count - 2][i].Clpr);
                         Stockrate = (Stocknum1 / Stocknum2);
                     }
-                    
+
                     int ran = rand.Next(1, 11);
                     int Turnnum;
                     if (ran > 6)
                     {
-                        Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr) / Stockrate);
+                        Stockrate = 1 / Stockrate;
+                        Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 1][i].Clpr) * Stockrate);
                     }
                     else
                     {
-                        Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr) * Stockrate);
+                        Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 1][i].Clpr) * Stockrate);
                     }
                     TurnList[TurnList.Count - 1][i].Clpr = Turnnum.ToString();
 
+                    StockrateList.Add(Stockrate);
                 }
+                //GetTrendsData(StockrateList);
                 
             }
 
             GraphVM.ChangeData(TurnList, 0);
             StockDataToShow.Clear();
         }
+        private void GetTrendsData(List<double> StockrateList)  //주식 증가시 수정필요
+        {
+            double max = 0;
+            int index = 1;
+            for (int i = 1; i < 5; i++)
+            {
+                for (int j = (i * index) - index; j < i * index; j++)
+                {
+
+                }
+            }
+        }
         public void GetStockGraph()
         {
-            
+
             int index = Companies.IndexOf(selectedStock);
-            if(index < 0)
+            if (index < 0)
             {
                 index = 0;
             }
-            for(int i=0; i<TurnList.Count; i++)
+            for (int i = 0; i < TurnList.Count; i++)
             {
                 var temp = TurnList[i][index];
                 Item.Clpr = temp.Clpr;
