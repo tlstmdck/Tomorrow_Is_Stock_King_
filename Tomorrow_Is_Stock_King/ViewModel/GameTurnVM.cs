@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.UI;
 using Tomorrow_Is_Stock_King.ViewModel.Commands;
 using Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands;
+using Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands.StockListTabCommands;
 using Tomorrow_Is_Stock_King.ViewModel.Converters;
 
 namespace Tomorrow_Is_Stock_King.ViewModel
@@ -19,6 +20,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public TurnSkipBtnCommand TurnSkipBtnCommand { get; set; }
         public BuyStockCommand BuyStockCommand { get; set; }
         public SellStockCommand SellStockCommand { get; set; }
+        public ViewStockListCommand ViewStockListCommand { get; set; }
+        public ViewMoneyListCommand ViewMoneyListCommand { get; set; }
         private DateTime date;
         public DateTime Date
         {
@@ -33,9 +36,11 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             TurnSkipBtnCommand = new TurnSkipBtnCommand(this);
             BuyStockCommand = new BuyStockCommand(this);
             SellStockCommand = new SellStockCommand(this);
+            ViewStockListCommand = new ViewStockListCommand(this);
+            ViewMoneyListCommand = new ViewMoneyListCommand(this);
             StockVM.GetCompanies();
 
-            Date = new DateTime(2022, 6, 7);
+            Date = new DateTime(2021, 6, 7);
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             Date = Date.AddDays(1);
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
@@ -45,6 +50,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         {
             Date = Date.AddDays(1);
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
+            StockVM.SelectedStock = StockVM.SelectedStock;
             SettingVM.NextTurn();
             if(SettingVM.PlayerVM.PlayerDataToShow.Stocks.Count > 0)
             {

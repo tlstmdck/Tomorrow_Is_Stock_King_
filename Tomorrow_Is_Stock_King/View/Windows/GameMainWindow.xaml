@@ -21,7 +21,7 @@
         <command:GoSettingWindowBtnCommand x:Key="gosettingwindowbtncommand"/>
         <converter:NumConverter x:Key="numconverter"/>
         <converter:StocktoMoneyConverter x:Key="stocktomoneyconverter"/>
-
+    
     </Window.Resources>
     <Grid Background="{StaticResource bgColor}"
           Height="700" Width="1200"
@@ -276,7 +276,33 @@
                 </TabItem.Header>
 
                 <Grid>
+                    <Button Margin="567,10,156,632"
+                            Background="{StaticResource btnBgColor}"
+                            Content="보유주식리스트"
+                            FontFamily="../../Fonts\#강원교육모두"
+                            FontSize="20"
+                            Foreground="{StaticResource btnTextColor}"
+                            Command="{Binding Path=ViewStockListCommand}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
                     <uc:StockListUserControl x:Name="myUC2" Margin="10,67,97,76"/>
+                    <Button Margin="717,10,6,632"
+                            Background="{StaticResource btnBgColor}"
+                            Content="보유재산리스트"
+                            FontFamily="../../Fonts\#강원교육모두"
+                            FontSize="20"
+                            Foreground="{StaticResource btnTextColor}"
+                            Command="{Binding Path=ViewMoneyListCommand}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
                 </Grid>
             </TabItem>
 

@@ -77,6 +77,8 @@
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\BuyStockCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\GoSettingWindowBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\SellStockCommand.cs" />
+    <Compile Include="ViewModel\Commands\GameMainWindowCommands\StockListTabCommands\ViewMoneyListCommand.cs" />
+    <Compile Include="ViewModel\Commands\GameMainWindowCommands\StockListTabCommands\ViewStockListCommand.cs" />
     <Compile Include="ViewModel\Commands\TurnSkipBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GoMainCheckWindowCommands\NoBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GoMainCheckWindowCommands\YesBtnCommand.cs" />
@@ -207,9 +209,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\Commands\StockListUserControlCommands\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\informationImage.png" />
     <Resource Include="Images\loanImage.png" />

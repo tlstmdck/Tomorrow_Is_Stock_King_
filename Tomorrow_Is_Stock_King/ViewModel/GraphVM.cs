@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
@@ -163,6 +164,21 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                     observable.Value = stocks[StrList[index]];
                 }
                 index++;
+            }
+        }
+        public void UpdateListMoneyData(List<List<Item>> turnlist, ObservableCollection<string> companies, Dictionary<string, int> stocks)
+        {
+            int StrList_index = 0;
+            foreach (var series in ListSeriesCollection)
+            {
+
+                foreach (var observable in series.Values.Cast<ObservableValue>())
+                {
+                    int stock_index = companies.IndexOf(StrList[StrList_index]);
+                    int Clpr_num = Int32.Parse(turnlist[turnlist.Count - 1][stock_index].Clpr);
+                    observable.Value = Clpr_num * stocks[StrList[StrList_index]];
+                }
+                StrList_index++;
             }
         }
     }

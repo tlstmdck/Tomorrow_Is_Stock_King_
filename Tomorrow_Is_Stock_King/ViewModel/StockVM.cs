@@ -60,16 +60,19 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         }
         public void GetStock(string stock_date)  //턴종료마다 발동
         {
+            int clprnull = 0;
             for (int i = 0; i < Companies.Count; i++)
             {
                 var stock = StockAPI.GetStockData(stock_date, Companies[i]);
                 if (stock.Clpr == null)
                 {
                     stock = RealStockTurnList[RealStockTurnList.Count-1][i];
+                    clprnull++;
                 }
                 StockDataToShow.Add(stock);
 
             }
+
             if(Item == null)
             {
                 Item = StockDataToShow[0];
@@ -85,13 +88,33 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             // 실제 주식데이터가지고 계산
             if(RealStockTurnList.Count > 1)
             {
+                Random rand = new Random();
                 for (int i = 0; i < Companies.Count; i++)
                 {
-                    double Stocknum1 = Double.Parse(RealStockTurnList[RealStockTurnList.Count - 2][i].Clpr);
-                    double Stocknum2 = Double.Parse(RealStockTurnList[RealStockTurnList.Count - 1][i].Clpr);
-                    double Stockrate = (Stocknum1 / Stocknum2);
-
-                    int Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr) / Stockrate);
+                    double Stocknum1; 
+                    double Stocknum2;
+                    double Stockrate;
+                    if (clprnull == Companies.Count) //공휴일, 주말
+                    {
+                        Stockrate = rand.NextDouble()*(1.2 - 0.8) + 0.8;
+                    }
+                    else        //평일
+                    {
+                        Stocknum1 = Double.Parse(RealStockTurnList[RealStockTurnList.Count - 2][i].Clpr);
+                        Stocknum2 = Double.Parse(RealStockTurnList[RealStockTurnList.Count - 1][i].Clpr);
+                        Stockrate = (Stocknum1 / Stocknum2);
+                    }
+                    
+                    int ran = rand.Next(1, 11);
+                    int Turnnum;
+                    if (ran > 6)
+                    {
+                        Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr) / Stockrate);
+                    }
+                    else
+                    {
+                        Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr) * Stockrate);
+                    }
                     TurnList[TurnList.Count - 1][i].Clpr = Turnnum.ToString();
 
                 }
