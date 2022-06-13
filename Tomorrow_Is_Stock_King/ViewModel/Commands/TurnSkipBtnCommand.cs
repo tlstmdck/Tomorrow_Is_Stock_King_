@@ -9,11 +9,11 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands
 {
     public class TurnSkipBtnCommand : ICommand
     {
-        public GameTurnVM VM { get; set; }
+        public GameTurnVM GameTurnVM { get; set; }
 
         public TurnSkipBtnCommand(GameTurnVM vm)
         {
-            VM = vm;
+            GameTurnVM = vm;
         }
         public event EventHandler CanExecuteChanged;
 
@@ -24,7 +24,12 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands
 
         public void Execute(object parameter)
         {
-            VM.NextTurn();
+            if (GameTurnVM.SoundVM.SoundDataToShow.IsTurnOnEffect)
+            {
+                GameTurnVM.SoundVM.playClickSound();
+            }
+
+            GameTurnVM.NextTurn();
         }
     }
 }

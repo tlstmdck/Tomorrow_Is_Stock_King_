@@ -14,7 +14,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands
     public class BGMBtnCommand : ICommand
     {
         private SoundVM VM { get; set; }
-
         public BGMBtnCommand(SoundVM vm)
         {
             VM = vm;
@@ -36,6 +35,11 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands
             else
             {
                 VM.setBgm(true);
+            }
+
+            if (VM.SoundDataToShow.IsTurnOnEffect)
+            {
+                VM.playClickSound();
             }
         }
     }

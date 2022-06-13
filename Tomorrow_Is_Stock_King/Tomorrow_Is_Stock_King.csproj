@@ -83,10 +83,10 @@
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\TakeLoanCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\StockListTabCommands\ViewMoneyListCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\StockListTabCommands\ViewStockListCommand.cs" />
+    <Compile Include="ViewModel\Commands\StartSettingWindowCommands\LevelBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\TurnSkipBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GoMainCheckWindowCommands\NoBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GoMainCheckWindowCommands\YesBtnCommand.cs" />
-    <Compile Include="ViewModel\Commands\LevelBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\MainWindowCommands\ExitBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\MainWindowCommands\NewGameBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\SettingWindowCommands\ExitCheckWindowCommand.cs" />
@@ -94,7 +94,6 @@
     <Compile Include="ViewModel\Commands\SettingWindowCommands\ResumeBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\StartSettingWindowCommands\BackBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\StartSettingWindowCommands\StartBtnCommand.cs" />
-    <Compile Include="ViewModel\Commands\UpdateTimeCommand.cs" />
     <Compile Include="ViewModel\Converters\BGMBtnConverter.cs" />
     <Compile Include="ViewModel\Converters\EffectBtnConverter.cs" />
     <Compile Include="ViewModel\Converters\CompaniesConverter.cs" />
@@ -105,7 +104,6 @@
     <Compile Include="ViewModel\Converters\StocktoMoneyConverter.cs" />
     <Compile Include="ViewModel\Converters\TotalMoneyChangeRateConverter.cs" />
     <Compile Include="ViewModel\Converters\TrendstoViewConverter.cs" />
-    <Compile Include="ViewModel\Converters\UpdateTimeConverter.cs" />
     <Compile Include="ViewModel\GameTurnVM.cs" />
     <Compile Include="ViewModel\GraphVM.cs" />
     <Compile Include="ViewModel\PlayerVM.cs" />
@@ -250,6 +248,10 @@
     <Resource Include="Images\NewInvestI.png" />
     <Resource Include="Images\NewTechI.png" />
     <Resource Include="Images\TechLeakD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sounds\BGM.mp3" />
+    <Content Include="Sounds\Click.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

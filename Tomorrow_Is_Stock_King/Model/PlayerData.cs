@@ -80,8 +80,6 @@ namespace Tomorrow_Is_Stock_King.Model
             set { totalMoneyChangeRate = value; OnPropertyChanged("TotalMoneyChangeRate"); }
         }
 
-
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propName)
         {

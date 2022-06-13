@@ -35,6 +35,11 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands
             {
                 VM.setEffect(true);
             }
+
+            if (VM.SoundDataToShow.IsTurnOnEffect)
+            {
+                VM.playClickSound();
+            }
         }
     }
 }

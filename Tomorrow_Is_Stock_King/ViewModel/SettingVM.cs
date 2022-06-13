@@ -14,17 +14,11 @@ namespace Tomorrow_Is_Stock_King.ViewModel
     {
         public SettingData SettingDataToShow { get; set; }
         public PlayerVM PlayerVM { get; set; }
-        public LevelBtnCommand LevelBtnCommand { get; set; }
-        public UpdateTimeCommand UpdateTimeCommand { get; set; }
-        public StartBtnCommand StartBtnCommand { get; set; }
 
         public SettingVM()
         {
             SettingDataToShow = new SettingData();
             PlayerVM = new PlayerVM();
-            LevelBtnCommand = new LevelBtnCommand(this);
-            UpdateTimeCommand = new UpdateTimeCommand(this);
-            StartBtnCommand = new StartBtnCommand(this);
         }
 
         public void setLevel(int lev)
@@ -53,10 +47,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public void setMoney(long money)
         {
             PlayerVM.PlayerDataToShow.CurMoney = money;
-        }
-        public void setUpdateTime(int time)
-        {
-            SettingDataToShow.UpdateTime = time;
         }
 
         public void setCompany(string EventCompany)

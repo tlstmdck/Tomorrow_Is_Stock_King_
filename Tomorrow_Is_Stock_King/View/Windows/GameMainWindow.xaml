@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.Windows"
-        xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands"
         xmlns:converter="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Converters"
         xmlns:uc="clr-namespace:Tomorrow_Is_Stock_King.View.Usercontrol"
         mc:Ignorable="d"
@@ -18,7 +17,6 @@
         <SolidColorBrush x:Key="btnTextColor" 
                          Color="#FFFFFF"/>
 
-        <command:GoSettingWindowBtnCommand x:Key="gosettingwindowbtncommand"/>
         <converter:NumConverter x:Key="numconverter"/>
         <converter:CompaniesConverter x:Key="companiesconverter"/>
         <converter:StocktoMoneyConverter x:Key="stocktomoneyconverter"/>
@@ -664,7 +662,7 @@
                 BorderThickness="4" 
                 Width="70" 
                 Height="70"
-                Command="{Binding Source={StaticResource gosettingwindowbtncommand}}"
+                Command="{Binding Path=SoundVM.GoSettingWindowBtnCommand}"
                 >
                 <Button.Background>
                     <SolidColorBrush Opacity="0" />

@@ -9,8 +9,14 @@ using Tomorrow_Is_Stock_King.Windows;
 
 namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GoMainCheckWindowCommands
 {
-    internal class YesBtnCommand : ICommand
+    public class YesBtnCommand : ICommand
     {
+        public SoundVM SoundVM { get; set; }
+        public YesBtnCommand(SoundVM vm)
+        {
+            SoundVM = vm;
+        }
+
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
@@ -20,6 +26,11 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GoMainCheckWindowCommands
 
         public void Execute(object parameter)
         {
+            if (SoundVM.SoundDataToShow.IsTurnOnEffect)
+            {
+                SoundVM.playClickSound();
+            }
+
             MainWindow mainwindow = new MainWindow();
             mainwindow.Show();
             Application.Current.MainWindow = mainwindow;
