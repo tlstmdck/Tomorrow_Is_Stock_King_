@@ -131,6 +131,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         }
         private void UpdateMoney()
         {
+            SettingVM.PlayerVM.PlayerDataToShow.BeforeTotalMoney = SettingVM.PlayerVM.PlayerDataToShow.TotalMoney;
             long sum = 0;
             foreach(KeyValuePair<string, int> each in SettingVM.PlayerVM.PlayerDataToShow.Stocks)
             {
@@ -148,6 +149,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             }
             SettingVM.PlayerVM.PlayerDataToShow.LoanMoney = sum;
             SettingVM.PlayerVM.PlayerDataToShow.TotalMoney = SettingVM.PlayerVM.PlayerDataToShow.LoanMoney + SettingVM.PlayerVM.PlayerDataToShow.CurMoney;
+            SettingVM.PlayerVM.UpdateChangeRate();
         }
         private void GetInterest()
         {

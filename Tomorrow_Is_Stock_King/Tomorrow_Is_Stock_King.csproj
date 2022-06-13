@@ -103,6 +103,7 @@
     <Compile Include="ViewModel\Converters\LoanConverter.cs" />
     <Compile Include="ViewModel\Converters\NumConverter.cs" />
     <Compile Include="ViewModel\Converters\StocktoMoneyConverter.cs" />
+    <Compile Include="ViewModel\Converters\TotalMoneyChangeRateConverter.cs" />
     <Compile Include="ViewModel\Converters\TrendstoViewConverter.cs" />
     <Compile Include="ViewModel\Converters\UpdateTimeConverter.cs" />
     <Compile Include="ViewModel\GameTurnVM.cs" />

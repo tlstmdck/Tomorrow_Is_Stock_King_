@@ -8,19 +8,26 @@ using System.Windows.Data;
 
 namespace Tomorrow_Is_Stock_King.ViewModel.Converters
 {
-    public class TrendstoViewConverter : IValueConverter
+    internal class TotalMoneyChangeRateConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var result = (double)value;
-            if(result < 0)
+            double rate = (double)value;
+            string str = "";
+            if(rate > 0)
             {
-                return "전망이 좋지 않습니다";
+                str = "(+" + Math.Round(rate, 2).ToString() + "%)";
+            }
+            else if(rate < 0)
+            {
+                str = "(" + Math.Round(rate, 2).ToString() + "%)";
             }
             else
             {
-                return "전망이 좋습니다";
+                str = "0%";
             }
+
+            return str;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
