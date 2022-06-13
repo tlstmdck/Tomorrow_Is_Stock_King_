@@ -26,6 +26,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public TakeLoanCommand TakeLoanCommand { get; set; }
         public ViewStockListCommand ViewStockListCommand { get; set; }
         public ViewMoneyListCommand ViewMoneyListCommand { get; set; }
+        public GetInformationCommand GetInformationCommand { get; set; }
         private DateTime date;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -47,6 +48,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             TakeLoanCommand = new TakeLoanCommand(this);
             ViewStockListCommand = new ViewStockListCommand(this);
             ViewMoneyListCommand = new ViewMoneyListCommand(this);
+            GetInformationCommand = new GetInformationCommand(this);
             StockVM.GetCompanies();
 
             Date = new DateTime(2021, 6, 7);
@@ -65,7 +67,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             StockVM.SelectedStock = StockVM.SelectedStock;
 
-            if (SettingVM.SettingDataToShow.TurnCnt == 10)
+            if (SettingVM.SettingDataToShow.TurnCnt == 15)
             {
                 GameEnd();
             }
@@ -99,29 +101,31 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
         private void PopUpEvent()
         {
-            bool flag = SettingVM.SettingDataToShow.PopUpEvent[SettingVM.SettingDataToShow.TurnCnt];
             Random random = new Random();
-            SettingVM.SettingDataToShow.EventTarget = random.Next(0, StockVM.Companies.Count);
-            SettingVM.SettingDataToShow.EventNum = random.Next(0, 4);
 
-            UpdateEventStock(SettingVM.SettingDataToShow.EventTarget, SettingVM.SettingDataToShow.EventNum);
-            string EventCompany = StockVM.Companies[SettingVM.SettingDataToShow.EventTarget];
-            SettingVM.setCompany(EventCompany);
+            // 이미 정해진 턴에 특정 회사와 긍정 혹은 부정적인 이벤트가 정해지기 때문에 또 이벤트 넘버를 정할 필요 없다.
+            SettingVM.SettingDataToShow.EventTarget = (int)SettingVM.SettingDataToShow.PopUpEvent[SettingVM.SettingDataToShow.TurnCnt].First;
+            //SettingVM.SettingDataToShow.EventNum = random.Next(0, 4);
+
+            UpdateEventStock(SettingVM.SettingDataToShow.EventTarget, (int)SettingVM.SettingDataToShow.PopUpEvent[SettingVM.SettingDataToShow.TurnCnt].Second);
+            SettingVM.SettingDataToShow.EventCompany = StockVM.Companies[SettingVM.SettingDataToShow.EventTarget];
+            SettingVM.setCompany(SettingVM.SettingDataToShow.EventCompany);
             StockVM.GetStockGraph();
             EventPopupWindow eventpopupwindow = new EventPopupWindow();
             eventpopupwindow.ShowDialog();
         }
-        private void UpdateEventStock(int eventTarget, int eventNum)
+        private void UpdateEventStock(int eventTarget, int isGood)
         {
             Random random = new Random();
             Double Eventrate = random.NextDouble() * (0.3 - 0.2) + 0.2;
-            if(eventNum < 2)    //증가 이벤트
+            if(isGood == 0)    //증가 이벤트
             {
+                SettingVM.SettingDataToShow.EventNum = random.Next(0, 2);
                 StockVM.TurnList[StockVM.TurnList.Count - 1][eventTarget].Clpr = ((int)(Double.Parse(StockVM.TurnList[StockVM.TurnList.Count - 1][eventTarget].Clpr) + Double.Parse(StockVM.TurnList[StockVM.TurnList.Count - 1][eventTarget].Clpr) * Eventrate)).ToString();
-
             }
             else        //감소 이벤트
             {
+                SettingVM.SettingDataToShow.EventNum = random.Next(2, 4);
                 StockVM.TurnList[StockVM.TurnList.Count - 1][eventTarget].Clpr = ((int)(Double.Parse(StockVM.TurnList[StockVM.TurnList.Count - 1][eventTarget].Clpr) - Double.Parse(StockVM.TurnList[StockVM.TurnList.Count - 1][eventTarget].Clpr) * Eventrate)).ToString();
             }
         }
