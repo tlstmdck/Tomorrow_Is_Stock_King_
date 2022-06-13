@@ -666,6 +666,7 @@
                 <Image Source="../../Images/Icons/SettingIcon.png" />
             </Button>
         </StackPanel>
+        
         <StackPanel Margin="1000 0 0 0"
                     Background="#93C47E">
             <Label Content="Ranking"
@@ -686,7 +687,6 @@
                      >
 
             </ListBox>
-
         </StackPanel>
 
     </Grid>
