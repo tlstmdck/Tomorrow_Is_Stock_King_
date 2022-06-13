@@ -11,10 +11,10 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.StartSettingWindowCommands
 {
     public class StartBtnCommand : ICommand
     {
-        SettingVM VM { get; set; }
-        public StartBtnCommand(SettingVM vm)
+        GameTurnVM GameTurnVM { get; set; }
+        public StartBtnCommand(GameTurnVM vm)
         {
-            VM = vm;
+            GameTurnVM = vm;
         }
         public event EventHandler CanExecuteChanged;
 
@@ -25,13 +25,18 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.StartSettingWindowCommands
 
         public void Execute(object parameter)
         {
+            if (GameTurnVM.SoundVM.SoundDataToShow.IsTurnOnEffect)
+            {
+                GameTurnVM.SoundVM.playClickSound();
+            }
+
             GameMainWindow gamemainwindow = new GameMainWindow();
             gamemainwindow.Show();
             Application.Current.MainWindow.Close();
             Application.Current.MainWindow = gamemainwindow;
 
-            VM.setPlayerName((string)parameter);
-            VM.PlayerVM.SortPlayers();
+            GameTurnVM.SettingVM.setPlayerName((string)parameter);
+            GameTurnVM.SettingVM.PlayerVM.SortPlayers();
         }
     }
 }

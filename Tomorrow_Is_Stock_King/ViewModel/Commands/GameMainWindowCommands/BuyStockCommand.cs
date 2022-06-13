@@ -38,6 +38,11 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
 
         public void Execute(object parameter)
         {
+            if (GameTurnVM.SoundVM.SoundDataToShow.IsTurnOnEffect)
+            {
+                GameTurnVM.SoundVM.playClickSound();
+            }
+
             GameTurnVM.BuyStock((string)parameter);
         }
     }

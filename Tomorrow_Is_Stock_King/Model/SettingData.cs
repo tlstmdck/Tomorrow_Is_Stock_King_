@@ -18,13 +18,6 @@ namespace Tomorrow_Is_Stock_King.Model
             set { level = value; OnPropertyChanged("Level"); }
         }
 
-        private int updateTime;
-        public int UpdateTime
-        {
-            get { return updateTime; }
-            set { updateTime = value; OnPropertyChanged("UpdateTime"); }
-        }
-
         private int turnCnt;
         public int TurnCnt
         {
@@ -118,7 +111,6 @@ namespace Tomorrow_Is_Stock_King.Model
         public SettingData()
         {
             Level = 1;
-            UpdateTime = 10;
             TurnCnt = 0;
             Information = 3;
             EventTarget = 0;

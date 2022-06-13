@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Tomorrow_Is_Stock_King.ViewModel.Commands.StartSettingWindowCommands
 {
-    public class BackBtnCommand : ICommand
+    public class LevelBtnCommand : ICommand
     {
-        public SoundVM SoundVM { get; set; }
-        public BackBtnCommand(SoundVM vm)
+        public GameTurnVM GameTurnVM { get; set; }
+        public LevelBtnCommand(GameTurnVM vm)
         {
-            SoundVM = vm;
+            GameTurnVM = vm;
         }
 
         public event EventHandler CanExecuteChanged;
@@ -25,15 +24,12 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.StartSettingWindowCommands
 
         public void Execute(object parameter)
         {
-            if (SoundVM.SoundDataToShow.IsTurnOnEffect)
-            {
-                SoundVM.playClickSound();
-            }
+            GameTurnVM.SettingVM.setLevel(int.Parse((string)parameter));
 
-            MainWindow mainwindow = new MainWindow();
-            mainwindow.Show();
-            Application.Current.MainWindow.Close();
-            Application.Current.MainWindow = mainwindow;
+            if (GameTurnVM.SoundVM.SoundDataToShow.IsTurnOnEffect)
+            {
+                GameTurnVM.SoundVM.playClickSound();
+            }
         }
     }
 }

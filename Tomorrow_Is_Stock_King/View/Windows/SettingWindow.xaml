@@ -19,14 +19,12 @@
 
         <converter:BGMBtnConverter x:Key="bgmbtnconverter" />
         <converter:EffectBtnConverter x:Key="effectbtnconverter" />
-        <command:ResumeBtnCommand x:Key="resumebtncommand"/>
-        <command:GoMainBtnCommand x:Key="gomainbtncommand"/>
-        <command:ExitCheckWindowCommand x:Key="exitcheckcommand"/>
     </Window.Resources>
 
     <Grid Background="{StaticResource bgColor}" 
           Width="500"
-          Height="300">
+          Height="300"
+          DataContext="{StaticResource gameturnvm}">
 
         <Button Margin="20 20 400 200"
                 BorderThickness="4"
@@ -34,14 +32,13 @@
                 Width="80"
                 Height="80"
                 x:Name="bgmBtn"
-                DataContext="{Binding Source={StaticResource soundvm},Path=SoundDataToShow}"
-                Command="{Binding Source={StaticResource soundvm}, Path=BGMBtnCommand}"
+                Command="{Binding Path=SoundVM.BGMBtnCommand}"
                 >
             <Button.Background>
                 <SolidColorBrush Opacity="0" />
             </Button.Background>
             <Image x:Name="bgmImage"
-                   Source="{Binding Path=IsTurnOnBgm, Converter={StaticResource bgmbtnconverter}}" />
+                   Source="{Binding Path=SoundVM.SoundDataToShow.IsTurnOnBgm, Converter={StaticResource bgmbtnconverter}}" />
         </Button>
 
         <Button Margin="20 110 400 110"
@@ -50,14 +47,13 @@
                 Width="80"
                 Height="80"
                 x:Name="effectBtn"
-                DataContext="{Binding Source={StaticResource soundvm},Path=SoundDataToShow}"
-                Command="{Binding Source={StaticResource soundvm}, Path=EffectBtnCommand}"
+                Command="{Binding Path=SoundVM.EffectBtnCommand}"
                 >
             <Button.Background>
                 <SolidColorBrush Opacity="0" />
             </Button.Background>
             <Image x:Name="effectImage"
-                   Source="{Binding Path=IsTurnOnEffect, Converter={StaticResource effectbtnconverter}}" />
+                   Source="{Binding Path=SoundVM.SoundDataToShow.IsTurnOnEffect, Converter={StaticResource effectbtnconverter}}" />
         </Button>
 
         <Button Margin="20 200 400 20"
@@ -83,7 +79,7 @@
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
                 x:Name="resumeBtn"
-                Command="{Binding Source={StaticResource resumebtncommand}}"
+                Command="{Binding Path=SoundVM.ResumeBtnCommand}"
                 CommandParameter="{Binding ElementName=window}"
                 >
             <Button.Resources>
@@ -103,7 +99,7 @@
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
                 x:Name="mainBtn"
-                Command="{Binding Source={StaticResource gomainbtncommand}}"
+                Command="{Binding Path=SoundVM.GoMainBtnCommand}"
                 >
             <Button.Resources>
                 <Style TargetType="Border">
@@ -122,7 +118,7 @@
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
                 x:Name="exitBtn"
-                Command="{Binding Source={StaticResource exitcheckcommand}}"
+                Command="{Binding Path=SoundVM.ExitCheckWindowCommand}"
                 >
             <Button.Resources>
                 <Style TargetType="Border">

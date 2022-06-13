@@ -20,13 +20,12 @@
 
         <converter:BGMBtnConverter x:Key="bgmbtnconverter" />
         <converter:EffectBtnConverter x:Key="effectbtnconverter" />
-        <command:NewGameBtnCommand x:Key="newgamebtncommand"/>
-        <command:ExitBtnCommand x:Key="exitbtncommand"/>
     </Window.Resources>
 
     <Grid Background="{StaticResource bgColor}" 
           Width="800" 
-          Height="500">
+          Height="500"
+          DataContext="{StaticResource gameturnvm}">
 
         <Label Content="내일은" 
                FontSize="70"
@@ -54,30 +53,28 @@
                 BorderThickness="4"
                 x:Name="bgmBtn"
                 Panel.ZIndex="1"
-                DataContext="{Binding Source={StaticResource soundvm},Path=SoundDataToShow}"
-                Command="{Binding Source={StaticResource soundvm}, Path=BGMBtnCommand}"
+                Command="{Binding Path=SoundVM.BGMBtnCommand}"
                 CommandParameter="{Binding ElementName=bgmImage}"
                 >
             <Button.Background>
                 <SolidColorBrush Opacity="0" />
             </Button.Background>
             <Image x:Name="bgmImage" 
-                   Source="{Binding Path=IsTurnOnBgm, Converter={StaticResource bgmbtnconverter}}" />
+                   Source="{Binding Path=SoundVM.SoundDataToShow.IsTurnOnBgm, Converter={StaticResource bgmbtnconverter}}" />
         </Button>
 
         <Button Margin="40 200 660 200"
                 BorderThickness="4"
                 x:Name="effectBtn"
                 Panel.ZIndex="1"
-                DataContext="{Binding Source={StaticResource soundvm},Path=SoundDataToShow}"
-                Command="{Binding Source={StaticResource soundvm}, Path=EffectBtnCommand}"
+                Command="{Binding Path=SoundVM.EffectBtnCommand}"
                 CommandParameter="{Binding ElementName=effectImage}"
                 >
             <Button.Background>
                 <SolidColorBrush Opacity="0" />
             </Button.Background>
             <Image x:Name="effectImage" 
-                   Source="{Binding Path=IsTurnOnEffect, Converter={StaticResource effectbtnconverter}}" />
+                   Source="{Binding Path=SoundVM.SoundDataToShow.IsTurnOnEffect, Converter={StaticResource effectbtnconverter}}" />
         </Button>
 
         <Button Margin="40 320 660 80"
@@ -91,17 +88,17 @@
             <Image Source="../../Images/Icons/HelpIcon.png"/>
         </Button>
 
-        <Button Content="새 게임"
+        <Button Content="게임 시작"
                 FontFamily="../../Fonts\#강원교육모두"
                 FontSize="50"
                 Width="250"
-                Height="70"
-                Margin="275 180 275 250"
+                Height="90"
+                Margin="275 210 275 200"
                 Panel.ZIndex="1"
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
                 x:Name="newGameBtn"
-                Command="{Binding Source={StaticResource newgamebtncommand}}"
+                Command="{Binding Path=SoundVM.NewGameBtnCommand}"
                 >
             <Button.Resources>
                 <Style TargetType="Border">
@@ -109,36 +106,18 @@
                 </Style>
             </Button.Resources>
         </Button>
-        
-        <Button Content="불러오기"
-                FontFamily="../../Fonts\#강원교육모두"
-                FontSize="50"
-                Width="250"
-                Height="70"
-                Margin="275 270 275 160"
-                Panel.ZIndex="1"
-                Background="{StaticResource btnBgColor}"
-                Foreground="{StaticResource btnTextColor}"
-                x:Name="LoadBtn"
-                >
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        
+
         <Button Content="종료"
                 FontFamily="../../Fonts\#강원교육모두"
                 FontSize="50"
                 Width="250"
-                Height="70"
-                Margin="275 360 275 70"
+                Height="90"
+                Margin="275 320 275 90"
                 Panel.ZIndex="1"
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
                 x:Name="exitBtn"
-                Command="{Binding Source={StaticResource exitbtncommand}}"
+                Command="{Binding Path=SoundVM.ExitBtnCommand}"
                 >
             <Button.Resources>
                 <Style TargetType="Border">

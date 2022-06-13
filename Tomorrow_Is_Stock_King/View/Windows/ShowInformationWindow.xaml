@@ -46,12 +46,14 @@
                        FontSize="20"
                        FontFamily="../../Fonts\#강원교육모두"
                        Foreground="Blue"
+                       HorizontalAlignment="Center"
                        Padding="15"/>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{Binding Path=SettingVM.SettingDataToShow.GetIsGood, Converter={StaticResource infoconverter}}"
-                           FontSize="20"
+                           FontSize="30"
                            FontFamily="../../Fonts\#강원교육모두"
-                           Padding="15"/>
+                           Padding="5"
+                           />
                     <Label FontSize="20"
                            FontFamily="../../Fonts\#강원교육모두"
                            Padding="15"

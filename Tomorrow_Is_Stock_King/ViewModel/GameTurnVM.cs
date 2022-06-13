@@ -10,8 +10,10 @@ using System.Windows;
 using Tomorrow_Is_Stock_King.Model;
 using Tomorrow_Is_Stock_King.View.Windows;
 using Tomorrow_Is_Stock_King.ViewModel.Commands;
+using Tomorrow_Is_Stock_King.ViewModel.Commands.ExitCheckWindowCommands;
 using Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands;
 using Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands.StockListTabCommands;
+using Tomorrow_Is_Stock_King.ViewModel.Commands.StartSettingWindowCommands;
 
 namespace Tomorrow_Is_Stock_King.ViewModel
 {
@@ -19,6 +21,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
     {
         public SettingVM SettingVM { get; set; }
         public StockVM StockVM { get; set; }
+        public SoundVM SoundVM { get; set; }
         public TurnSkipBtnCommand TurnSkipBtnCommand { get; set; }
         public BuyStockCommand BuyStockCommand { get; set; }
         public SellStockCommand SellStockCommand { get; set; }
@@ -27,7 +30,12 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public ViewStockListCommand ViewStockListCommand { get; set; }
         public ViewMoneyListCommand ViewMoneyListCommand { get; set; }
         public GetInformationCommand GetInformationCommand { get; set; }
+        public LevelBtnCommand LevelBtnCommand { get; set; }
+        public StartBtnCommand StartBtnCommand { get; set; }
+        public YesBtnCommand YesBtnCommand { get; set; }
+        public NoBtnCommand NoBtnCommand { get; set; }
         private DateTime date;
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -41,6 +49,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         {
             SettingVM = new SettingVM();
             StockVM = new StockVM();
+            SoundVM = new SoundVM();
             TurnSkipBtnCommand = new TurnSkipBtnCommand(this);
             BuyStockCommand = new BuyStockCommand(this);
             SellStockCommand = new SellStockCommand(this);
@@ -49,6 +58,10 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             ViewStockListCommand = new ViewStockListCommand(this);
             ViewMoneyListCommand = new ViewMoneyListCommand(this);
             GetInformationCommand = new GetInformationCommand(this);
+            LevelBtnCommand = new LevelBtnCommand(this);
+            StartBtnCommand = new StartBtnCommand(this);
+            YesBtnCommand = new YesBtnCommand(this);
+            NoBtnCommand = new NoBtnCommand(this);
             StockVM.GetCompanies();
 
             Date = new DateTime(2021, 6, 7);

@@ -16,12 +16,10 @@
                          Color="#11264F"/>
         <SolidColorBrush x:Key="btnTextColor" 
                          Color="#FFFFFF"/>
-
-        <command:NoBtnCommand x:Key="nobtncommand"/>
-        <command:YesBtnCommand x:Key="yesbtncommand"/>
     </Window.Resources>
 
-    <Grid Height="200" Width="300" Background="{StaticResource bgColor}">
+    <Grid Height="200" Width="300" Background="{StaticResource bgColor}"
+          DataContext="{StaticResource gameturnvm}">
         <TextBlock Text="정말 메인화면으로" 
                    FontSize="30" 
                    FontFamily="../../Fonts\#강원교육모두"
@@ -43,7 +41,7 @@
                 Margin="50 125 160 25"
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
-                Command="{Binding Source={StaticResource yesbtncommand}}"
+                Command="{Binding Path=SoundVM.YesBtnCommand}"
                 >
             <Button.Resources>
                 <Style TargetType="Border">
@@ -60,7 +58,7 @@
                 Margin="160 125 50 25"
                 Background="{StaticResource btnBgColor}"
                 Foreground="{StaticResource btnTextColor}"
-                Command="{Binding Source={StaticResource nobtncommand}}"
+                Command="{Binding Path=SoundVM.NoBtnCommand}"
                 CommandParameter="{Binding ElementName=window}"
                 >
             <Button.Resources>
