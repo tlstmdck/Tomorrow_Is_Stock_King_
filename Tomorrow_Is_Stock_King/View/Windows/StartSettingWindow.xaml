@@ -96,7 +96,7 @@
                  Foreground="{StaticResource btnTextColor}"
                  Margin="340 170 80 250"
                  FontSize="40"
-                 Padding="30 0 0 0"
+                 Padding="30 15 0 0"
                  x:Name="nameBox"
                  FontFamily="../../Fonts\#강원교육모두"
                  Cursor="Hand"
