@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.UI;
+using System.Windows;
 using Tomorrow_Is_Stock_King.Model;
 using Tomorrow_Is_Stock_King.View.Windows;
 using Tomorrow_Is_Stock_King.ViewModel.Commands;
@@ -63,8 +64,13 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             Date = Date.AddDays(1);
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             StockVM.SelectedStock = StockVM.SelectedStock;
-            
-            if(SettingVM.SettingDataToShow.TurnCnt % 10 == 5)
+
+            if (SettingVM.SettingDataToShow.TurnCnt == 10)
+            {
+                GameEnd();
+            }
+
+            if (SettingVM.SettingDataToShow.TurnCnt % 10 == 5)
             {
                 PopUpEvent();
             }
@@ -76,6 +82,19 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 StockVM.GraphVM.UpdateListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);
             }
             GetInterest();
+        }
+        private void GameEnd()
+        {
+            ResultWindow resultwindow = new ResultWindow();
+            resultwindow.Show();
+
+            foreach (Window window in System.Windows.Application.Current.Windows)
+            {
+                if (window.Title != "ResultWindow")
+                {
+                    window.Close();
+                }
+            }
         }
 
         private void PopUpEvent()

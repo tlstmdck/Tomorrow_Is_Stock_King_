@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.View.Windows"
+        xmlns:converter="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Converters"
+        xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.SettingWindowCommands"
         mc:Ignorable="d"
         Title="ResultWindow" Height="400" Width="600" >
     <Window.Resources>
@@ -14,9 +16,12 @@
         <SolidColorBrush x:Key="btnTextColor" 
                          Color="#FFFFFF"/>
 
+        <converter:NumConverter x:Key="numconverter" />
+        <command:GoMainBtnCommand x:Key="gomainbtncommand"/>
     </Window.Resources>
 
-    <Grid Background="{StaticResource bgColor}">
+    <Grid Background="{StaticResource bgColor}"
+          DataContext="{StaticResource gameturnvm}">
 
         <StackPanel VerticalAlignment="Center"
                     Margin="70 0 300 0">
@@ -28,19 +33,24 @@
                        FontSize="30"
                        FontFamily="../../Fonts\#강원교육모두"
                        />
-                <Label Content="100일"
-                       FontWeight="Bold"
-                       FontSize="30"
-                       FontFamily="../../Fonts\#강원교육모두"
-                       />
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{Binding Path=SettingVM.SettingDataToShow.TurnCnt}"
+                           FontWeight="Bold"
+                           FontSize="30"
+                           FontFamily="../../Fonts\#강원교육모두"
+                           />
+                    <Label FontWeight="Bold"
+                           FontSize="30"
+                           FontFamily="../../Fonts\#강원교육모두"
+                           Content="일"/>
+                </StackPanel>
             </StackPanel>
 
             <Label FontSize="24" 
                    Padding="5 5 5 0"
                    FontFamily="../../Fonts\#강원교육모두"
-                   >
-                보유금액
-            </Label>
+                   Content="보유금액"
+                   />
 
             <StackPanel Orientation="Horizontal"
                         Margin="0 0 0 5"
@@ -50,24 +60,45 @@
                        FontSize="24"
                        Padding="5 0 5 5 "
                        FontFamily="../../Fonts\#강원교육모두"
-                       >
-                    100,000,000
-                </Label>
+                       Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.CurMoney, Converter={StaticResource numconverter}}"
+                       />
 
                 <Label FontSize="24"
                        Padding="5 0 5 5"
                        FontFamily="../../Fonts\#강원교육모두"
-                       >
-                    원
-                </Label>
+                       Content="원" 
+                       />
             </StackPanel>
 
             <Label FontSize="24"
                    Padding="5 5 5 0"
                    FontFamily="../../Fonts\#강원교육모두"
-                   >
-                보유 주식 환산액
-            </Label>
+                   Content="보유 주식 환산액"
+                   />
+            
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 5"
+                        >
+                <Label Foreground="Blue"
+                       FontWeight="Bold"
+                       FontSize="24"
+                       Padding="5 0 5 5 "
+                       FontFamily="../../Fonts\#강원교육모두"
+                       Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.StockMoney, Converter={StaticResource numconverter}}"
+                       />
+
+                <Label FontSize="24"
+                       Padding="5 0 5 5"
+                       FontFamily="../../Fonts\#강원교육모두"
+                       Content="원" 
+                       />
+            </StackPanel>
+
+            <Label FontSize="24"
+                   Padding="5 5 5 0"
+                   FontFamily="../../Fonts\#강원교육모두"
+                   Content="총 자산"
+                   />
 
             <StackPanel Orientation="Horizontal"
                         Margin="0 0 0 5"
@@ -77,44 +108,16 @@
                        FontSize="24"
                        Padding="5 0 5 5 "
                        FontFamily="../../Fonts\#강원교육모두"
-                    >
-                    100,000,000
-                </Label>
+                       Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.TotalMoney, Converter={StaticResource numconverter}}"
+                       />
 
                 <Label FontSize="24"
-                       Padding="5 0 5 5 "
+                       Padding="5 0 5 5"
                        FontFamily="../../Fonts\#강원교육모두"
-                       >
-                    원
-                </Label>
+                       Content="원" 
+                       />
             </StackPanel>
-
-            <Label FontSize="24"
-                   Padding="5 5 5 0"
-                   FontFamily="../../Fonts\#강원교육모두"
-                   >
-                총 자산
-            </Label>
-
-            <StackPanel Orientation="Horizontal"
-                        Margin="0 0 0 5"
-                        >
-                <Label Foreground="Blue"
-                       FontWeight="Bold"
-                       FontSize="24"
-                       Padding="5 0 5 5 "
-                       FontFamily="../../Fonts\#강원교육모두"
-                    >
-                    100,000,000
-                </Label>
-
-                <Label FontSize="24"
-                       Padding="5 0 5 5 "
-                       FontFamily="../../Fonts\#강원교육모두"
-                       >
-                    원
-                </Label>
-            </StackPanel>
+            
             <Button Content="메인화면" 
                     Width="150"
                     Height="60"
@@ -123,7 +126,7 @@
                     HorizontalAlignment="Left"
                     Background="{StaticResource btnBgColor}"
                     Foreground="{StaticResource btnTextColor}"
-                    x:Name="goMainBtn"
+                    Command="{StaticResource gomainbtncommand}"
                     >
 
                 <Button.Resources>
@@ -134,62 +137,25 @@
             </Button>
         </StackPanel>
 
-        <StackPanel VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Margin="320 0 30 0"
-                    Width="230"
-                    Background="#93C47E"
-                    >
-            <Label Content="User Name"
+        <StackPanel Margin="350 20 50 20"
+                    Background="#93C47E">
+            <Label Content="Ranking"
+                   FontSize="25"
                    FontFamily="../../Fonts\#강원교육모두"
-                   FontSize="30"
-                   BorderBrush="Black"
-                   BorderThickness="1"
+                   Height="40"
                    HorizontalContentAlignment="Center"
-                   />
-            <Label Content="밀 게이츠"
-                   FontFamily="../../Fonts\#강원교육모두"
-                   FontSize="30"
-                   BorderBrush="Black"
-                   BorderThickness="1"
-                   HorizontalContentAlignment="Center"
-                   />
-            <Label Content="워렌 퍼피"
-                   FontFamily="../../Fonts\#강원교육모두"
-                   FontSize="30"
-                   BorderBrush="Black"
-                   BorderThickness="1"
-                   HorizontalContentAlignment="Center"
-                   />
-            <Label Content="리재용"
-                   FontFamily="../../Fonts\#강원교육모두"
-                   FontSize="30"
-                   BorderBrush="Black"
-                   BorderThickness="1"
-                   HorizontalContentAlignment="Center"
-                   />
-            <Label Content="일론 마스크"
-                   FontFamily="../../Fonts\#강원교육모두"
-                   FontSize="30"
-                   BorderBrush="Black"
-                   BorderThickness="1"
-                   HorizontalContentAlignment="Center"
-                   />
-            <Label Content="제작자"
-                   FontFamily="../../Fonts\#강원교육모두"
-                   FontSize="30"
-                   BorderBrush="Black"
-                   BorderThickness="1"
-                   HorizontalContentAlignment="Center"
-                   />
-            <Label Content="제뉘"
-                   FontFamily="../../Fonts\#강원교육모두"
-                   FontSize="30"
-                   BorderBrush="Black"
-                   BorderThickness="1"
-                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
                    />
 
+            <ListBox Background="#93C47E" 
+                     FontSize="20"
+                     BorderBrush="#93C47E"
+                     FontFamily="../../Fonts\#강원교육모두"
+                     HorizontalContentAlignment="Center"
+                     x:Name="rank"                   
+                     ItemsSource="{Binding Path=SettingVM.PlayerVM.PlayersDataToShow}"
+                     >
+            </ListBox>
         </StackPanel>
     </Grid>
 </Window>
