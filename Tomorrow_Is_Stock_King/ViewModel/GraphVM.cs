@@ -44,6 +44,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public List<string> StrList { get; set; }
         public Func<double, string> XFormatter { get; set; }
         public Func<double, string> YFormatter { get; set; }
+        private int turnnum;
         public GraphVM()
         {
             var gradientBrush = new LinearGradientBrush
@@ -61,6 +62,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
             ListSeriesCollection = new SeriesCollection();
             StrList = new List<string>();
+            turnnum = 0;
         }
         public ZoomingOptions ZoomingMode
         {
@@ -89,12 +91,12 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         private ChartValues<DateTimePoint> GetData(List<List<Item>> TurnList, int index)
         {
             var values = new ChartValues<DateTimePoint>();
-
+            
             for(int i=0; i< TurnList.Count; i++)
             {
-                values.Add(new DateTimePoint(DateTime.Now.AddDays(i), Double.Parse(TurnList[i][index].Clpr)));
+                DateTime turndate = new DateTime();
+                values.Add(new DateTimePoint(turndate.AddDays(i), Double.Parse(TurnList[i][index].Clpr)));
             }
-
             return values;
         }
 

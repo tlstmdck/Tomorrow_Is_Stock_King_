@@ -98,10 +98,12 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             int clprnull = 0;
             for (int i = 0; i < Companies.Count; i++)
             {
-                var stock = StockAPI.GetStockData(stock_date, Companies[i]);
+                Item stock = StockAPI.GetStockData(stock_date, Companies[i]);
                 if (stock.Clpr == null)
                 {
-                    stock = RealStockTurnList[RealStockTurnList.Count - 1][i];
+                    stock.Clpr = RealStockTurnList[RealStockTurnList.Count - 1][i].Clpr;
+                    stock.ItmsNm = RealStockTurnList[RealStockTurnList.Count - 1][i].ItmsNm;
+                    stock.Rate = RealStockTurnList[RealStockTurnList.Count - 1][i].Rate;
                     clprnull++;
                 }
                 StockDataToShow.Add(stock);
@@ -127,30 +129,32 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 Random rand = new Random();
                 for (int i = 0; i < Companies.Count; i++)
                 {
+                    double rate = StockrateList[i];
                     int ran = rand.Next(1, 11);
                     int Turnnum;
                     if (ran > 5)
                     {
                         if (StockrateList[i] > 0)
                         {
-                            Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr)) + (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr) * StockrateList[i]);
+                            Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr)) + (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr) * rate);
                         }
                         else
                         {
-                            Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr)) - (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr) * StockrateList[i]);
+                            Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr)) - (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr) * rate);
                         }
                     }
                     else
                     {
                         if (StockrateList[i] > 0)
                         {
-                            Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr)) - (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr) * StockrateList[i]);
+                            Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr)) - (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr) * rate);
                         }
                         else
                         {
-                            Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr)) + (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr) * StockrateList[i]);
+                            Turnnum = (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr)) + (int)(Double.Parse(TurnList[TurnList.Count - 2][i].Clpr) * rate);
                         }
                     }
+
                     TurnList[TurnList.Count - 1][i].Clpr = Turnnum.ToString();
 
                 }
@@ -188,7 +192,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             }
         }
 
-        private void GetTrendsData()  //주식 증가시 수정필요
+        private void GetTrendsData()  
         {
             List<double> sum = new List<double>();
             int index = Companies.Count/4;  //카테고리당 주식 갯수
