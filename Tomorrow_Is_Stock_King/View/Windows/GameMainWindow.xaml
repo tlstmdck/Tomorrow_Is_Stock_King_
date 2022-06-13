@@ -23,6 +23,7 @@
         <converter:CompaniesConverter x:Key="companiesconverter"/>
         <converter:StocktoMoneyConverter x:Key="stocktomoneyconverter"/>
         <converter:TrendstoViewConverter x:Key="trendstoviewconverter"/>
+        <converter:TotalMoneyChangeRateConverter x:Key="totalmoneychangeconverter"/>
 
     </Window.Resources>
     <Grid Background="{StaticResource bgColor}"
@@ -145,6 +146,11 @@
                                        FontSize="22"
                                        Foreground="{StaticResource btnTextColor}"
                                        />
+                                <Label FontFamily="../../Fonts\#강원교육모두"
+                                       FontSize="22"
+                                       Foreground="{StaticResource btnTextColor}"
+                                       Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.TotalMoneyChangeRate, 
+                                       Converter={StaticResource totalmoneychangeconverter}}"/>
                             </StackPanel>
                         </StackPanel>
                     </Border>

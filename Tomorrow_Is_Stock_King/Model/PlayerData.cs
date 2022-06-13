@@ -66,6 +66,21 @@ namespace Tomorrow_Is_Stock_King.Model
             set { curCanTakeLoan = value; OnPropertyChanged("CurCanTakeLoan"); }
         }
 
+        private long befoeTotalMoney;
+        public long BeforeTotalMoney
+        {
+            get { return befoeTotalMoney; }
+            set { befoeTotalMoney = value; OnPropertyChanged("BeforeTotalMoney"); }
+        }
+
+        private double totalMoneyChangeRate;
+        public double TotalMoneyChangeRate
+        {
+            get { return totalMoneyChangeRate; }
+            set { totalMoneyChangeRate = value; OnPropertyChanged("TotalMoneyChangeRate"); }
+        }
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propName)
@@ -86,6 +101,8 @@ namespace Tomorrow_Is_Stock_King.Model
             LoanMoney = 0;
             CanTakeMaxLoan = (long)(TotalMoney * 0.9);
             CurCanTakeLoan = CanTakeMaxLoan;
+            BeforeTotalMoney = TotalMoney;
+            TotalMoneyChangeRate = 0;
         }
     }
 }
