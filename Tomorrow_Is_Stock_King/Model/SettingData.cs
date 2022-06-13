@@ -12,7 +12,6 @@ namespace Tomorrow_Is_Stock_King.Model
     public class SettingData : INotifyPropertyChanged
     {
         private int level;
-
         public int Level
         {
             get { return level; }
@@ -20,7 +19,6 @@ namespace Tomorrow_Is_Stock_King.Model
         }
 
         private int updateTime;
-
         public int UpdateTime
         {
             get { return updateTime; }
@@ -28,7 +26,6 @@ namespace Tomorrow_Is_Stock_King.Model
         }
 
         private int turnCnt;
-
         public int TurnCnt
         {
             get { return turnCnt; }
@@ -67,8 +64,8 @@ namespace Tomorrow_Is_Stock_King.Model
             set { eventNum = value; OnPropertyChanged("EventNum"); }
         }
 
-        private Dictionary<int, bool> popUpEvent;
-        public Dictionary<int, bool> PopUpEvent
+        private Dictionary<int, Pair> popUpEvent;
+        public Dictionary<int, Pair> PopUpEvent
         {
             get { return popUpEvent; }
             set { popUpEvent = value; }
@@ -103,6 +100,21 @@ namespace Tomorrow_Is_Stock_King.Model
             set { eventContent = value; OnPropertyChanged("EventContent"); }
         }
 
+        private string eventCompany;
+        public string EventCompany
+        {
+            get { return eventCompany; }
+            set { eventCompany = value; OnPropertyChanged("EventCompany"); }
+        }
+
+        private int getIsGood;
+        public int GetIsGood
+        {
+            get { return getIsGood; }
+            set { getIsGood = value; OnPropertyChanged("GetIsGood"); }
+        }
+
+
         public SettingData()
         {
             Level = 1;
@@ -111,15 +123,19 @@ namespace Tomorrow_Is_Stock_King.Model
             Information = 3;
             EventTarget = 0;
             EventNum = 0;
-            popUpEvent = new Dictionary<int, bool>();
+            EventCompany = "";
+            GetIsGood = -1;
+            popUpEvent = new Dictionary<int, Pair>();
 
             int turn = 5;
+            // 몇턴에 어떤이벤트가 나오는지 미리 생성
             Random random = new Random();
             for (int i = 0; i < 10; i++)
             {
-                int rand = random.Next(2);
-                bool flag = (rand == 0) ? true : false;
-                PopUpEvent.Add(turn + i * 10, flag);
+                // 0이면 좋은이벤트, 1이면 나쁜이벤트
+                int isGood = random.Next(2);
+                int company = random.Next(4);
+                PopUpEvent.Add(turn + i * 10, new Pair(company, isGood));
             }
 
             _Events = new Events[4];

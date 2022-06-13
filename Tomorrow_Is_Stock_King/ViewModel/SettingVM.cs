@@ -17,7 +17,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public LevelBtnCommand LevelBtnCommand { get; set; }
         public UpdateTimeCommand UpdateTimeCommand { get; set; }
         public StartBtnCommand StartBtnCommand { get; set; }
-        public GetInformationCommand GetInformationCommand { get; set; }
 
         public SettingVM()
         {
@@ -26,7 +25,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             LevelBtnCommand = new LevelBtnCommand(this);
             UpdateTimeCommand = new UpdateTimeCommand(this);
             StartBtnCommand = new StartBtnCommand(this);
-            GetInformationCommand = new GetInformationCommand(this);
         }
 
         public void setLevel(int lev)
@@ -63,9 +61,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
         public void setCompany(string EventCompany)
         {
-            //SettingDataToShow._Events[SettingDataToShow.EventNum].Title = SettingDataToShow._Events[SettingDataToShow.EventNum].Title.Insert(0, SettingDataToShow.EventTarget.ToString() + " ");
-            //SettingDataToShow._Events[SettingDataToShow.EventNum].Content = SettingDataToShow._Events[SettingDataToShow.EventNum].Content.Insert(0, SettingDataToShow.EventTarget.ToString() + " ");
-
             SettingDataToShow.EventImg = SettingDataToShow._Events[SettingDataToShow.EventNum].ImgSrc;
             SettingDataToShow.EventTitle = EventCompany.ToString() + " " + SettingDataToShow._Events[SettingDataToShow.EventNum].Title;
             SettingDataToShow.EventContent = EventCompany.ToString() + " " + SettingDataToShow._Events[SettingDataToShow.EventNum].Content;

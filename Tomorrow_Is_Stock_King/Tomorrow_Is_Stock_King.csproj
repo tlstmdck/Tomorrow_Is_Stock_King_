@@ -98,6 +98,7 @@
     <Compile Include="ViewModel\Converters\BGMBtnConverter.cs" />
     <Compile Include="ViewModel\Converters\EffectBtnConverter.cs" />
     <Compile Include="ViewModel\Converters\CompaniesConverter.cs" />
+    <Compile Include="ViewModel\Converters\InfoConverter.cs" />
     <Compile Include="ViewModel\Converters\LevelConverter.cs" />
     <Compile Include="ViewModel\Converters\LoanConverter.cs" />
     <Compile Include="ViewModel\Converters\NumConverter.cs" />
@@ -134,6 +135,9 @@
     </Compile>
     <Compile Include="View\Windows\SettingWindow.xaml.cs">
       <DependentUpon>SettingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\ShowInformationWindow.xaml.cs">
+      <DependentUpon>ShowInformationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\StartSettingWindow.xaml.cs">
       <DependentUpon>StartSettingWindow.xaml</DependentUpon>
@@ -179,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\SettingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\ShowInformationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

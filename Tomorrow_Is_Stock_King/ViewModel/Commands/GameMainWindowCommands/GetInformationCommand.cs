@@ -5,15 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Tomorrow_Is_Stock_King.View.Windows;
 
 namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
 {
     public class GetInformationCommand : ICommand
     {
-        SettingVM SettingVM { get; set; }
-        public GetInformationCommand(SettingVM vm)
+        int CompTurn { get; set; }
+        GameTurnVM GameTurnVM { get; set; }
+        public GetInformationCommand(GameTurnVM vm)
         {
-            SettingVM = vm;
+            GameTurnVM = vm;
+            CompTurn = -1;
         }
 
         public event EventHandler CanExecuteChanged
@@ -24,7 +27,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
 
         public bool CanExecute(object parameter)
         {
-            if(SettingVM.SettingDataToShow.Information == 0)
+            if(GameTurnVM.SettingVM.SettingDataToShow.Information == 0 || CompTurn == GameTurnVM.SettingVM.SettingDataToShow.TurnCnt)
             {
                 return false;
             }
@@ -33,17 +36,32 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
 
         public void Execute(object parameter)
         {
-            SettingVM.SettingDataToShow.Information--;
+            GameTurnVM.SettingVM.SettingDataToShow.Information--;
 
-            foreach(KeyValuePair<int, bool> pair in SettingVM.SettingDataToShow.PopUpEvent)
+            //foreach(KeyValuePair<int, bool> pair in SettingVM.SettingDataToShow.PopUpEvent)
+            //{
+            //    if(pair.Key > SettingVM.SettingDataToShow.TurnCnt)
+            //    {
+            //        string eventStr = pair.Value ? "떡상합니다." : "떡락합니다.";
+            //        MessageBox.Show(pair.Key - SettingVM.SettingDataToShow.TurnCnt + "턴 뒤 " + eventStr);
+            //        break;
+            //    }
+            //}
+            foreach(var item in GameTurnVM.SettingVM.SettingDataToShow.PopUpEvent)
             {
-                if(pair.Key > SettingVM.SettingDataToShow.TurnCnt)
+                if(GameTurnVM.SettingVM.SettingDataToShow.TurnCnt < item.Key)
                 {
-                    string eventStr = pair.Value ? "떡상합니다." : "떡락합니다.";
-                    MessageBox.Show(pair.Key - SettingVM.SettingDataToShow.TurnCnt + "턴 뒤 " + eventStr);
+                    GameTurnVM.SettingVM.SettingDataToShow.EventTarget = (int)item.Value.First;
+                    GameTurnVM.SettingVM.SettingDataToShow.EventCompany = GameTurnVM.StockVM.Companies[GameTurnVM.SettingVM.SettingDataToShow.EventTarget];
+                    GameTurnVM.SettingVM.SettingDataToShow.GetIsGood = (int)item.Value.Second;
                     break;
                 }
             }
+
+            ShowInformationWindow showInformationwindow = new ShowInformationWindow();
+            showInformationwindow.ShowDialog();
+
+            CompTurn = GameTurnVM.SettingVM.SettingDataToShow.TurnCnt;
         }
     }
 }
