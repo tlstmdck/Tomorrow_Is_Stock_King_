@@ -43,6 +43,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public void setPlayerName(string name)
         {
             PlayerVM.PlayerDataToShow.Name = name;
+            PlayerVM.PlayerDataToShow.CanTakeMaxLoan = (long)(PlayerVM.PlayerDataToShow.TotalMoney * 0.9);
+            PlayerVM.PlayerDataToShow.CurCanTakeLoan = PlayerVM.PlayerDataToShow.CanTakeMaxLoan;
         }
         public void setMoney(long money)
         {
