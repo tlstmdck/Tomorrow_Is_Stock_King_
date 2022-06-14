@@ -26,18 +26,18 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             SettingDataToShow.Level = lev;
             if(lev == 1)
             {
-                PlayerVM.PlayerDataToShow.CurMoney = 30000000;
-                PlayerVM.PlayerDataToShow.TotalMoney = 30000000;
+                PlayerVM.PlayerDataToShow.CurMoney = 100000000;
+                PlayerVM.PlayerDataToShow.TotalMoney = 100000000;
             }
             else if(lev == 2)
             {
-                PlayerVM.PlayerDataToShow.CurMoney = 20000000;
-                PlayerVM.PlayerDataToShow.TotalMoney = 20000000;
+                PlayerVM.PlayerDataToShow.CurMoney = 70000000;
+                PlayerVM.PlayerDataToShow.TotalMoney = 70000000;
             }
             else
             {
-                PlayerVM.PlayerDataToShow.CurMoney = 10000000;
-                PlayerVM.PlayerDataToShow.TotalMoney = 10000000;
+                PlayerVM.PlayerDataToShow.CurMoney = 50000000;
+                PlayerVM.PlayerDataToShow.TotalMoney = 50000000;
             }
 
             PlayerVM.AIsDataToShow.Clear();

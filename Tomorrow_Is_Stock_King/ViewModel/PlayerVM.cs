@@ -99,7 +99,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         
         public void UpdateChangeRate()
         {
-            PlayerDataToShow.TotalMoneyChangeRate = (((double)(PlayerDataToShow.TotalMoney - PlayerDataToShow.BeforeTotalMoney) / (double)PlayerDataToShow.BeforeTotalMoney) * 100);
+            PlayerDataToShow.TotalMoneyChangeRate = (((double)(PlayerDataToShow.TotalMoney - PlayerDataToShow.BeforeTotalMoney) / PlayerDataToShow.BeforeTotalMoney) * 100);
         }
     }
 }

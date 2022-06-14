@@ -94,12 +94,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             StockVM.SelectedStock = StockVM.SelectedStock;
 
-            
-            if (SettingVM.SettingDataToShow.TurnCnt == 100) //100턴 채울 시
-            {
-                GameEnd();
-            }
-
             if (SettingVM.SettingDataToShow.TurnCnt % 10 == 5)
             {
                 PopUpEvent();
@@ -109,7 +103,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             SettingVM.PlayerVM.UpdateAIsMoney();
 
             string rank1 = SettingVM.PlayerVM.PlayersData[0].Second.ToString();     
-            if (rank1.Equals(SettingVM.PlayerVM.PlayerDataToShow.Name.ToString()))  //1등일시
+            if (rank1.Equals(SettingVM.PlayerVM.PlayerDataToShow.Name.ToString()) || SettingVM.SettingDataToShow.TurnCnt == 100)  //1등이거나, 100턴이거나
             {
                 GameEnd();  //게임종료
             }
@@ -180,6 +174,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             }
             SettingVM.PlayerVM.PlayerDataToShow.StockMoney = sum;
             SettingVM.PlayerVM.PlayerDataToShow.TotalMoney = SettingVM.PlayerVM.PlayerDataToShow.StockMoney + SettingVM.PlayerVM.PlayerDataToShow.CurMoney;
+            //SettingVM.PlayerVM.PlayerDataToShow.LoanMoney = SettingVM.PlayerVM.PlayerDataToShow.TotalMoney * 0.9
+            updateCanLoan();
             SettingVM.PlayerVM.UpdateChangeRate();
         }
         private void GetInterest()
@@ -248,10 +244,14 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             SettingVM.PlayerVM.PlayerDataToShow.CurCanTakeLoan += request;
         }
 
-        public void updateCanLoan(bool flag, long request)
+        public void updateCanLoan()
         {
             SettingVM.PlayerVM.PlayerDataToShow.CanTakeMaxLoan = (long)((SettingVM.PlayerVM.PlayerDataToShow.TotalMoney - SettingVM.PlayerVM.PlayerDataToShow.LoanMoney) * 0.9);
             SettingVM.PlayerVM.PlayerDataToShow.CurCanTakeLoan = SettingVM.PlayerVM.PlayerDataToShow.CanTakeMaxLoan - SettingVM.PlayerVM.PlayerDataToShow.LoanMoney;
+            if (SettingVM.PlayerVM.PlayerDataToShow.CurCanTakeLoan < 0)
+            {
+                SettingVM.PlayerVM.PlayerDataToShow.CurCanTakeLoan = 0;
+            }
         }
     }
 }
