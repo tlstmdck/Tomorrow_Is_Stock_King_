@@ -16,7 +16,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Converters
         {
             ObservableCollection<string> Companies = (ObservableCollection<string>)values[0];
             ObservableCollection<string> result = new ObservableCollection<string>();
-            int index = 1;  //주식 증가시 수정필요
+            int index = 5;  //주식 증가시 수정필요
             switch(values[1].ToString())
             {
                 case "금융":

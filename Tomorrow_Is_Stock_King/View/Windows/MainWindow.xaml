@@ -54,7 +54,7 @@
                 x:Name="bgmBtn"
                 Panel.ZIndex="1"
                 Command="{Binding Path=SoundVM.BGMBtnCommand}"
-                CommandParameter="{Binding ElementName=bgmImage}"
+                CommandParameter="{Binding ElementName=bgmImage}"   
                 >
             <Button.Background>
                 <SolidColorBrush Opacity="0" />
