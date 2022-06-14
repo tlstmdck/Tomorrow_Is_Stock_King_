@@ -57,7 +57,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
             ZoomingMode = ZoomingOptions.X;
 
-            XFormatter = val => new DateTime((long)val).ToString("dd MMM");
+            XFormatter = val => new DateTime((long)val).Ticks.ToString() + "턴";
             YFormatter = val => val.ToString("C");
 
             ListSeriesCollection = new SeriesCollection();
@@ -92,10 +92,10 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         {
             var values = new ChartValues<DateTimePoint>();
             
-            for(int i=0; i< TurnList.Count; i++)
+            for (int i=0; i< TurnList.Count; i++)
             {
-                DateTime turndate = new DateTime();
-                values.Add(new DateTimePoint(turndate.AddDays(i), Double.Parse(TurnList[i][index].Clpr)));
+                DateTime turndate = new DateTime(0);
+                values.Add(new DateTimePoint(turndate.AddTicks(i), Double.Parse(TurnList[i][index].Clpr)));
             }
             return values;
         }
@@ -143,6 +143,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             {
                 PieSeries temp = new PieSeries { Title = StrList[i], Values = new ChartValues<ObservableValue> { new ObservableValue(stocks[StrList[i]]) }, DataLabels = true };
                 ListSeriesCollection.Add(temp);
+                
             }
             
         }
