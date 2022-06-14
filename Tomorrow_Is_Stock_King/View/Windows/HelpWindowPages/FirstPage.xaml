@@ -9,6 +9,6 @@
       Title="FirstPage">
 
     <Grid>
-        <Button Width="300" Height="300">첫번째 페이지</Button>
+        <Image Width="800" Height="450" />
     </Grid>
 </Page>

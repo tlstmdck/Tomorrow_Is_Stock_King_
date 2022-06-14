@@ -11,7 +11,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 {
     internal class StockAPI
     {
-        static string API_KEY = "FvLmbKsT5UkHbbCa%2FWOFTOHM13EOJ8UNnbWreWSXVU8W8DrN%2BA8wfjZGcAJOJRiWc2M%2FViJPDXdwQhne%2Btv8HA%3D%3D";
+        static string API_KEY = "M68gVv5bMOqZ/gzD0oo5wpdPdvUtikS/pAEu2ZPxqQJBvPjoOZqbSDrj7qdzzE0Dvczu1NPmTrpubD3rJ6JEZw==";
         static string BASE_URL = "https://api.odcloud.kr/api/GetStockSecuritiesInfoService/v1/getStockPriceInfo?resultType=json&basDt={0}&itmsNm={1}&serviceKey={2}";
 
         public static Item GetStockData(string date ,string Stockname)
