@@ -216,6 +216,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             else        //일부만 판매
             {
                 SettingVM.PlayerVM.PlayerDataToShow.Stocks[stockName] -= buyCount;      //보유주식에서 판 주식수만큼 제거
+                SettingVM.PlayerVM.PlayerDataToShow.CurMoney += buyCount * long.Parse(StockVM.Item.Clpr);   //돈 받기
                 StockVM.GraphVM.UpdateListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);    //단순 리스트 업데이트
             }
         }
