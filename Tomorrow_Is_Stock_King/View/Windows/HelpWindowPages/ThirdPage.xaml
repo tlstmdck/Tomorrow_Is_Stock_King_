@@ -9,6 +9,6 @@
       Title="ThirdPage">
 
     <Grid>
-        <Button Width="300" Height="300">세번째 페이지</Button>
+        <Image Width="800" Height="450" Source="pack://application:,,,/Tomorrow_Is_Stock_King;component/Images/HelpImages/3.png"/>
     </Grid>
 </Page>

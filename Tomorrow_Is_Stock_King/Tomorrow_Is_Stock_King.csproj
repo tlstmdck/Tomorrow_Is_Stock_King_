@@ -134,11 +134,29 @@
     <Compile Include="View\Windows\GoMainCheckWindow.xaml.cs">
       <DependentUpon>GoMainCheckWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\HelpWindowPages\EighthPage.xaml.cs">
+      <DependentUpon>EighthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\HelpWindowPages\FifthPage.xaml.cs">
+      <DependentUpon>FifthPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\HelpWindowPages\FirstPage.xaml.cs">
       <DependentUpon>FirstPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\HelpWindowPages\FourthPage.xaml.cs">
+      <DependentUpon>FourthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\HelpWindowPages\NinthPage.xaml.cs">
+      <DependentUpon>NinthPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\HelpWindowPages\Secondpage.xaml.cs">
       <DependentUpon>Secondpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\HelpWindowPages\SeventhPage.xaml.cs">
+      <DependentUpon>SeventhPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\HelpWindowPages\SixthPage.xaml.cs">
+      <DependentUpon>SixthPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\HelpWindowPages\ThirdPage.xaml.cs">
       <DependentUpon>ThirdPage.xaml</DependentUpon>
@@ -178,11 +196,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\HelpWindowPages\EighthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\HelpWindowPages\FifthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\HelpWindowPages\FirstPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\HelpWindowPages\FourthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\HelpWindowPages\NinthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\HelpWindowPages\Secondpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\HelpWindowPages\SeventhPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\HelpWindowPages\SixthPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -283,6 +325,15 @@
   <ItemGroup>
     <Resource Include="Images\Icons\LeftArrow.png" />
     <Resource Include="Images\Icons\RightArrow.png" />
+    <Resource Include="Images\HelpImages\1.PNG" />
+    <Resource Include="Images\HelpImages\2.png" />
+    <Resource Include="Images\HelpImages\3.png" />
+    <Resource Include="Images\HelpImages\4.png" />
+    <Resource Include="Images\HelpImages\5.png" />
+    <Resource Include="Images\HelpImages\6.png" />
+    <Resource Include="Images\HelpImages\7.png" />
+    <Resource Include="Images\HelpImages\8.png" />
+    <Resource Include="Images\HelpImages\9.png" />
     <Content Include="Sounds\BGM.mp3" />
     <Content Include="Sounds\Click.mp3" />
   </ItemGroup>
