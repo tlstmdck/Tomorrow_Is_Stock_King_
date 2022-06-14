@@ -80,11 +80,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             StockVM.SelectedStock = StockVM.SelectedStock;
 
-            if (SettingVM.SettingDataToShow.TurnCnt == 15)
-            {
-                GameEnd();
-            }
-
             if (SettingVM.SettingDataToShow.TurnCnt % 10 == 5)
             {
                 PopUpEvent();
@@ -97,6 +92,11 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 StockVM.GraphVM.UpdateListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);
             }
             GetInterest();
+
+            if (SettingVM.SettingDataToShow.TurnCnt == 15)
+            {
+                GameEnd();
+            }
         }
         private void GameEnd()
         {
@@ -160,8 +160,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                     }
                 }
             }
-            SettingVM.PlayerVM.PlayerDataToShow.LoanMoney = sum;
-            SettingVM.PlayerVM.PlayerDataToShow.TotalMoney = SettingVM.PlayerVM.PlayerDataToShow.LoanMoney + SettingVM.PlayerVM.PlayerDataToShow.CurMoney;
+            SettingVM.PlayerVM.PlayerDataToShow.StockMoney = sum;
+            SettingVM.PlayerVM.PlayerDataToShow.TotalMoney = SettingVM.PlayerVM.PlayerDataToShow.StockMoney + SettingVM.PlayerVM.PlayerDataToShow.CurMoney;
             SettingVM.PlayerVM.UpdateChangeRate();
         }
         private void GetInterest()

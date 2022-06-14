@@ -5,7 +5,6 @@
              xmlns:vm="clr-namespace:Tomorrow_Is_Stock_King.ViewModel"
              StartupUri="View/Windows/MainWindow.xaml">
     <Application.Resources>
-        <vm:StockVM x:Key="stockvm" />
         <vm:GameTurnVM x:Key="gameturnvm" />
     </Application.Resources>
 </Application>
