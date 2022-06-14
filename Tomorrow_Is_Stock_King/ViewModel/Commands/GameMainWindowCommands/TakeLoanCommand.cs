@@ -25,7 +25,18 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
         {
             if (parameter == null) return true;
             if ((string)parameter == "") return false;
+            string str = (string)parameter;
+            for(int i= str.Length-1; i >=0; i--)
+            {
+                if((int)str[i] > 46 && (int)str[i] < 58)
+                {
 
+                }
+                else
+                {
+                    return false;
+                }
+            }
             long request = long.Parse((string)parameter);
             if (request > GameTurnVM.SettingVM.PlayerVM.PlayerDataToShow.CurCanTakeLoan)
             {
