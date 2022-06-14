@@ -153,7 +153,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 string companyName = each.Key;
                 int ownCnt = each.Value;
 
-                foreach(Item item in StockVM.TurnList[SettingVM.SettingDataToShow.TurnCnt + 1])
+                foreach(Item item in StockVM.TurnList[SettingVM.SettingDataToShow.TurnCnt])
                 {
                     if(item.ItmsNm == companyName)
                     {
