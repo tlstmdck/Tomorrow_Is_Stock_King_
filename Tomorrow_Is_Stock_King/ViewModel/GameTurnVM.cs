@@ -94,7 +94,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             StockVM.SelectedStock = StockVM.SelectedStock;
 
-            if (SettingVM.SettingDataToShow.TurnCnt == 5)
+            if (SettingVM.SettingDataToShow.TurnCnt == 100)
             {
                 GameEnd();
             }
@@ -128,11 +128,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
         private void PopUpEvent()
         {
-            Random random = new Random();
-
             // 이미 정해진 턴에 특정 회사와 긍정 혹은 부정적인 이벤트가 정해지기 때문에 또 이벤트 넘버를 정할 필요 없다.
             SettingVM.SettingDataToShow.EventTarget = (int)SettingVM.SettingDataToShow.PopUpEvent[SettingVM.SettingDataToShow.TurnCnt].First;
-            //SettingVM.SettingDataToShow.EventNum = random.Next(0, 4);
 
             UpdateEventStock(SettingVM.SettingDataToShow.EventTarget, (int)SettingVM.SettingDataToShow.PopUpEvent[SettingVM.SettingDataToShow.TurnCnt].Second);
             SettingVM.SettingDataToShow.EventCompany = StockVM.Companies[SettingVM.SettingDataToShow.EventTarget];

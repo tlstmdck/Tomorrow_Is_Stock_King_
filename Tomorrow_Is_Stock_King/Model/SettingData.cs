@@ -126,7 +126,7 @@ namespace Tomorrow_Is_Stock_King.Model
             {
                 // 0이면 좋은이벤트, 1이면 나쁜이벤트
                 int isGood = random.Next(2);
-                int company = random.Next(4);
+                int company = random.Next(20);
                 PopUpEvent.Add(turn + i * 10, new Pair(company, isGood));
             }
 
