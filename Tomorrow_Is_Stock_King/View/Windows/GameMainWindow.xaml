@@ -55,7 +55,7 @@
                                      HorizontalContentAlignment="Center"
                                      BorderBrush="{StaticResource bgColor}"
                                      SelectedItem="{Binding Path=StockVM.SelectedStock}"
-                                     FontSize="25">
+                                     FontSize="30">
                                 <ListBox.ItemsSource>
                                     <MultiBinding Converter="{StaticResource companiesconverter}">
                                         <Binding Path="StockVM.Companies"/>
@@ -73,7 +73,8 @@
                             <ListBox Background="{StaticResource bgColor}"
                                      HorizontalContentAlignment="Center"
                                      BorderBrush="{StaticResource bgColor}"
-                                     SelectedItem="{Binding Path=StockVM.SelectedStock}">
+                                     SelectedItem="{Binding Path=StockVM.SelectedStock}"
+                                     FontSize="30">
                                 <ListBox.ItemsSource>
                                     <MultiBinding Converter="{StaticResource companiesconverter}">
                                         <Binding Path="StockVM.Companies"/>
@@ -91,7 +92,8 @@
                             <ListBox Background="{StaticResource bgColor}"
                                      HorizontalContentAlignment="Center"
                                      BorderBrush="{StaticResource bgColor}"
-                                     SelectedItem="{Binding Path=StockVM.SelectedStock}">
+                                     SelectedItem="{Binding Path=StockVM.SelectedStock}"
+                                     FontSize="30">
                                 <ListBox.ItemsSource>
                                     <MultiBinding Converter="{StaticResource companiesconverter}">
                                         <Binding Path="StockVM.Companies"/>
@@ -109,7 +111,8 @@
                             <ListBox Background="{StaticResource bgColor}"
                                      HorizontalContentAlignment="Center"
                                      BorderBrush="{StaticResource bgColor}"
-                                     SelectedItem="{Binding Path=StockVM.SelectedStock}">
+                                     SelectedItem="{Binding Path=StockVM.SelectedStock}"
+                                     FontSize="30">
                                 <ListBox.ItemsSource>
                                     <MultiBinding Converter="{StaticResource companiesconverter}">
                                         <Binding Path="StockVM.Companies"/>
@@ -493,7 +496,7 @@
                                            FontFamily="../../Fonts\#강원교육모두"
                                            FontWeight="Bold"
                                            x:Name="loan_money"
-                                           Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.LoanMoney}"/>
+                                           Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.LoanMoney, Converter={StaticResource numconverter}}"/>
                                     <Label Content="원"
                                            HorizontalContentAlignment="Center"
                                            FontSize="20"
