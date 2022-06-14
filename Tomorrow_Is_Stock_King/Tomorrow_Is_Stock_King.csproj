@@ -99,7 +99,6 @@
     <Compile Include="ViewModel\Converters\CompaniesConverter.cs" />
     <Compile Include="ViewModel\Converters\InfoConverter.cs" />
     <Compile Include="ViewModel\Converters\LevelConverter.cs" />
-    <Compile Include="ViewModel\Converters\ListChartViewConverter.cs" />
     <Compile Include="ViewModel\Converters\LoanConverter.cs" />
     <Compile Include="ViewModel\Converters\NumConverter.cs" />
     <Compile Include="ViewModel\Converters\RankingMoneyConverter.cs" />
