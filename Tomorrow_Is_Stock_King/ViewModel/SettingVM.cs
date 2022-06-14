@@ -18,7 +18,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public SettingVM()
         {
             SettingDataToShow = new SettingData();
-            PlayerVM = new PlayerVM(SettingDataToShow.Level);
+            PlayerVM = new PlayerVM();
         }
 
         public void setLevel(int lev)
@@ -38,6 +38,28 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             {
                 PlayerVM.PlayerDataToShow.CurMoney = 10000000;
                 PlayerVM.PlayerDataToShow.TotalMoney = 10000000;
+            }
+
+            PlayerVM.AIsDataToShow.Clear();
+
+            long aiStartMoney = 0;
+
+            switch (lev)
+            {
+                case 1:
+                    aiStartMoney = 30000000;
+                    break;
+                case 2:
+                    aiStartMoney = 40000000;
+                    break;
+                default:
+                    aiStartMoney = 50000000;
+                    break;
+            }
+
+            for (int i = 1; i <= 9; i++)
+            {
+                PlayerVM.AIsDataToShow.Add(new AIsData(i.ToString(), (aiStartMoney * i)));
             }
         }
         public void setPlayerName(string name)

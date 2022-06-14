@@ -17,32 +17,16 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public List<Pair> PlayersData { get; set; }
         public ObservableCollection<string> PlayersDataToShow { get; set; }
         public int Level { get; set; }
-        public PlayerVM(int level)
+        public PlayerVM()
         {
             AIsDataToShow = new List<AIsData>();
             PlayersDataToShow = new ObservableCollection<string>();
             PlayersData = new List<Pair>();
             PlayerDataToShow = new PlayerData();
 
-            Level = level;
-            long aiStartMoney = 0;
-
-            switch (Level)
-            {
-                case 1:
-                    aiStartMoney = 30000000;
-                    break;
-                case 2:
-                    aiStartMoney = 40000000;
-                    break;
-                default:
-                    aiStartMoney = 50000000;
-                    break;
-            }
-
             for (int i = 1; i <= 9; i++)
             {
-                AIsDataToShow.Add(new AIsData(i.ToString(), (aiStartMoney * i)));
+                AIsDataToShow.Add(new AIsData(i.ToString(), 30000000 * i));
             }
         }
         
