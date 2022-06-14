@@ -82,7 +82,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             //제조
             Companies.Add("현대제철");
             Companies.Add("대우건설");
-            Companies.Add("기아");
+            Companies.Add("현대차");
             Companies.Add("현대모비스");
             Companies.Add("GS리테일");
 
@@ -101,6 +101,10 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 Item stock = StockAPI.GetStockData(stock_date, Companies[i]);
                 if (stock.Clpr == null)
                 {
+                    if(RealStockTurnList.Count == 0)
+                    {
+                        return;
+                    }
                     stock.Clpr = RealStockTurnList[RealStockTurnList.Count - 1][i].Clpr;
                     stock.ItmsNm = RealStockTurnList[RealStockTurnList.Count - 1][i].ItmsNm;
                     stock.Rate = RealStockTurnList[RealStockTurnList.Count - 1][i].Rate;
