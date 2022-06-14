@@ -25,8 +25,14 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
         {
             if (parameter == null) return true;
             if ((string)parameter == "" || (string)parameter == "0") return false;
-
+            long number1 = Int64.Parse(GameTurnVM.StockVM.Item.Clpr);
+            long number2 = Int64.Parse((string)parameter);
+            long result = number2 / number1;
             if (!GameTurnVM.SettingVM.PlayerVM.PlayerDataToShow.Stocks.ContainsKey(GameTurnVM.StockVM.Item.ItmsNm))
+            {
+                return false;
+            }
+            if (GameTurnVM.SettingVM.PlayerVM.PlayerDataToShow.Stocks[GameTurnVM.StockVM.Item.ItmsNm] < result)
             {
                 return false;
             }
@@ -40,8 +46,10 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Commands.GameMainWindowCommands
             {
                 GameTurnVM.SoundVM.playClickSound();
             }
-
-            GameTurnVM.SellStock((string)parameter);
+            long number1 = Int64.Parse(GameTurnVM.StockVM.Item.Clpr);
+            long number2 = Int64.Parse((string)parameter);
+            long result = number2 / number1;
+            GameTurnVM.SellStock(result.ToString());
         }
     }
 }

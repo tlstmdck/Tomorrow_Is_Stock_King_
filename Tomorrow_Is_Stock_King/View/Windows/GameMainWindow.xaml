@@ -235,7 +235,7 @@
                         FontSize="10"
                         Foreground="{StaticResource btnTextColor}"
                         Command="{Binding Path=BuyStockCommand}"
-                        CommandParameter="{Binding ElementName=stock_num, Path=Text}"
+                        CommandParameter="{Binding ElementName=stockprice, Path=Content}"
                         >
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -251,7 +251,7 @@
                         FontSize="10"
                         Foreground="{StaticResource btnTextColor}"
                         Command="{Binding Path=SellStockCommand}"
-                        CommandParameter="{Binding ElementName=stock_num, Path=Text}"
+                        CommandParameter="{Binding ElementName=stockprice, Path=Content}"
                         >
                         <Button.Resources>
                             <Style TargetType="Border">

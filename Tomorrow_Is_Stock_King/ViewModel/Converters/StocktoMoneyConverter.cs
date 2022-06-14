@@ -17,24 +17,31 @@ namespace Tomorrow_Is_Stock_King.ViewModel.Converters
                 values[0] = "0";
             }
             string str = values[0].ToString();
-            if ((int)str[str.Length-1] > 46 && (int)str[str.Length - 1] < 58)
+            int index = str.Length - 1;
+            while(index >= 0)
             {
-                int stock_num = Int32.Parse((string)values[0]);
-                int stock_clpr = Int32.Parse((string)values[1]);
-                long result = (stock_clpr * stock_num);
-                string money_str = values[2].ToString().Replace(",", "");
-
-                int usermoney = Int32.Parse(money_str);
-                if (result < 0)
+                if((int)str[index] > 46 && (int)str[index] < 58)
                 {
-                    result = long.MaxValue;
+                    
                 }
-               return result.ToString();
+                else
+                {
+                    return "0";
+                }
+                index--;
             }
-            else
+            int stock_num = Int32.Parse((string)values[0]);
+            int stock_clpr = Int32.Parse((string)values[1]);
+            long result = (stock_clpr * stock_num);
+            string money_str = values[2].ToString().Replace(",", "");
+
+            int usermoney = Int32.Parse(money_str);
+            if (result < 0)
             {
-               return "0";
+                result = long.MaxValue;
             }
+            return result.ToString();
+
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
