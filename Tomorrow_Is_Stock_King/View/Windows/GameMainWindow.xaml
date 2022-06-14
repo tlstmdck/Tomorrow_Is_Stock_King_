@@ -493,7 +493,7 @@
                                            FontFamily="../../Fonts\#강원교육모두"
                                            FontWeight="Bold"
                                            x:Name="loan_money"
-                                           Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.LoanMoney}"/>
+                                           Content="{Binding Path=SettingVM.PlayerVM.PlayerDataToShow.LoanMoney, Converter={StaticResource numconverter}}"/>
                                     <Label Content="원"
                                            HorizontalContentAlignment="Center"
                                            FontSize="20"

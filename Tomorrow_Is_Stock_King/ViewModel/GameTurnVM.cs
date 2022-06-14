@@ -82,7 +82,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             StockVM.SelectedStock = StockVM.SelectedStock;
 
-            if (SettingVM.SettingDataToShow.TurnCnt == 6)
+            if (SettingVM.SettingDataToShow.TurnCnt == 5)
             {
                 GameEnd();
             }
@@ -153,7 +153,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 string companyName = each.Key;
                 int ownCnt = each.Value;
 
-                foreach(Item item in StockVM.TurnList[SettingVM.SettingDataToShow.TurnCnt])
+                foreach(Item item in StockVM.TurnList[SettingVM.SettingDataToShow.TurnCnt + 1])
                 {
                     if(item.ItmsNm == companyName)
                     {
@@ -162,8 +162,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                     }
                 }
             }
-            SettingVM.PlayerVM.PlayerDataToShow.LoanMoney = sum;
-            SettingVM.PlayerVM.PlayerDataToShow.TotalMoney = SettingVM.PlayerVM.PlayerDataToShow.LoanMoney + SettingVM.PlayerVM.PlayerDataToShow.CurMoney;
+            SettingVM.PlayerVM.PlayerDataToShow.StockMoney = sum;
+            SettingVM.PlayerVM.PlayerDataToShow.TotalMoney = SettingVM.PlayerVM.PlayerDataToShow.StockMoney + SettingVM.PlayerVM.PlayerDataToShow.CurMoney;
             SettingVM.PlayerVM.UpdateChangeRate();
         }
         private void GetInterest()

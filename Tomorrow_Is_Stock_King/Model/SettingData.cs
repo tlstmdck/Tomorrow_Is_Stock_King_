@@ -111,7 +111,7 @@ namespace Tomorrow_Is_Stock_King.Model
         public SettingData()
         {
             Level = 1;
-            TurnCnt = 1;
+            TurnCnt = 0;
             Information = 3;
             EventTarget = 0;
             EventNum = 0;
