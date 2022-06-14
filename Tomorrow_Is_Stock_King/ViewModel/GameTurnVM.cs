@@ -63,10 +63,22 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             YesBtnCommand = new YesBtnCommand(this);
             NoBtnCommand = new NoBtnCommand(this);
             StockVM.GetCompanies();
+            Random random = new Random();
 
-            Date = new DateTime(2021, 6, 7);
-            StockVM.GetStock(Date.ToString("yyyyMMdd"));
-            Date = Date.AddDays(1);
+            int ran = random.Next(1,400);
+
+            Date = new DateTime(2020, 2, 1);
+            Date = Date.AddDays(ran);
+            
+            while (true)
+            {
+                StockVM.GetStock(Date.ToString("yyyyMMdd"));
+                Date = Date.AddDays(1);
+
+                if (StockVM.RealStockTurnList.Count != 0)
+                    break;
+            }
+            
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             Date = Date.AddDays(1);
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
