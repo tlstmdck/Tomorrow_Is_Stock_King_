@@ -17,7 +17,6 @@
                          Color="#FFFFFF"/>
 
         <converter:NumConverter x:Key="numconverter" />
-        <command:GoMainBtnCommand x:Key="gomainbtncommand"/>
     </Window.Resources>
 
     <Grid Background="{StaticResource bgColor}"
@@ -118,7 +117,7 @@
                        />
             </StackPanel>
             
-            <Button Content="메인화면" 
+            <Button Content="게임종료" 
                     Width="150"
                     Height="60"
                     FontSize="30"
@@ -126,7 +125,7 @@
                     HorizontalAlignment="Left"
                     Background="{StaticResource btnBgColor}"
                     Foreground="{StaticResource btnTextColor}"
-                    Command="{StaticResource gomainbtncommand}"
+                    Command="{Binding Path=SoundVM.ExitBtnCommand}"
                     >
 
                 <Button.Resources>

@@ -5,9 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI;
-using System.Windows;
 using Tomorrow_Is_Stock_King.Model;
-using Tomorrow_Is_Stock_King.ViewModel.Commands.StartSettingWindowCommands;
+using Tomorrow_Is_Stock_King.ViewModel.Converters;
 
 namespace Tomorrow_Is_Stock_King.ViewModel
 {
@@ -17,17 +16,34 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public PlayerData PlayerDataToShow { get; set; }
         public List<Pair> PlayersData { get; set; }
         public ObservableCollection<string> PlayersDataToShow { get; set; }
-       
-        public PlayerVM()
+        public int Level { get; set; }
+        public PlayerVM(int level)
         {
             AIsDataToShow = new List<AIsData>();
             PlayersDataToShow = new ObservableCollection<string>();
             PlayersData = new List<Pair>();
+            PlayerDataToShow = new PlayerData();
+
+            Level = level;
+            long aiStartMoney = 0;
+
+            switch (Level)
+            {
+                case 1:
+                    aiStartMoney = 30000000;
+                    break;
+                case 2:
+                    aiStartMoney = 40000000;
+                    break;
+                default:
+                    aiStartMoney = 50000000;
+                    break;
+            }
+
             for (int i = 1; i <= 9; i++)
             {
-                AIsDataToShow.Add(new AIsData(i.ToString(), (long)500000000 * i));
+                AIsDataToShow.Add(new AIsData(i.ToString(), (aiStartMoney * i)));
             }
-            PlayerDataToShow = new PlayerData();
         }
         
         public void SortPlayers()
@@ -44,25 +60,53 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
             for (int i = 0; i < 10; i++)
             {
-                PlayersDataToShow.Add(PlayersData[i].Second.ToString());
+                PlayersDataToShow.Add(PlayersData[i].Second.ToString() + " " + PlayersData[i].First.ToString());
             }
         }
 
         public void UpdateAIsMoney()
         {
             Random random = new Random();
-            
+
             for(int i = 0;i < AIsDataToShow.Count; i++)
             {
-                int ran = random.Next(1, 11);
+                int rand = random.Next(1,11); // 0이면 증가, 1이면 감소
+                double ran = random.NextDouble() / 100;  // 0~1% 사이로 돈이 증가 또는 감소
 
-                if(ran <= 5)
+                switch (Level)
                 {
-                    AIsDataToShow[i].TotalMoney = Convert.ToInt64(AIsDataToShow[i].TotalMoney * 1.03);
-                }
-                else
-                {
-                    AIsDataToShow[i].TotalMoney = Convert.ToInt64(AIsDataToShow[i].TotalMoney * 0.97);
+                    case 1: // 쉬움난이도 -> 40%로 AI돈 증가
+                        if (rand < 5) // 60% 확률로 
+                        {
+                            AIsDataToShow[i].TotalMoney = Convert.ToInt64(AIsDataToShow[i].TotalMoney * (1 + ran));
+                        }
+                        else
+                        {
+                            AIsDataToShow[i].TotalMoney = Convert.ToInt64(AIsDataToShow[i].TotalMoney * (1 - ran));
+                        }
+                        break;
+
+                    case 2: // 보통난이도 -> 50%로 AI돈 증가
+                        if (rand < 6)
+                        {
+                            AIsDataToShow[i].TotalMoney = Convert.ToInt64(AIsDataToShow[i].TotalMoney * (1 + ran));
+                        }
+                        else
+                        {
+                            AIsDataToShow[i].TotalMoney = Convert.ToInt64(AIsDataToShow[i].TotalMoney * (1 - ran));
+                        }
+                        break;
+
+                    default: // 어려움난이도 -> 60%로 AI돈 증가
+                        if (rand < 7)
+                        {
+                            AIsDataToShow[i].TotalMoney = Convert.ToInt64(AIsDataToShow[i].TotalMoney * (1 + ran));
+                        }
+                        else
+                        {
+                            AIsDataToShow[i].TotalMoney = Convert.ToInt64(AIsDataToShow[i].TotalMoney * (1 - ran));
+                        }
+                        break;
                 }
             }
 

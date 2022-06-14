@@ -22,7 +22,6 @@
         <converter:StocktoMoneyConverter x:Key="stocktomoneyconverter"/>
         <converter:TrendstoViewConverter x:Key="trendstoviewconverter"/>
         <converter:TotalMoneyChangeRateConverter x:Key="totalmoneychangeconverter"/>
-
     </Window.Resources>
     <Grid Background="{StaticResource bgColor}"
           Height="700" Width="1200"
@@ -682,7 +681,7 @@
                    />
 
             <ListBox Background="#93C47E" 
-                     FontSize="45"
+                     FontSize="25"
                      BorderBrush="#93C47E"
                      FontFamily="../../Fonts\#강원교육모두"
                      HorizontalContentAlignment="Center"
