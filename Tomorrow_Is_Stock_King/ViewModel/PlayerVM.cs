@@ -60,7 +60,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
             for (int i = 0; i < 10; i++)
             {
-                PlayersDataToShow.Add(PlayersData[i].Second.ToString() + " " + PlayersData[i].First.ToString());
+                PlayersDataToShow.Add("       " + PlayersData[i].Second.ToString() + "\n" + String.Format("{0:#,0}", PlayersData[i].First) + "원");
             }
         }
 
