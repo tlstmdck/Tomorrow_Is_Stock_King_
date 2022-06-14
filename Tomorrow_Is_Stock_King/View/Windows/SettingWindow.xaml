@@ -90,24 +90,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="메인화면"
-                FontFamily="../../Fonts\#강원교육모두"
-                FontSize="25"
-                Width="200"
-                Height="70"
-                Margin="150 110 150 120"
-                Panel.ZIndex="10"
-                Background="{StaticResource btnBgColor}"
-                Foreground="{StaticResource btnTextColor}"
-                x:Name="mainBtn"
-                Command="{Binding Path=SoundVM.GoMainBtnCommand}"
-                >
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+
 
         <Button Content="종료하기"
                 FontFamily="../../Fonts\#강원교육모두"
