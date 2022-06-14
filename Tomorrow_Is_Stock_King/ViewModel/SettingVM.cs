@@ -18,7 +18,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public SettingVM()
         {
             SettingDataToShow = new SettingData();
-            PlayerVM = new PlayerVM();
+            PlayerVM = new PlayerVM(SettingDataToShow.Level);
         }
 
         public void setLevel(int lev)

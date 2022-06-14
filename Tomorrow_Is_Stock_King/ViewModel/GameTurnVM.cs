@@ -223,7 +223,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
         public void RepaymentLoan(long request)
         {
-            // 현재 대출금액, 현재금액, 전체금액 증가
+            // 현재 대출금액, 현재금액, 전체금액 감사
             SettingVM.PlayerVM.PlayerDataToShow.LoanMoney -= request;
             SettingVM.PlayerVM.PlayerDataToShow.CurMoney -= request;
             SettingVM.PlayerVM.PlayerDataToShow.TotalMoney -= request;
