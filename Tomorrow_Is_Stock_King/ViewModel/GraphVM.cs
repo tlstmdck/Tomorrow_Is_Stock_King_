@@ -26,7 +26,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
     {
         private ZoomingOptions _zoomingMode;
 
-
         public StockVM StockVM { get; set; }
 
         private SeriesCollection chartseriesCollection;
@@ -44,7 +43,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public List<string> StrList { get; set; }
         public Func<double, string> XFormatter { get; set; }
         public Func<double, string> YFormatter { get; set; }
-        private int turnnum;
         public GraphVM()
         {
             var gradientBrush = new LinearGradientBrush
@@ -62,7 +60,6 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
             ListSeriesCollection = new SeriesCollection();
             StrList = new List<string>();
-            turnnum = 0;
         }
         public ZoomingOptions ZoomingMode
         {
@@ -136,16 +133,12 @@ namespace Tomorrow_Is_Stock_King.ViewModel
                 {
                     StrList.Add(key);
                 }
-                
-                
             }
             for(int i=ListSeriesCollection.Count; i<stocks.Count; i++)
             {
                 PieSeries temp = new PieSeries { Title = StrList[i], Values = new ChartValues<ObservableValue> { new ObservableValue(stocks[StrList[i]]) }, DataLabels = true };
                 ListSeriesCollection.Add(temp);
-                
             }
-            
         }
         public void RemoveListStockData(string itemnms)
         {
