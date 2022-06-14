@@ -82,7 +82,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             StockVM.SelectedStock = StockVM.SelectedStock;
 
-            if (SettingVM.SettingDataToShow.TurnCnt == 15)
+            if (SettingVM.SettingDataToShow.TurnCnt == 6)
             {
                 GameEnd();
             }

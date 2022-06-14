@@ -136,18 +136,18 @@
             </Button>
         </StackPanel>
 
-        <StackPanel Margin="350 20 50 20"
+        <StackPanel Margin="350 0 50 0"
                     Background="#93C47E">
             <Label Content="Ranking"
-                   FontSize="25"
+                   FontSize="18"
                    FontFamily="../../Fonts\#강원교육모두"
-                   Height="40"
+                   Height="30"
                    HorizontalContentAlignment="Center"
                    VerticalContentAlignment="Center"
                    />
 
             <ListBox Background="#93C47E" 
-                     FontSize="20"
+                     FontSize="12"
                      BorderBrush="#93C47E"
                      FontFamily="../../Fonts\#강원교육모두"
                      HorizontalContentAlignment="Center"
