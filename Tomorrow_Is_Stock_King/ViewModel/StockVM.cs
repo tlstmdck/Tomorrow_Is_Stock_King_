@@ -66,32 +66,32 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         {
             //금융
             Companies.Add("KB금융");
-            //Companies.Add("하나금융지주");
-            //Companies.Add("우리금융지주");
-            //Companies.Add("신한지주");
-            //Companies.Add("기업은행");
+            Companies.Add("하나금융지주");
+            Companies.Add("우리금융지주");
+            Companies.Add("신한지주");
+            Companies.Add("기업은행");
 
             //IT
             Companies.Add("삼성전자");
-            //Companies.Add("SK하이닉스");
-            //Companies.Add("카카오");
-            //Companies.Add("NAVER");
-            //Companies.Add("삼성SDI");
+            Companies.Add("SK하이닉스");
+            Companies.Add("카카오");
+            Companies.Add("NAVER");
+            Companies.Add("삼성SDI");
             
 
             //제조
             Companies.Add("현대제철");
-            //Companies.Add("대우건설");
-            //Companies.Add("기아");
-            //Companies.Add("현대모비스");
-            //Companies.Add("GS리테일");
+            Companies.Add("대우건설");
+            Companies.Add("기아");
+            Companies.Add("현대모비스");
+            Companies.Add("GS리테일");
 
             //화학
             Companies.Add("SK케미칼");
-            //Companies.Add("LG화학");
-            //Companies.Add("금호석유");
-            //Companies.Add("롯데케미칼");
-            //Companies.Add("한화솔루션");
+            Companies.Add("LG화학");
+            Companies.Add("금호석유");
+            Companies.Add("롯데케미칼");
+            Companies.Add("한화솔루션");
         }
         public void GetStock(string stock_date)  //턴종료마다 발동
         {
