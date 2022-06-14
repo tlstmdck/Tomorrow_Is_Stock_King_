@@ -94,7 +94,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             StockVM.SelectedStock = StockVM.SelectedStock;
 
-            if (SettingVM.SettingDataToShow.TurnCnt == 100)
+            
+            if (SettingVM.SettingDataToShow.TurnCnt == 100) //100턴 채울 시
             {
                 GameEnd();
             }
@@ -106,6 +107,12 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
             UpdateMoney();
             SettingVM.PlayerVM.UpdateAIsMoney();
+
+            string rank1 = SettingVM.PlayerVM.PlayersData[0].Second.ToString();     
+            if (rank1.Equals(SettingVM.PlayerVM.PlayerDataToShow.Name.ToString()))  //1등일시
+            {
+                GameEnd();  //게임종료
+            }
             if (SettingVM.PlayerVM.PlayerDataToShow.Stocks.Count > 0)
             {
                 StockVM.GraphVM.UpdateListStockData(SettingVM.PlayerVM.PlayerDataToShow.Stocks);

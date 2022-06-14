@@ -70,6 +70,12 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             PageNames.Add("HelpWindowPages/FirstPage.xaml");
             PageNames.Add("HelpWindowPages/SecondPage.xaml");
             PageNames.Add("HelpWindowPages/ThirdPage.xaml");
+            PageNames.Add("HelpWindowPages/FourthPage.xaml");
+            PageNames.Add("HelpWindowPages/FifthPage.xaml");
+            PageNames.Add("HelpWindowPages/SixthPage.xaml");
+            PageNames.Add("HelpWindowPages/SeventhPage.xaml");
+            PageNames.Add("HelpWindowPages/EighthPage.xaml");
+            PageNames.Add("HelpWindowPages/NinthPage.xaml");
 
             CurrentPageInd = 1;
             TotalPageCnt = PageNames.Count - 1;
