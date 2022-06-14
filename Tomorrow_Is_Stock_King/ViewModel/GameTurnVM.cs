@@ -70,6 +70,8 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
             Date = Date.AddDays(1);
             StockVM.GetStock(Date.ToString("yyyyMMdd"));
+
+            StockVM.SelectedStock = StockVM.Companies[0];
         }
         public void NextTurn()
         {
