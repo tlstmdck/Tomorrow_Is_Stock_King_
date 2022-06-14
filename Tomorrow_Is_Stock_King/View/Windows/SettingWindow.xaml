@@ -62,6 +62,7 @@
                 Width="80"
                 Height="80"
                 x:Name="helpBtn"
+                Command="{Binding Path=SoundVM.ShowHelpWindowCommand}"
                 >
             <Button.Background>
                 <SolidColorBrush Opacity="0" />

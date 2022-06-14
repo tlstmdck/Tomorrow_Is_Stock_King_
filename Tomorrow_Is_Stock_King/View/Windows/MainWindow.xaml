@@ -81,6 +81,7 @@
                 BorderThickness="4"
                 Panel.ZIndex="1"
                 x:Name="helpBtn"
+                Command="{Binding Path=SoundVM.ShowHelpWindowCommand}"
                 >
             <Button.Background>
                 <SolidColorBrush Opacity="0" />

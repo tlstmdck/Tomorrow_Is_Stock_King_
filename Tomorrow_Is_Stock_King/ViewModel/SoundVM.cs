@@ -29,6 +29,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
         public ExitCheckWindowCommand ExitCheckWindowCommand { get; set; }
         public YesBtnCommand YesBtnCommand { get; set; }
         public NoBtnCommand NoBtnCommand { get; set; }
+        public ShowHelpWindowCommand ShowHelpWindowCommand { get; set; }
         public MediaPlayer BackGroundMusic { get; set; }
         public MediaPlayer ClickSound { get; set; }
 
@@ -46,6 +47,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             ExitCheckWindowCommand = new ExitCheckWindowCommand(this);
             YesBtnCommand = new YesBtnCommand(this);
             NoBtnCommand = new NoBtnCommand(this);
+            ShowHelpWindowCommand = new ShowHelpWindowCommand(this);
 
             BackGroundMusic = new MediaPlayer();
             BackGroundMusic.Open(new Uri("../../Sounds/BGM.mp3", UriKind.Relative));
