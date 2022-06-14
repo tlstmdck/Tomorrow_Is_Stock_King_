@@ -7,5 +7,6 @@
     <Application.Resources>
         <vm:StockVM x:Key="stockvm" />
         <vm:GameTurnVM x:Key="gameturnvm" />
+        <vm:PageNavigateVM x:Key="pagenavigatevm" />
     </Application.Resources>
 </Application>

@@ -1,0 +1,87 @@
+﻿<Window x:Class="Tomorrow_Is_Stock_King.View.Windows.ShowHelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.View.Windows"
+        mc:Ignorable="d"
+        Title="ShowHelpWindow" Height="615.96" Width="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="bgColor"
+                         Color="#FFEBCD"/>
+        <SolidColorBrush x:Key="btnBgColor"
+                         Color="#11264F"/>
+        <SolidColorBrush x:Key="btnTextColor" 
+                         Color="#FFFFFF"/>
+    </Window.Resources>
+
+    <DockPanel Background="{StaticResource bgColor}"
+               DataContext="{StaticResource pagenavigatevm}">
+        <Border DockPanel.Dock="Top"
+                BorderThickness="2"
+                BorderBrush="Black">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Height="100" Width="100"
+                        Grid.Column="0" Margin="0"
+                        x:Name="left"
+                        Background="{StaticResource bgColor}"
+                        BorderThickness="0"
+                        Command="{Binding Path=PageNavigateCommand}"
+                        CommandParameter="{Binding ElementName=left, Path=Name}">
+                    <Image Source="../../Images/Icons/LeftArrow.png" />
+                </Button>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <Label Content="도움말("
+                           FontSize="70"
+                           FontFamily="../../Fonts\#영도체"
+                           HorizontalAlignment="Center"/>
+
+                    <Label Content="{Binding Path=CurrentPageInd}"
+                           FontSize="70"
+                           FontFamily="../../Fonts\#영도체"
+                           HorizontalAlignment="Center"/>
+
+                    <Label Content="/"
+                           FontSize="70"
+                           FontFamily="../../Fonts\#영도체"
+                           HorizontalAlignment="Center"/>
+
+                    <Label Content="{Binding Path=TotalPageCnt}"
+                           FontSize="70"
+                           FontFamily="../../Fonts\#영도체"
+                           HorizontalAlignment="Center"/>
+
+                    <Label Content=")"
+                           FontSize="70"
+                           FontFamily="../../Fonts\#영도체"
+                           HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <Button Height="100" Width="100"
+                        Grid.Column="2"
+                        x:Name="right"
+                        Background="{StaticResource bgColor}"
+                        BorderThickness="0"
+                        Command="{Binding Path=PageNavigateCommand}"
+                        CommandParameter="{Binding ElementName=right, Path=Name}">
+                    <Image Source="../../Images/Icons/RightArrow.png" />
+                </Button>
+            </Grid>
+        </Border>
+        
+        <Frame x:Name="PageFrame"
+               Source="{Binding Path=CurrentPage}"
+               NavigationUIVisibility="Hidden"
+               Height="480"/>
+    </DockPanel>
+</Window>

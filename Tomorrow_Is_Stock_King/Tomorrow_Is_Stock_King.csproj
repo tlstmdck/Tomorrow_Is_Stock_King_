@@ -83,6 +83,8 @@
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\TakeLoanCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\StockListTabCommands\ViewMoneyListCommand.cs" />
     <Compile Include="ViewModel\Commands\GameMainWindowCommands\StockListTabCommands\ViewStockListCommand.cs" />
+    <Compile Include="ViewModel\Commands\ShowHelpWindowCommand.cs" />
+    <Compile Include="ViewModel\Commands\ShowHelpWindowCommands\PageNavigateCommand.cs" />
     <Compile Include="ViewModel\Commands\StartSettingWindowCommands\LevelBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\TurnSkipBtnCommand.cs" />
     <Compile Include="ViewModel\Commands\GoMainCheckWindowCommands\NoBtnCommand.cs" />
@@ -101,12 +103,14 @@
     <Compile Include="ViewModel\Converters\LevelConverter.cs" />
     <Compile Include="ViewModel\Converters\LoanConverter.cs" />
     <Compile Include="ViewModel\Converters\NumConverter.cs" />
+    <Compile Include="ViewModel\Converters\PageNumConverter.cs" />
     <Compile Include="ViewModel\Converters\RankingMoneyConverter.cs" />
     <Compile Include="ViewModel\Converters\StocktoMoneyConverter.cs" />
     <Compile Include="ViewModel\Converters\TotalMoneyChangeRateConverter.cs" />
     <Compile Include="ViewModel\Converters\TrendstoViewConverter.cs" />
     <Compile Include="ViewModel\GameTurnVM.cs" />
     <Compile Include="ViewModel\GraphVM.cs" />
+    <Compile Include="ViewModel\PageNavigateVM.cs" />
     <Compile Include="ViewModel\PlayerVM.cs" />
     <Compile Include="ViewModel\SettingVM.cs" />
     <Compile Include="ViewModel\SoundVM.cs" />
@@ -130,11 +134,23 @@
     <Compile Include="View\Windows\GoMainCheckWindow.xaml.cs">
       <DependentUpon>GoMainCheckWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\HelpWindowPages\FirstPage.xaml.cs">
+      <DependentUpon>FirstPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\HelpWindowPages\Secondpage.xaml.cs">
+      <DependentUpon>Secondpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\HelpWindowPages\ThirdPage.xaml.cs">
+      <DependentUpon>ThirdPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\ResultWindow.xaml.cs">
       <DependentUpon>ResultWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\SettingWindow.xaml.cs">
       <DependentUpon>SettingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\ShowHelpWindow.xaml.cs">
+      <DependentUpon>ShowHelpWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\ShowInformationWindow.xaml.cs">
       <DependentUpon>ShowInformationWindow.xaml</DependentUpon>
@@ -162,6 +178,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\HelpWindowPages\FirstPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\HelpWindowPages\Secondpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\HelpWindowPages\ThirdPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -183,6 +211,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\SettingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\ShowHelpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -249,6 +281,8 @@
     <Resource Include="Images\TechLeakD.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Icons\LeftArrow.png" />
+    <Resource Include="Images\Icons\RightArrow.png" />
     <Content Include="Sounds\BGM.mp3" />
     <Content Include="Sounds\Click.mp3" />
   </ItemGroup>
