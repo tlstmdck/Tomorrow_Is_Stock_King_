@@ -110,28 +110,21 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
             }
 
-
-            List<Item> Rtemp = new List<Item>();
-            List<Item> temp = new List<Item>();
-            for (int i = 0; i < StockDataToShow.Count; i++)
+            GetStockList(RealStockTurnList);
+            if(RealStockTurnList.Count == 1)
             {
-                Rtemp.Add(StockDataToShow[i]);
+                GetStockList(TurnList);
             }
-            RealStockTurnList.Add(Rtemp);  //1턴 완성
-
             if (RealStockTurnList.Count == 2)
             {
-                TurnList.Add(Rtemp);
+                
                 GetStockRateList(RealStockTurnList, clprnull, 0);
             }
             // 실제 주식데이터가지고 계산
             if (RealStockTurnList.Count > 2)
             {
-                for (int i = 0; i < StockDataToShow.Count; i++)
-                {
-                    temp.Add(StockDataToShow[i]);
-                }
-                TurnList.Add(temp);
+
+                GetStockList(TurnList);
                 Random rand = new Random();
                 for (int i = 0; i < Companies.Count; i++)
                 {
@@ -150,6 +143,19 @@ namespace Tomorrow_Is_Stock_King.ViewModel
 
             GraphVM.ChangeData(TurnList, 0);
             StockDataToShow.Clear();
+        }
+
+        private void GetStockList(List<List<Item>> List)
+        {
+            List<Item> StockList = new List<Item>();
+            for (int i=0; i<StockDataToShow.Count; i++)
+            {
+                StockList.Add(new Item());
+                StockList[i].ItmsNm = StockDataToShow[i].ItmsNm;
+                StockList[i].Clpr = StockDataToShow[i].Clpr;
+                StockList[i].Rate = StockDataToShow[i].Rate;
+            }
+            List.Add(StockList);
         }
 
         private void GetStockRateList(List<List<Item>> realStockTurnList, int clprnull, int index)
