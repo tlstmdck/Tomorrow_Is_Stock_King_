@@ -56,8 +56,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             gradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
 
             ZoomingMode = ZoomingOptions.X;
-
-            XFormatter = val => new DateTime((long)val).Ticks.ToString() + "턴";
+            XFormatter = val => (Int32.Parse(new DateTime((long)val).ToString("yyy"))-1).ToString();
             YFormatter = val => val.ToString("C");
 
             ListSeriesCollection = new SeriesCollection();
@@ -95,7 +94,7 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             for (int i=0; i< TurnList.Count; i++)
             {
                 DateTime turndate = new DateTime(0);
-                values.Add(new DateTimePoint(turndate.AddTicks(i), Double.Parse(TurnList[i][index].Clpr)));
+                values.Add(new DateTimePoint(turndate.AddYears(i), Double.Parse(TurnList[i][index].Clpr)));
             }
             return values;
         }
