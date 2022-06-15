@@ -92,9 +92,9 @@ namespace Tomorrow_Is_Stock_King.Model
         public PlayerData()
         {
             Name = "";
-            CurMoney = 30000000;
+            CurMoney = 100000000;
             StockMoney = 0;
-            TotalMoney = 30000000;
+            TotalMoney = 100000000;
             Stocks = new Dictionary<string, int>();
             LoanMoney = 0;
             CanTakeMaxLoan = (long)(TotalMoney * 0.9);
