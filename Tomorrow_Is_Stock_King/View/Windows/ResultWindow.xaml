@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tomorrow_Is_Stock_King.View.Windows"
         xmlns:converter="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Converters"
-        xmlns:command="clr-namespace:Tomorrow_Is_Stock_King.ViewModel.Commands.SettingWindowCommands"
         mc:Ignorable="d"
-        Title="ResultWindow" Height="400" Width="600" >
+        Title="ResultWindow" Height="400" Width="600"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <SolidColorBrush x:Key="bgColor"
                          Color="#FFEBCD"/>
