@@ -61,6 +61,9 @@ namespace Tomorrow_Is_Stock_King.ViewModel
             {
                 PlayerVM.AIsDataToShow.Add(new AIsData(i.ToString(), (aiStartMoney * i)));
             }
+
+            PlayerVM.PlayerDataToShow.CanTakeMaxLoan = (long)(PlayerVM.PlayerDataToShow.TotalMoney * 0.9);
+            PlayerVM.PlayerDataToShow.CurCanTakeLoan = PlayerVM.PlayerDataToShow.CanTakeMaxLoan;
         }
         public void setPlayerName(string name)
         {
